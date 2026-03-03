@@ -1,26 +1,114 @@
 @import "tailwindcss";
 
+@theme {
+  --color-accent: #0ea5e9;
+  --color-glass-bg: rgba(10, 10, 10, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent-glow: rgba(14, 165, 233, 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-zinc-800;
+  }
+  body {
+    @apply bg-black text-white antialiased selection:bg-accent selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass-panel {
+    @apply bg-[var(--color-glass-bg)] backdrop-blur-xl border border-[var(--color-glass-border)] shadow-2xl;
+  }
+
+  .gradient-heading {
+    @apply bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent;
+  }
+
+  .hero-glow {
+    background: radial-gradient(circle at center, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
+  }
+
+  .grid-pattern {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Shooting Stars Animation */
+  .shooting-star {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 2px;
+    background: linear-gradient(-45deg, #0ea5e9, rgba(0, 0, 255, 0));
+    border-radius: 999px;
+    filter: drop-shadow(0 0 6px #0ea5e9);
+    animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+  }
+
+  @keyframes tail {
+    0% { width: 0; }
+    30% { width: 100px; }
+    100% { width: 0; }
+  }
+
+  @keyframes shooting {
+    0% { transform: translateX(0) scale(1); }
+    100% { transform: translateX(300px) scale(0); }
+  }
+
+  .shooting-star::before,
+  .shooting-star::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    height: 2px;
+    background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #0ea5e9, rgba(0, 0, 255, 0));
+    transform: translateX(50%) rotateZ(45deg);
+    border-radius: 100%;
+    animation: shining 3000ms ease-in-out infinite;
+  }
+
+  .shooting-star::after {
+    transform: translateX(50%) rotateZ(-45deg);
+  }
+
+  @keyframes shining {
+    0% { width: 0; }
+    50% { width: 30px; }
+    100% { width: 0; }
+  }
+  
+  .glow-card {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .glow-card::before {
+    content: "";
+    @apply absolute -inset-px bg-gradient-to-br from-accent/20 to-transparent opacity-0 transition-opacity duration-300 pointer-events-none;
+  }
+
+  .glow-card:hover::before {
+    @apply opacity-100;
+  }
+}
+
+/* Custom animations if needed */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
 }
