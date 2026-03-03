@@ -26,7 +26,7 @@ export default function CTA() {
                     </h2>
 
                     <p className="text-zinc-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
-                        Join 2,000+ developers building high-performance SaaS applications with UI_LIB.
+                        Join 2,000+ developers building high-performance SaaS applications with In Progress.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">

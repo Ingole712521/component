@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Menu, X, Rocket, Sparkles } from "lucide-react";
+import { Github, Menu, X, Rocket } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,17 +30,22 @@ export default function Navbar() {
     <nav className="fixed top-6 left-0 right-0 z-50 px-4">
       <div
         className={`max-w-5xl mx-auto transition-all duration-300 ${scrolled
-            ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
-            : "bg-transparent py-5 px-6 border-transparent"
+          ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
+          : "bg-transparent py-5 px-6 border-transparent"
           }`}
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(14,165,233,0.3)] group-hover:scale-110 transition-transform">
-              <Sparkles className="text-white w-6 h-6" />
+          <Link href="/" className="flex items-center gap-2 group text-decoration-none">
+            <div className="w-10 h-10 relative overflow-hidden rounded-xl shadow-[0_0_20px_rgba(14,165,233,0.3)] group-hover:scale-110 transition-transform">
+              <Image
+                src="/Profile_with_background.png"
+                alt="Logo"
+                fill
+                className="object-cover"
+              />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white">UI_LIB</span>
+            <span className="text-xl font-black tracking-tighter text-white">In Progress</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -59,7 +65,7 @@ export default function Navbar() {
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="https://github.com"
+              href="https://github.com/Ingole712521/component.git"
               className="p-2 text-zinc-400 hover:text-white transition-colors"
             >
               <Github className="w-5 h-5" />
@@ -105,7 +111,7 @@ export default function Navbar() {
               <hr className="border-white/5" />
               <div className="flex flex-col gap-4">
                 <Link
-                  href="https://github.com"
+                  href="https://github.com/Ingole712521/component.git"
                   className="flex items-center gap-3 text-white font-bold"
                 >
                   <Github className="w-5 h-5" /> GitHub

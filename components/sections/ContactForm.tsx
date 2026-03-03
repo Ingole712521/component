@@ -16,7 +16,7 @@ export default function ContactForm() {
                     >
                         <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter gradient-heading">Get in Touch</h2>
                         <p className="text-zinc-500 text-lg mb-12 max-w-md">
-                            Have questions or need custom solutions? Our core team is ready to help you integrate UI_LIB into your workflow.
+                            Have questions or need custom solutions? Our core team is ready to help you integrate In Progress into your workflow.
                         </p>
 
                         <div className="space-y-8">

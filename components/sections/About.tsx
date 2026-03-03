@@ -1,24 +1,57 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function About() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top center",
+                    end: "center center",
+                    scrub: 2, // Even slower for maximum "cinematic" feel
+                },
+            });
+
+            tl.fromTo(
+                "h2",
+                { opacity: 0, y: 40, filter: "blur(10px)" },
+                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1 }
+            ).fromTo(
+                "p",
+                { opacity: 0, y: 30, filter: "blur(8px)" },
+                { opacity: 1, y: 0, filter: "blur(0px)", duration: 1 },
+                "-=0.5"
+            );
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section id="about" className="relative py-24 px-4 bg-zinc-950/20">
-            <div className="max-w-4xl mx-auto text-center">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-8 tracking-tight gradient-heading">
+        <section ref={containerRef} id="about" className="relative h-[120vh] bg-black overflow-hidden">
+            <div className="sticky top-0 h-screen flex items-center justify-center px-4 overflow-hidden">
+                {/* Subtle background glow */}
+                <div className="absolute inset-0 bg-accent/5 blur-[120px] rounded-full scale-150 -z-10" />
+
+                <div ref={textRef} className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-10 tracking-tighter gradient-heading leading-[1]">
                         The developer's secret weapon.
                     </h2>
-                    <p className="text-zinc-400 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-                        UI_LIB isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
+                    <p className="text-zinc-400 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
+                        In Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
                     </p>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
