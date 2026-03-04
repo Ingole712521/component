@@ -1,29 +1,29 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "In Progress | Premium Component Library",
-  description: "High-end design system and component library focused on performance and animations.",
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isDocsPage = pathname?.startsWith("/docs");
+
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-black text-white antialiased`}>
         <Navbar />
         <main className="min-h-screen pt-20">
           {children}
         </main>
-        <Footer />
+        {!isDocsPage && <Footer />}
       </body>
     </html>
   );

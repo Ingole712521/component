@@ -1,0 +1,10 @@
+{
+  "components": [
+    {
+      "name": "animated-button",
+      "displayName": "Animated Button",
+      "description": "Shimmer, glow, pulse, and ripple effects — pure CSS, zero dependencies.",
+      "category": "Components"
+    }
+  ]
+}

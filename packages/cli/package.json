@@ -1,0 +1,33 @@
+{
+  "name": "@nehal712521/progress-ui",
+  "version": "0.1.0",
+  "description": "CLI to add Progress UI components to your project",
+  "keywords": [
+    "progress-ui",
+    "cli",
+    "components",
+    "react",
+    "nextjs"
+  ],
+  "homepage": "https://github.com/Ingole712521/progress-ui",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "bin": {
+    "progress-ui": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.35",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -45,7 +45,7 @@ export default function Navbar() {
                 className="object-cover"
               />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white">In Progress</span>
+            <span className="text-xl font-black tracking-tighter text-white">Progress</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -71,7 +71,7 @@ export default function Navbar() {
               <Github className="w-5 h-5" />
             </Link>
             <Link
-              href="/get-started"
+              href="/docs"
               className="px-5 py-2.5 bg-white text-black text-sm font-black rounded-xl hover:bg-zinc-200 transition-all active:scale-95 shadow-lg shadow-white/5"
             >
               Get Started
@@ -117,7 +117,7 @@ export default function Navbar() {
                   <Github className="w-5 h-5" /> GitHub
                 </Link>
                 <Link
-                  href="/get-started"
+                  href="/docs"
                   className="w-full py-4 bg-white text-black text-center font-black rounded-2xl"
                 >
                   Get Started
