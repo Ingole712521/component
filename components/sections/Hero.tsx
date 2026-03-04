@@ -25,7 +25,7 @@ export default function Hero() {
     }, [mouseX, mouseY]);
 
     return (
-        <section className="relative pt-44 pb-32 px-4 overflow-hidden border-b border-white/5 group">
+        <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden border-b border-white/5 group">
             {/* Background Decor */}
             <div className="absolute inset-0 grid-pattern opacity-[0.3] -z-10" />
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none -z-10" />
