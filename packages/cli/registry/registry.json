@@ -144,6 +144,14 @@
       "category": "GSAP",
       "dependencies": ["gsap", "lucide-react"],
       "files": ["auth-card.tsx"]
+    },
+    "ripple-button": {
+      "name": "ripple-button",
+      "displayName": "Ripple Button",
+      "description": "A highly customizable button with a concentric waveform ripple animation on click.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["ripple-button.tsx"]
     }
   }
 }

@@ -29,6 +29,7 @@ const sidebarItems: SidebarSection[] = [
         title: "Components",
         items: [
             { name: "Button", href: "/docs/components/button" },
+            { name: "Ripple Button", href: "/docs/components/ripple-button" },
             { name: "Card", href: "/docs/components/card" },
             { name: "Input", href: "/docs/components/input" },
             { name: "Badge", href: "/docs/components/badge" },
