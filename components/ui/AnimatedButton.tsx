@@ -1,73 +1,111 @@
 "use client";
 
-import React, { useRef, MouseEvent, CSSProperties } from "react";
+import React, { useRef, MouseEvent, CSSProperties, useEffect } from "react";
+import { gsap } from "gsap";
 
 type ButtonVariant = "shimmer" | "glow" | "pulse" | "ripple";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface AnimatedButtonProps {
-    children: React.ReactNode;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-    disabled?: boolean;
-    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-    className?: string;
-    style?: CSSProperties;
-    type?: "button" | "submit" | "reset";
-    fullWidth?: boolean;
+  children: React.ReactNode;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  disabled?: boolean;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  style?: CSSProperties;
+  type?: "button" | "submit" | "reset";
+  fullWidth?: boolean;
 }
 
 const sizeMap: Record<ButtonSize, string> = {
-    sm: "px-4 py-1.5 text-sm",
-    md: "px-6 py-2.5 text-sm",
-    lg: "px-8 py-3.5 text-base",
+  sm: "px-4 py-1.5 text-sm",
+  md: "px-6 py-2.5 text-sm",
+  lg: "px-8 py-3.5 text-base",
 };
 
 export default function AnimatedButton({
-    children,
-    variant = "shimmer",
-    size = "md",
-    disabled = false,
-    onClick,
-    className = "",
-    style,
-    type = "button",
-    fullWidth = false,
+  children,
+  variant = "shimmer",
+  size = "md",
+  disabled = false,
+  onClick,
+  className = "",
+  style,
+  type = "button",
+  fullWidth = false,
 }: AnimatedButtonProps) {
-    const btnRef = useRef<HTMLButtonElement>(null);
-    const rippleRef = useRef<HTMLSpanElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const rippleRef = useRef<HTMLSpanElement>(null);
 
-    const handleRipple = (e: MouseEvent<HTMLButtonElement>) => {
-        if (variant !== "ripple" || !btnRef.current || !rippleRef.current) return;
+  useEffect(() => {
+    const btn = btnRef.current;
+    if (!btn || disabled) return;
 
-        const btn = btnRef.current;
-        const ripple = rippleRef.current;
-        const rect = btn.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height) * 2;
-
-        ripple.style.width = `${size}px`;
-        ripple.style.height = `${size}px`;
-        ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-        ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-
-        ripple.classList.remove("animate-ripple");
-        void ripple.offsetWidth;
-        ripple.classList.add("animate-ripple");
+    const handleMouseEnter = () => {
+      gsap.to(btn, { scale: 1.02, duration: 0.3, ease: "power2.out" });
+    };
+    const handleMouseLeave = () => {
+      gsap.to(btn, { scale: 1, duration: 0.3, ease: "power2.out" });
+    };
+    const handleMouseDown = () => {
+      gsap.to(btn, { scale: 0.95, duration: 0.1, ease: "power2.out" });
+    };
+    const handleMouseUp = () => {
+      gsap.to(btn, { scale: 1.02, duration: 0.3, ease: "elastic.out(1, 0.5)" });
     };
 
-    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-        handleRipple(e);
-        onClick?.(e);
+    btn.addEventListener("mouseenter", handleMouseEnter);
+    btn.addEventListener("mouseleave", handleMouseLeave);
+    btn.addEventListener("mousedown", handleMouseDown);
+    btn.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      btn.removeEventListener("mouseenter", handleMouseEnter);
+      btn.removeEventListener("mouseleave", handleMouseLeave);
+      btn.removeEventListener("mousedown", handleMouseDown);
+      btn.removeEventListener("mouseup", handleMouseUp);
     };
+  }, [disabled]);
 
-    const base = `animated-btn relative inline-flex items-center justify-center font-semibold tracking-tight overflow-hidden rounded-xl cursor-pointer select-none transition-transform duration-150 active:scale-[0.97] disabled:opacity-40 disabled:pointer-events-none ${fullWidth ? "w-full" : ""} ${sizeMap[size]} ${className}`;
+  const handleRipple = (e: MouseEvent<HTMLButtonElement>) => {
+    if (variant !== "ripple" || !btnRef.current || !rippleRef.current) return;
 
-    return (
-        <>
-            <style>{`
+    const btn = btnRef.current;
+    const ripple = rippleRef.current;
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2;
+
+    gsap.set(ripple, {
+      width: size,
+      height: size,
+      left: e.clientX - rect.left - size / 2,
+      top: e.clientY - rect.top - size / 2,
+      scale: 0,
+      opacity: 1
+    });
+
+    gsap.to(ripple, {
+      scale: 1,
+      opacity: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    });
+  };
+
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    handleRipple(e);
+    onClick?.(e);
+  };
+
+  const base = `animated-btn relative inline-flex items-center justify-center font-semibold tracking-tight overflow-hidden rounded-xl cursor-pointer select-none disabled:opacity-40 disabled:pointer-events-none transition-colors duration-200 ${fullWidth ? "w-full" : ""} ${sizeMap[size]} ${className}`;
+
+  return (
+    <>
+      <style>{`
         .animated-btn { outline: none; border: none; }
 
-        /* ── SHIMMER ── */
+        /* SHIMMER */
         .btn-shimmer {
           background: #0ea5e9;
           color: #fff;
@@ -95,7 +133,7 @@ export default function AnimatedButton({
           100% { transform: translateX(120%); }
         }
 
-        /* ── GLOW ── */
+        /* GLOW */
         .btn-glow {
           background: transparent;
           color: #0ea5e9;
@@ -115,7 +153,7 @@ export default function AnimatedButton({
           50%       { box-shadow: 0 0 18px rgba(14,165,233,0.45) inset, 0 0 18px rgba(14,165,233,0.4); }
         }
 
-        /* ── PULSE ── */
+        /* PULSE */
         .btn-pulse {
           background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
           color: #fff;
@@ -129,7 +167,7 @@ export default function AnimatedButton({
           100% { box-shadow: 0 0 0 0 rgba(14,165,233,0); }
         }
 
-        /* ── RIPPLE ── */
+        /* RIPPLE */
         .btn-ripple {
           background: #18181b;
           color: #fff;
@@ -144,27 +182,21 @@ export default function AnimatedButton({
           transform: scale(0);
           opacity: 1;
         }
-        .animate-ripple {
-          animation: ripple-expand 0.55s linear forwards;
-        }
-        @keyframes ripple-expand {
-          to { transform: scale(1); opacity: 0; }
-        }
       `}</style>
 
-            <button
-                ref={btnRef}
-                type={type}
-                disabled={disabled}
-                onClick={handleClick}
-                style={style}
-                className={`${base} btn-${variant}`}
-            >
-                {variant === "ripple" && (
-                    <span ref={rippleRef} className="ripple-dot" />
-                )}
-                <span className="relative z-10 flex items-center gap-2">{children}</span>
-            </button>
-        </>
-    );
+      <button
+        ref={btnRef}
+        type={type}
+        disabled={disabled}
+        onClick={handleClick}
+        style={style}
+        className={`${base} btn-${variant}`}
+      >
+        {variant === "ripple" && (
+          <span ref={rippleRef} className="ripple-dot" />
+        )}
+        <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
+      </button>
+    </>
+  );
 }

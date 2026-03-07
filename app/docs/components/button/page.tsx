@@ -50,7 +50,7 @@ const sidebarItems = [
         items: [
             { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
             { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
-            { name: "Mega Navbar", href: "/docs/components/navbar-mega" },
+            { name: "", href: "/docs/components/" },
         ],
     },
 ];

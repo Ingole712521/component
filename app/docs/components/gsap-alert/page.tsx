@@ -10,7 +10,7 @@ const sidebarItems = [
     { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
     { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
     { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert", active: true }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
-    { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "Mega Navbar", href: "/docs/components/navbar-mega" }] },
+    { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "", href: "/docs/components/" }] },
 ];
 
 function CopyButton({ code }: { code: string }) {
@@ -20,7 +20,7 @@ function CopyButton({ code }: { code: string }) {
 }
 
 export default function GSAPAlertPage() {
-    const [alerts, setAlerts] = useState<{id: number, variant: "success" | "error" | "warning" | "info"}[]>([
+    const [alerts, setAlerts] = useState<{ id: number, variant: "success" | "error" | "warning" | "info" }[]>([
         { id: 1, variant: "success" },
         { id: 2, variant: "error" },
         { id: 3, variant: "warning" },
@@ -67,10 +67,10 @@ export default function GSAPAlertPage() {
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>
                                 <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 space-y-4">
-                                    <GSAPAlert variant="success" title="Success!" onClose={() => {}}>Your changes have been saved successfully.</GSAPAlert>
-                                    <GSAPAlert variant="error" title="Error!" onClose={() => {}}>Something went wrong. Please try again.</GSAPAlert>
-                                    <GSAPAlert variant="warning" title="Warning!" onClose={() => {}}>Please review your information before continuing.</GSAPAlert>
-                                    <GSAPAlert variant="info" title="Info" onClose={() => {}} autoClose={5000}>This alert will auto-close in 5 seconds.</GSAPAlert>
+                                    <GSAPAlert variant="success" title="Success!" onClose={() => { }}>Your changes have been saved successfully.</GSAPAlert>
+                                    <GSAPAlert variant="error" title="Error!" onClose={() => { }}>Something went wrong. Please try again.</GSAPAlert>
+                                    <GSAPAlert variant="warning" title="Warning!" onClose={() => { }}>Please review your information before continuing.</GSAPAlert>
+                                    <GSAPAlert variant="info" title="Info" onClose={() => { }} autoClose={5000}>This alert will auto-close in 5 seconds.</GSAPAlert>
                                 </div>
                             </div>
                             <div className="space-y-4">

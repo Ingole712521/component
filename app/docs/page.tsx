@@ -62,7 +62,7 @@ const sidebarItems: SidebarSection[] = [
         items: [
             { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
             { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
-            { name: "Mega Navbar", href: "/docs/components/navbar-mega" },
+            // { name: "", href: "/docs/components/" },
         ],
     },
 ];
@@ -77,13 +77,13 @@ const tocItems = [
 // Copy to clipboard function
 function CopyButton({ text }: { text: string }) {
     const [copied, setCopied] = useState(false);
-    
+
     const copy = async () => {
         await navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
-    
+
     return (
         <button
             onClick={copy}
@@ -208,7 +208,7 @@ export default function DocsIntroduction() {
                                         <span className="text-zinc-500">$</span> npx @nehal712521/progress-ui init
                                     </div>
                                 </CodeBlock>
-                                
+
                                 <p className="text-zinc-400 mt-6">
                                     Then add components using the add command:
                                 </p>
@@ -217,7 +217,7 @@ export default function DocsIntroduction() {
                                         <span className="text-zinc-500">$</span> npx @nehal712521/progress-ui add button
                                     </div>
                                 </CodeBlock>
-                                
+
                                 <p className="text-zinc-400 mt-6">
                                     Available components:
                                 </p>

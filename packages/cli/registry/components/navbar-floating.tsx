@@ -100,7 +100,7 @@ export function FloatingNavbar({
     return (
         <nav
             ref={navRef}
-            className={`fixed top-6 left-1/3 -translate-x-1/2 z-50 transition-all duration-300 ${className}`}
+            className={`fixed top-5 left-1/3 -translate-x-1/2 z-50 transition-all duration-300 ${className}`}
         >
             <div
                 className={`flex items-center justify-between gap-4 w-[calc(100vw-2rem)] md:w-max px-6 md:px-8 py-3 rounded-[32px] border transition-all duration-500 ${isScrolled

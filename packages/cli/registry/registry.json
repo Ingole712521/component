@@ -4,9 +4,9 @@
     "button": {
       "name": "button",
       "displayName": "Animated Button",
-      "description": "A highly customisable animated button with shimmer, glow, pulse, and ripple effects",
+      "description": "A highly customisable animated button with shimmer, glow, pulse, and ripple effects powered by GSAP",
       "category": "Components",
-      "dependencies": [],
+      "dependencies": ["gsap"],
       "files": ["button.tsx"]
     },
     "card": {
@@ -40,6 +40,14 @@
       "category": "Animations",
       "dependencies": ["framer-motion"],
       "files": ["floating-dock.tsx"]
+    },
+    "navbar-floating": {
+      "name": "navbar-floating",
+      "displayName": "Floating Navbar",
+      "description": "Modern floating navbar with scroll-aware styling, staggered animations, and mobile-responsive design using GSAP.",
+      "category": "Navigation",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["navbar-floating.tsx"]
     },
     "text-reveal": {
       "name": "text-reveal",

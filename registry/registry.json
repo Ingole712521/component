@@ -153,13 +153,13 @@
       "dependencies": ["gsap", "lucide-react"],
       "files": ["navbar-glass.tsx"]
     },
-    "navbar-mega": {
-      "name": "navbar-mega",
+    "": {
+      "name": "",
       "displayName": "Mega Menu Navbar",
       "description": "Full-featured mega menu navbar with animated underline, slide-down panels, and mobile slide-out menu using GSAP",
       "category": "Navigation",
       "dependencies": ["gsap", "lucide-react"],
-      "files": ["navbar-mega.tsx"]
+      "files": [".tsx"]
     }
   }
 }

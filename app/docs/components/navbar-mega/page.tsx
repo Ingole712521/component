@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
-import { MegaNavbar } from "@/components/ui/navbar-mega";
+// import { MegaNavbar } from "@/components/ui/";
 
 const sidebarItems = [
     { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
     { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
     { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
     { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
-    { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "Mega Navbar", href: "/docs/components/navbar-mega", active: true }] },
+    { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "", href: "/docs/components/", active: true }] },
 ];
 
 function CopyButton({ code }: { code: string }) {
@@ -20,8 +20,8 @@ function CopyButton({ code }: { code: string }) {
 }
 
 export default function MegaNavbarPage() {
-    const installCode = "npx @nehal712521/inprogress add navbar-mega";
-    const usageCode = `import { MegaNavbar } from "@/components/ui/navbar-mega";
+    const installCode = "npx @nehal712521/inprogress add ";
+    const usageCode = `import { MegaNavbar } from "@/components/ui/";
 
 export default function Page() {
     const navItems = [
@@ -99,15 +99,7 @@ export default function Page() {
                             </div>
 
                             {/* Preview */}
-                            <div className="space-y-4">
-                                <h2 className="text-xl font-semibold text-white">Preview</h2>
-                                <div className="relative bg-zinc-900/50 rounded-xl border border-zinc-800 overflow-hidden min-h-[300px]">
-                                    <div className="p-4 pt-20">
-                                        <p className="text-zinc-500 text-sm text-center">Click Products to see mega menu</p>
-                                    </div>
-                                    <MegaNavbar />
-                                </div>
-                            </div>
+
 
                             {/* Usage */}
                             <div className="space-y-4">

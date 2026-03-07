@@ -44,7 +44,7 @@ const bentoItems = [
 
 export default function BentoGrid() {
     return (
-        <section id="features" className="relative pt-8 pb-32 bg-black ">
+        <section id="features" className="relative pt-8 pb-32 bg-black px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight gradient-heading">What We Provide</h2>
@@ -71,7 +71,7 @@ export default function BentoGrid() {
                                 <item.icon className="w-6 h-6" />
                             </div>
 
-                            <div className="mt-8">
+                            <div className="mt-auto pt-8">
                                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                                 <p className="text-zinc-500 text-sm leading-relaxed">{item.description}</p>
                             </div>

@@ -181,8 +181,15 @@ async function addCommand(componentName: string, options: { path?: string; overw
     // Show dependencies if any
     if (component.dependencies && component.dependencies.length > 0) {
         logger.blank();
-        logger.warn(`This component has dependencies: ${chalk.white(component.dependencies.join(", "))}`);
-        logger.info(`Install them with: ${chalk.cyan(`npm install ${component.dependencies.join(" ")}`)}`);
+        logger.warn(`This component requires dependencies: ${chalk.white(component.dependencies.join(", "))}`);
+        logger.step(`Installing dependencies automatically...`);
+        try {
+            const { execSync } = require('child_process');
+            execSync(`npm install ${component.dependencies.join(" ")}`, { stdio: 'inherit', cwd: process.cwd() });
+            logger.success(`Successfully installed dependencies!`);
+        } catch (error) {
+            logger.error(`Failed to install dependencies automatically. Please run: ${chalk.cyan(`npm install ${component.dependencies.join(" ")}`)}`);
+        }
     }
 
     // Resolve output directory
@@ -242,7 +249,7 @@ async function listCommand() {
     }
 
     const components = Object.values(registry.components);
-    
+
     // Group by category
     const byCategory: Record<string, ComponentDef[]> = {};
     for (const comp of components) {

@@ -29,10 +29,10 @@ export default function CTA() {
                         Join 2,000+ developers building high-performance SaaS applications with In Progress.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10 w-full">
                         <Link
                             href="/contact"
-                            className="group px-10 py-5 bg-accent text-white font-black rounded-2xl hover:scale-105 transition-all text-xl shadow-[0_20px_40px_rgba(14,165,233,0.3)] flex items-center gap-3"
+                            className="group px-10 py-5 bg-accent text-white font-black rounded-2xl hover:scale-105 transition-all text-xl shadow-[0_20px_40px_rgba(14,165,233,0.3)] flex items-center justify-center gap-3 w-full sm:w-auto"
                         >
                             Start Building Now
                             <Rocket className="w-6 h-6 group-hover:animate-bounce" />
