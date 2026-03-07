@@ -45,6 +45,14 @@ const sidebarItems = [
             { name: "Auth Card", href: "/docs/components/auth-card" },
         ],
     },
+    {
+        title: "Navigation",
+        items: [
+            { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
+            { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
+            { name: "Mega Navbar", href: "/docs/components/navbar-mega" },
+        ],
+    },
 ];
 
 function CopyButton({ code }: { code: string }) {

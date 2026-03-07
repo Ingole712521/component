@@ -136,6 +136,30 @@
       "category": "GSAP",
       "dependencies": ["gsap", "lucide-react"],
       "files": ["auth-card.tsx"]
+    },
+    "navbar-floating": {
+      "name": "navbar-floating",
+      "displayName": "Floating Navbar",
+      "description": "Modern floating navbar with scroll-aware styling, staggered animations, and mobile-responsive design using GSAP",
+      "category": "Navigation",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["navbar-floating.tsx"]
+    },
+    "navbar-glass": {
+      "name": "navbar-glass",
+      "displayName": "Glassmorphism Navbar",
+      "description": "Elegant glassmorphism navbar with mouse-following glow, dropdown menus, and smooth GSAP animations",
+      "category": "Navigation",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["navbar-glass.tsx"]
+    },
+    "navbar-mega": {
+      "name": "navbar-mega",
+      "displayName": "Mega Menu Navbar",
+      "description": "Full-featured mega menu navbar with animated underline, slide-down panels, and mobile slide-out menu using GSAP",
+      "category": "Navigation",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["navbar-mega.tsx"]
     }
   }
 }
