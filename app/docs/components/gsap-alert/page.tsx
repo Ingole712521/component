@@ -1,0 +1,104 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronRight, Copy, Check } from "lucide-react";
+import Link from "next/link";
+import { GSAPAlert } from "@/components/ui/gsap-alert";
+
+const sidebarItems = [
+    { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
+    { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
+    { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
+    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert", active: true }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
+];
+
+function CopyButton({ code }: { code: string }) {
+    const [copied, setCopied] = useState(false);
+    const copy = async () => { await navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000); };
+    return (<button onClick={copy} className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all">{copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}</button>);
+}
+
+export default function GSAPAlertPage() {
+    const [alerts, setAlerts] = useState<{id: number, variant: "success" | "error" | "warning" | "info"}[]>([
+        { id: 1, variant: "success" },
+        { id: 2, variant: "error" },
+        { id: 3, variant: "warning" },
+        { id: 4, variant: "info" },
+    ]);
+
+    const removeAlert = (id: number) => {
+        setAlerts(alerts.filter(a => a.id !== id));
+    };
+
+    return (
+        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                <div className="flex gap-12 h-full pt-24">
+                    <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5">
+                        <div className="space-y-8 pb-16">
+                            {sidebarItems.map((section) => (
+                                <div key={section.title}>
+                                    <h3 className="text-[10px] font-semibold text-white mb-4 tracking-widest uppercase opacity-50">{section.title}</h3>
+                                    <ul className="space-y-1.5">
+                                        {section.items.map((item) => (
+                                            <li key={item.name}><Link href={item.href} className={`group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all ${item.active ? "bg-accent/10 text-accent font-medium border border-accent/20" : "hover:text-white hover:bg-white/5 border border-transparent"}`}><span>{item.name}</span></Link></li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </aside>
+                    <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
+                        <div className="pb-24 space-y-12">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>GSAP</span><ChevronRight className="w-4 h-4" /><span className="text-white">GSAP Alert</span></div>
+                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">GSAP Alert</h1>
+                                <p className="text-zinc-400 max-w-xl">Animated alert with slide-in, auto-close progress bar, and exit animations using GSAP.</p>
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold text-white">Installation</h2>
+                                <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
+                                    <CopyButton code="npx @nehal712521/inprogress add gsap-alert" />
+                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">gsap-alert</span></div>
+                                </div>
+                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">gsap</code>, <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">lucide-react</code></p>
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold text-white">Preview</h2>
+                                <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 space-y-4">
+                                    <GSAPAlert variant="success" title="Success!" onClose={() => {}}>Your changes have been saved successfully.</GSAPAlert>
+                                    <GSAPAlert variant="error" title="Error!" onClose={() => {}}>Something went wrong. Please try again.</GSAPAlert>
+                                    <GSAPAlert variant="warning" title="Warning!" onClose={() => {}}>Please review your information before continuing.</GSAPAlert>
+                                    <GSAPAlert variant="info" title="Info" onClose={() => {}} autoClose={5000}>This alert will auto-close in 5 seconds.</GSAPAlert>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold text-white">Usage</h2>
+                                <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
+                                    <CopyButton code={`import { GSAPAlert } from "@/components/ui/gsap-alert";
+
+<GSAPAlert variant="success" title="Success!" onClose={() => {}}>
+  Your changes have been saved.
+</GSAPAlert>
+
+<GSAPAlert variant="info" autoClose={5000} onClose={() => {}}>
+  Auto-closing alert
+</GSAPAlert>`} />
+                                    <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto"><code>{`import { GSAPAlert } from "@/components/ui/gsap-alert";
+
+<GSAPAlert variant="success" title="Success!" onClose={() => {}}>
+  Your changes have been saved.
+</GSAPAlert>
+
+<GSAPAlert variant="info" autoClose={5000} onClose={() => {}}>
+  Auto-closing alert
+</GSAPAlert>`}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    );
+}

@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
+import { GSAPBadge } from "@/components/ui/gsap-badge";
 
 const sidebarItems = [
     { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
-    { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input", active: true }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
+    { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
     { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
-    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
+    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge", active: true }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
 ];
 
 function CopyButton({ code }: { code: string }) {
@@ -18,7 +18,7 @@ function CopyButton({ code }: { code: string }) {
     return (<button onClick={copy} className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all">{copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}</button>);
 }
 
-export default function InputPage() {
+export default function GSAPBadgePage() {
     return (
         <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
@@ -40,34 +40,40 @@ export default function InputPage() {
                     <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
                         <div className="pb-24 space-y-12">
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>Components</span><ChevronRight className="w-4 h-4" /><span className="text-white">Input</span></div>
-                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Input</h1>
-                                <p className="text-zinc-400 max-w-xl">A styled input component with focus states.</p>
+                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>GSAP</span><ChevronRight className="w-4 h-4" /><span className="text-white">GSAP Badge</span></div>
+                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">GSAP Badge</h1>
+                                <p className="text-zinc-400 max-w-xl">Animated badge with shimmer, pulse glow, hover scale, and bounce entry animations using GSAP.</p>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Installation</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
-                                    <CopyButton code="npx @nehal712521/inprogress add input" />
-                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">input</span></div>
+                                    <CopyButton code="npx @nehal712521/inprogress add gsap-badge" />
+                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">gsap-badge</span></div>
                                 </div>
+                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">gsap</code></p>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>
-                                <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 flex flex-col items-center justify-center gap-4">
-                                    <Input placeholder="Enter your email" className="w-full max-w-sm" />
-                                    <Input placeholder="Password" type="password" className="w-full max-w-sm" />
-                                    <Input placeholder="Disabled" disabled className="w-full max-w-sm" />
+                                <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 flex flex-wrap items-center justify-center gap-4">
+                                    <GSAPBadge variant="default">Default</GSAPBadge>
+                                    <GSAPBadge variant="success" pulse>Success</GSAPBadge>
+                                    <GSAPBadge variant="warning">Warning</GSAPBadge>
+                                    <GSAPBadge variant="error" pulse>Error</GSAPBadge>
+                                    <GSAPBadge variant="gradient">Gradient</GSAPBadge>
+                                    <GSAPBadge variant="shimmer">Shimmer</GSAPBadge>
                                 </div>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Usage</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
-                                    <CopyButton code={`import { Input } from "@/components/ui/input";
+                                    <CopyButton code={`import { GSAPBadge } from "@/components/ui/gsap-badge";
 
-<Input placeholder="Enter text..." />`} />
-                                    <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto"><code>{`import { Input } from "@/components/ui/input";
+<GSAPBadge variant="success" pulse>Success</GSAPBadge>
+<GSAPBadge variant="shimmer">New</GSAPBadge>`} />
+                                    <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto"><code>{`import { GSAPBadge } from "@/components/ui/gsap-badge";
 
-<Input placeholder="Enter text..." />`}</code></pre>
+<GSAPBadge variant="success" pulse>Success</GSAPBadge>
+<GSAPBadge variant="shimmer">New</GSAPBadge>`}</code></pre>
                                 </div>
                             </div>
                         </div>

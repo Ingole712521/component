@@ -80,6 +80,62 @@
       "category": "Components",
       "dependencies": ["framer-motion"],
       "files": ["timeline.tsx"]
+    },
+    "gsap-button": {
+      "name": "gsap-button",
+      "displayName": "GSAP Button",
+      "description": "Professionally animated button with GSAP - hover, click, and entry animations",
+      "category": "GSAP",
+      "dependencies": ["gsap"],
+      "files": ["gsap-button.tsx"]
+    },
+    "gsap-card": {
+      "name": "gsap-card",
+      "displayName": "GSAP Card",
+      "description": "3D tilt card with mouse-following glow and shimmer border effects using GSAP",
+      "category": "GSAP",
+      "dependencies": ["gsap"],
+      "files": ["gsap-card.tsx"]
+    },
+    "gsap-input": {
+      "name": "gsap-input",
+      "displayName": "GSAP Input",
+      "description": "Animated input with gradient border reveal and focus effects using GSAP",
+      "category": "GSAP",
+      "dependencies": ["gsap"],
+      "files": ["gsap-input.tsx"]
+    },
+    "gsap-badge": {
+      "name": "gsap-badge",
+      "displayName": "GSAP Badge",
+      "description": "Animated badge with shimmer, pulse, and hover scale effects using GSAP",
+      "category": "GSAP",
+      "dependencies": ["gsap"],
+      "files": ["gsap-badge.tsx"]
+    },
+    "gsap-alert": {
+      "name": "gsap-alert",
+      "displayName": "GSAP Alert",
+      "description": "Animated alert with slide-in, auto-close progress, and exit animations using GSAP",
+      "category": "GSAP",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["gsap-alert.tsx"]
+    },
+    "gsap-modal": {
+      "name": "gsap-modal",
+      "displayName": "GSAP Modal",
+      "description": "Professional modal with backdrop fade, scale entry, and staggered content using GSAP",
+      "category": "GSAP",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["gsap-modal.tsx"]
+    },
+    "auth-card": {
+      "name": "auth-card",
+      "displayName": "Auth Card",
+      "description": "Complete sign-in/sign-up card with social login (Google, GitHub, Twitter), 3D effects, and GSAP animations",
+      "category": "GSAP",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["auth-card.tsx"]
     }
   }
 }

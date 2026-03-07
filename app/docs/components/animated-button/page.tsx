@@ -46,6 +46,18 @@ const sidebarItems: SidebarSection[] = [
             { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
         ],
     },
+    {
+        title: "GSAP",
+        items: [
+            { name: "GSAP Button", href: "/docs/components/gsap-button" },
+            { name: "GSAP Card", href: "/docs/components/gsap-card" },
+            { name: "GSAP Input", href: "/docs/components/gsap-input" },
+            { name: "GSAP Badge", href: "/docs/components/gsap-badge" },
+            { name: "GSAP Alert", href: "/docs/components/gsap-alert" },
+            { name: "GSAP Modal", href: "/docs/components/gsap-modal" },
+            { name: "Auth Card", href: "/docs/components/auth-card" },
+        ],
+    },
 ];
 
 const tocItems = [

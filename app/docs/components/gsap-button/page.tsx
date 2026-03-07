@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
-import AnimatedButton from "@/components/ui/AnimatedButton";
+import { GSAPButton } from "@/components/ui/gsap-button";
 
 const sidebarItems = [
     {
@@ -16,7 +16,7 @@ const sidebarItems = [
     {
         title: "Components",
         items: [
-            { name: "Button", href: "/docs/components/button", active: true },
+            { name: "Button", href: "/docs/components/button" },
             { name: "Card", href: "/docs/components/card" },
             { name: "Input", href: "/docs/components/input" },
             { name: "Badge", href: "/docs/components/badge" },
@@ -36,7 +36,7 @@ const sidebarItems = [
     {
         title: "GSAP",
         items: [
-            { name: "GSAP Button", href: "/docs/components/gsap-button" },
+            { name: "GSAP Button", href: "/docs/components/gsap-button", active: true },
             { name: "GSAP Card", href: "/docs/components/gsap-card" },
             { name: "GSAP Input", href: "/docs/components/gsap-input" },
             { name: "GSAP Badge", href: "/docs/components/gsap-badge" },
@@ -61,7 +61,7 @@ function CopyButton({ code }: { code: string }) {
     );
 }
 
-export default function ButtonPage() {
+export default function GSAPButtonPage() {
     return (
         <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
@@ -92,37 +92,39 @@ export default function ButtonPage() {
                             {/* Header */}
                             <div className="space-y-4">
                                 <div className="flex items-center gap-2 text-accent text-sm font-medium">
-                                    <span>Components</span>
+                                    <span>GSAP</span>
                                     <ChevronRight className="w-4 h-4" />
-                                    <span className="text-white">Button</span>
+                                    <span className="text-white">GSAP Button</span>
                                 </div>
-                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Button</h1>
-                                <p className="text-zinc-400 max-w-xl">An animated button component with shimmer, glow, pulse, and ripple effects.</p>
+                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">GSAP Button</h1>
+                                <p className="text-zinc-400 max-w-xl">Professionally animated button with GSAP - entry bounce, hover scale, click elastic, and text lift animations.</p>
                             </div>
 
                             {/* Installation */}
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Installation</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
-                                    <CopyButton code="npx @nehal712521/inprogress add button" />
+                                    <CopyButton code="npx @nehal712521/inprogress add gsap-button" />
                                     <div className="p-4 font-mono text-sm">
                                         <span className="text-emerald-400">$ </span>
                                         <span className="text-white">npx </span>
                                         <span className="text-accent">@nehal712521/inprogress</span>
                                         <span className="text-white"> add </span>
-                                        <span className="text-yellow-300">button</span>
+                                        <span className="text-yellow-300">gsap-button</span>
                                     </div>
                                 </div>
+                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">gsap</code></p>
                             </div>
 
                             {/* Preview */}
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>
                                 <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 flex flex-wrap items-center justify-center gap-4">
-                                    <AnimatedButton variant="shimmer">Shimmer</AnimatedButton>
-                                    <AnimatedButton variant="glow">Glow</AnimatedButton>
-                                    <AnimatedButton variant="pulse">Pulse</AnimatedButton>
-                                    <AnimatedButton variant="ripple">Ripple</AnimatedButton>
+                                    <GSAPButton variant="primary">Primary</GSAPButton>
+                                    <GSAPButton variant="secondary">Secondary</GSAPButton>
+                                    <GSAPButton variant="outline">Outline</GSAPButton>
+                                    <GSAPButton variant="magnetic">Magnetic</GSAPButton>
+                                    <GSAPButton variant="ghost">Ghost</GSAPButton>
                                 </div>
                             </div>
 
@@ -130,13 +132,17 @@ export default function ButtonPage() {
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Usage</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
-                                    <CopyButton code={`import AnimatedButton from "@/components/ui/AnimatedButton";
+                                    <CopyButton code={`import { GSAPButton } from "@/components/ui/gsap-button";
 
-<AnimatedButton variant="shimmer">Click me</AnimatedButton>`} />
+<GSAPButton variant="primary" size="md" onClick={() => console.log("clicked")}>
+  Click me
+</GSAPButton>`} />
                                     <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto">
-                                        <code>{`import AnimatedButton from "@/components/ui/AnimatedButton";
+                                        <code>{`import { GSAPButton } from "@/components/ui/gsap-button";
 
-<AnimatedButton variant="shimmer">Click me</AnimatedButton>`}</code>
+<GSAPButton variant="primary" size="md" onClick={() => console.log("clicked")}>
+  Click me
+</GSAPButton>`}</code>
                                     </pre>
                                 </div>
                             </div>

@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
-import { FlipCard, FlipCardFront, FlipCardBack } from "@/components/ui/flip-card";
+import { AuthCard } from "@/components/ui/auth-card";
 
 const sidebarItems = [
     { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
     { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }] },
-    { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card", active: true }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
-    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
+    { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
+    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card", active: true }] },
 ];
 
 function CopyButton({ code }: { code: string }) {
@@ -18,7 +18,7 @@ function CopyButton({ code }: { code: string }) {
     return (<button onClick={copy} className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all">{copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}</button>);
 }
 
-export default function FlipCardPage() {
+export default function AuthCardPage() {
     return (
         <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
@@ -40,25 +40,45 @@ export default function FlipCardPage() {
                     <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
                         <div className="pb-24 space-y-12">
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>Animations</span><ChevronRight className="w-4 h-4" /><span className="text-white">Flip Card</span></div>
-                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Flip Card</h1>
-                                <p className="text-zinc-400 max-w-xl">A 3D flip card with front and back faces.</p>
+                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>GSAP</span><ChevronRight className="w-4 h-4" /><span className="text-white">Auth Card</span></div>
+                                <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Auth Card</h1>
+                                <p className="text-zinc-400 max-w-xl">Complete sign-in/sign-up card with social login (Google, GitHub, Twitter), 3D effects, rotating border, and GSAP animations.</p>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Installation</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
-                                    <CopyButton code="npx @nehal712521/inprogress add flip-card" />
-                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">flip-card</span></div>
+                                    <CopyButton code="npx @nehal712521/inprogress add auth-card" />
+                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">auth-card</span></div>
                                 </div>
-                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">framer-motion</code></p>
+                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">gsap</code>, <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">lucide-react</code></p>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>
                                 <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 flex items-center justify-center">
-                                    <FlipCard
-                                        front={<FlipCardFront title="Front Side" subtitle="Click to flip" />}
-                                        back={<FlipCardBack title="Back Side" description="This is the back of the card with more details." />}
+                                    <AuthCard 
+                                        onSignIn={(data) => console.log("Sign in:", data)}
+                                        onSignUp={(data) => console.log("Sign up:", data)}
+                                        onSocialLogin={(provider) => console.log("Social login:", provider)}
                                     />
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold text-white">Usage</h2>
+                                <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
+                                    <CopyButton code={`import { AuthCard } from "@/components/ui/auth-card";
+
+<AuthCard 
+  onSignIn={(data) => console.log("Sign in:", data)}
+  onSignUp={(data) => console.log("Sign up:", data)}
+  onSocialLogin={(provider) => console.log("Social:", provider)}
+/>`} />
+                                    <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto"><code>{`import { AuthCard } from "@/components/ui/auth-card";
+
+<AuthCard 
+  onSignIn={(data) => console.log("Sign in:", data)}
+  onSignUp={(data) => console.log("Sign up:", data)}
+  onSocialLogin={(provider) => console.log("Social:", provider)}
+/>`}</code></pre>
                                 </div>
                             </div>
                         </div>
