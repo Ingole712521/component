@@ -49,7 +49,7 @@ export default function About() {
                         The developer's secret weapon.
                     </h2>
                     <p className="text-zinc-400 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
-                        In Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
+                     Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
                     </p>
                 </div>
             </div>

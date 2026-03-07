@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter gradient-heading">Why Choose In Progress?</h2>
+                        <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter gradient-heading">Why Choose Progress?</h2>
                         <div className="space-y-8">
                             {reasons.map((item, i) => (
                                 <div key={i} className="flex gap-5 group">
