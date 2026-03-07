@@ -12,9 +12,9 @@
     "card": {
       "name": "card",
       "displayName": "Card",
-      "description": "A card component with header, title, description, content, and footer",
+      "description": "A card component with animated background gradient and hover effects",
       "category": "Components",
-      "dependencies": [],
+      "dependencies": ["framer-motion"],
       "files": ["card.tsx"]
     },
     "input": {
@@ -28,9 +28,9 @@
     "badge": {
       "name": "badge",
       "displayName": "Badge",
-      "description": "A badge component with multiple variants",
+      "description": "A badge component with rotating border light animation",
       "category": "Components",
-      "dependencies": [],
+      "dependencies": ["framer-motion"],
       "files": ["badge.tsx"]
     },
     "floating-dock": {
