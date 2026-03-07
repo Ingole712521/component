@@ -1,0 +1,85 @@
+{
+  "name": "your-ui",
+  "components": {
+    "button": {
+      "name": "button",
+      "displayName": "Animated Button",
+      "description": "A highly customisable animated button with shimmer, glow, pulse, and ripple effects",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["button.tsx"]
+    },
+    "card": {
+      "name": "card",
+      "displayName": "Card",
+      "description": "A card component with header, title, description, content, and footer",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["card.tsx"]
+    },
+    "input": {
+      "name": "input",
+      "displayName": "Input",
+      "description": "A styled input component with focus states",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["input.tsx"]
+    },
+    "badge": {
+      "name": "badge",
+      "displayName": "Badge",
+      "description": "A badge component with multiple variants",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["badge.tsx"]
+    },
+    "floating-dock": {
+      "name": "floating-dock",
+      "displayName": "Floating Dock",
+      "description": "A macOS-style floating dock with hover animations and tooltips",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["floating-dock.tsx"]
+    },
+    "text-reveal": {
+      "name": "text-reveal",
+      "displayName": "Text Reveal",
+      "description": "Animated text reveal with word-by-word or character-by-character animation",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["text-reveal.tsx"]
+    },
+    "flip-card": {
+      "name": "flip-card",
+      "displayName": "Flip Card",
+      "description": "A 3D flip card with front and back faces, perfect for showcasing content",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["flip-card.tsx"]
+    },
+    "gradient-text": {
+      "name": "gradient-text",
+      "displayName": "Gradient Text",
+      "description": "Animated gradient text with shimmer and color shift effects",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["gradient-text.tsx"]
+    },
+    "spotlight-card": {
+      "name": "spotlight-card",
+      "displayName": "Spotlight Card",
+      "description": "A card with a spotlight effect that follows the mouse cursor",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["spotlight-card.tsx"]
+    },
+    "timeline": {
+      "name": "timeline",
+      "displayName": "Timeline",
+      "description": "A vertical or horizontal timeline component with animations",
+      "category": "Components",
+      "dependencies": ["framer-motion"],
+      "files": ["timeline.tsx"]
+    }
+  }
+}

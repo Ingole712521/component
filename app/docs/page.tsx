@@ -22,33 +22,66 @@ const sidebarItems: SidebarSection[] = [
         title: "Getting Started",
         items: [
             { name: "Introduction", href: "/docs", active: true },
-            { name: "Installation", href: "#" },
-            { name: "CLI", href: "#", version: "3.0" },
+            { name: "Installation", href: "#installation" },
         ],
     },
     {
         title: "Components",
         items: [
-            { name: "Accordion", href: "#" },
-            { name: "Alert Dialog", href: "#" },
-            { name: "Animated Button", href: "/docs/components/animated-button" },
-            { name: "Animated Tabs", href: "#" },
+            { name: "Button", href: "/docs/components/button" },
+            { name: "Card", href: "/docs/components/card" },
+            { name: "Input", href: "/docs/components/input" },
+            { name: "Badge", href: "/docs/components/badge" },
+            { name: "Timeline", href: "/docs/components/timeline" },
         ],
     },
     {
-        title: "Blocks",
+        title: "Animations",
         items: [
-            { name: "CTA Sections", href: "#", badge: "New" },
-            { name: "Hero Sections", href: "#" },
+            { name: "Floating Dock", href: "/docs/components/floating-dock" },
+            { name: "Text Reveal", href: "/docs/components/text-reveal" },
+            { name: "Flip Card", href: "/docs/components/flip-card" },
+            { name: "Gradient Text", href: "/docs/components/gradient-text" },
+            { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
         ],
     },
 ];
 
 const tocItems = [
     { name: "Introduction", href: "#introduction" },
+    { name: "Installation", href: "#installation" },
     { name: "Features", href: "#features" },
     { name: "FAQ", href: "#faq" },
 ];
+
+// Copy to clipboard function
+function CopyButton({ text }: { text: string }) {
+    const [copied, setCopied] = useState(false);
+    
+    const copy = async () => {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+    
+    return (
+        <button
+            onClick={copy}
+            className="absolute right-3 top-3 text-xs text-zinc-500 hover:text-white transition-colors"
+        >
+            {copied ? "Copied!" : "Copy"}
+        </button>
+    );
+}
+
+function CodeBlock({ children, code }: { children: React.ReactNode; code: string }) {
+    return (
+        <div className="relative">
+            <CopyButton text={code} />
+            {children}
+        </div>
+    );
+}
 
 export default function DocsIntroduction() {
     const [activeSection, setActiveSection] = useState("introduction");
@@ -142,6 +175,41 @@ export default function DocsIntroduction() {
                                     </p>
                                 </div>
                                 <div className="h-px bg-gradient-to-r from-white/10 to-transparent my-10" />
+                            </div>
+
+                            {/* ── INSTALLATION ── */}
+                            <div id="installation" className="space-y-6">
+                                <h2 className="text-2xl font-bold text-white tracking-tight">Installation</h2>
+                                <p className="text-zinc-400">
+                                    Use the CLI to add components to your project. Run the init command to set up your project:
+                                </p>
+                                <CodeBlock code="npx @nehal712521/progress-ui init">
+                                    <div className="bg-zinc-900 rounded-lg border border-zinc-800 p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                                        <span className="text-zinc-500">$</span> npx @nehal712521/progress-ui init
+                                    </div>
+                                </CodeBlock>
+                                
+                                <p className="text-zinc-400 mt-6">
+                                    Then add components using the add command:
+                                </p>
+                                <CodeBlock code="npx @nehal712521/progress-ui add button">
+                                    <div className="bg-zinc-900 rounded-lg border border-zinc-800 p-4 font-mono text-sm text-zinc-300 overflow-x-auto">
+                                        <span className="text-zinc-500">$</span> npx @nehal712521/progress-ui add button
+                                    </div>
+                                </CodeBlock>
+                                
+                                <p className="text-zinc-400 mt-6">
+                                    Available components:
+                                </p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    {["button", "card", "input", "badge", "floating-dock", "text-reveal", "flip-card", "gradient-text", "spotlight-card", "timeline"].map((comp) => (
+                                        <CodeBlock key={comp} code={`npx @nehal712521/progress-ui add ${comp}`}>
+                                            <div className="bg-zinc-900/50 rounded-lg border border-zinc-800 p-3 font-mono text-sm text-zinc-300 flex items-center justify-between group hover:border-zinc-700 transition-colors">
+                                                <span>npx @nehal712521/progress-ui add {comp}</span>
+                                            </div>
+                                        </CodeBlock>
+                                    ))}
+                                </div>
                             </div>
 
                             {/* ── FEATURES ── */}

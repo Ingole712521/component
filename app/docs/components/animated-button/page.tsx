@@ -23,24 +23,27 @@ const sidebarItems: SidebarSection[] = [
         title: "Getting Started",
         items: [
             { name: "Introduction", href: "/docs", active: false },
-            { name: "Installation", href: "#" },
-            { name: "CLI", href: "#", version: "3.0" },
+            { name: "Installation", href: "/docs#installation" },
         ],
     },
     {
         title: "Components",
         items: [
-            { name: "Accordion", href: "#" },
-            { name: "Alert Dialog", href: "#" },
-            { name: "Animated Button", href: "/docs/components/animated-button", active: true },
-            { name: "Animated Tabs", href: "#" },
+            { name: "Button", href: "/docs/components/button", active: true },
+            { name: "Card", href: "/docs/components/card" },
+            { name: "Input", href: "/docs/components/input" },
+            { name: "Badge", href: "/docs/components/badge" },
+            { name: "Timeline", href: "/docs/components/timeline" },
         ],
     },
     {
-        title: "Blocks",
+        title: "Animations",
         items: [
-            { name: "CTA Sections", href: "#", badge: "New" },
-            { name: "Hero Sections", href: "#" },
+            { name: "Floating Dock", href: "/docs/components/floating-dock" },
+            { name: "Text Reveal", href: "/docs/components/text-reveal" },
+            { name: "Flip Card", href: "/docs/components/flip-card" },
+            { name: "Gradient Text", href: "/docs/components/gradient-text" },
+            { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
         ],
     },
 ];
@@ -335,13 +338,13 @@ export default function AnimatedButtonDocs() {
                                                 <span className="ml-3 text-xs text-zinc-500 font-mono">Terminal</span>
                                             </div>
                                             <div className="relative p-4 font-mono text-sm">
-                                                <CopyButton code="npx progress-ui@latest add animated-button" />
+                                                <CopyButton code="npx @nehal712521/inprogress add button" />
                                                 <p className="pr-10">
                                                     <span className="text-emerald-400 select-none">$ </span>
                                                     <span className="text-white">npx </span>
-                                                    <span className="text-accent">progress-ui@latest</span>
+                                                    <span className="text-accent">@nehal712521/inprogress</span>
                                                     <span className="text-white"> add </span>
-                                                    <span className="text-yellow-300">animated-button</span>
+                                                    <span className="text-yellow-300">button</span>
                                                 </p>
                                                 <p className="text-zinc-600 text-xs mt-3 pl-2">✔ Fetching from registry…</p>
                                                 <p className="text-zinc-600 text-xs pl-2">✔ Created <span className="text-emerald-500">components/ui/AnimatedButton.tsx</span></p>
@@ -352,9 +355,9 @@ export default function AnimatedButtonDocs() {
                                         {/* Package manager variants */}
                                         <div className="grid sm:grid-cols-3 gap-3">
                                             {[
-                                                { label: "pnpm", cmd: "pnpm dlx progress-ui@latest add animated-button" },
-                                                { label: "npm", cmd: "npx progress-ui@latest add animated-button" },
-                                                { label: "bun", cmd: "bunx progress-ui@latest add animated-button" },
+                                                { label: "pnpm", cmd: "pnpm dlx @nehal712521/inprogress add button" },
+                                                { label: "npm", cmd: "npx @nehal712521/inprogress add button" },
+                                                { label: "bun", cmd: "bunx @nehal712521/inprogress add button" },
                                             ].map(({ label, cmd }) => (
                                                 <div key={label} className="relative rounded-xl bg-white/[0.02] border border-white/5 px-4 py-3 font-mono">
                                                     <span className="text-zinc-600 text-[10px] uppercase tracking-widest block mb-1.5">{label}</span>
@@ -366,7 +369,7 @@ export default function AnimatedButtonDocs() {
 
                                         <p className="text-xs text-zinc-500">
                                             See all available components →{" "}
-                                            <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded font-mono">npx progress-ui@latest list</code>
+                                            <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded font-mono">npx @nehal712521/inprogress list</code>
                                         </p>
                                     </div>
                                 )}

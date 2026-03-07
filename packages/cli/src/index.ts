@@ -1,68 +1,46 @@
 #!/usr/bin/env node
 
-import * as fs from "fs";
-import * as path from "path";
-import * as https from "https";
+import { Command } from "commander";
+import chalk from "chalk";
+import fs from "fs-extra";
+import path from "path";
 import * as readline from "readline";
 
-// ── ANSI colours (no chalk needed) ───────────────────────────────────────────
-const c = {
-    reset: "\x1b[0m",
-    bold: "\x1b[1m",
-    dim: "\x1b[2m",
-    cyan: "\x1b[36m",
-    green: "\x1b[32m",
-    yellow: "\x1b[33m",
-    red: "\x1b[31m",
-    white: "\x1b[37m",
-    magenta: "\x1b[35m",
-    bgCyan: "\x1b[46m",
-};
+// ── Get package.json for version ─────────────────────────────────────────────
+const packageJson = fs.readJsonSync(path.join(__dirname, "../package.json"));
 
-const log = {
-    info: (msg: string) => console.log(`${c.cyan}  ℹ${c.reset}  ${msg}`),
-    success: (msg: string) => console.log(`${c.green}  ✔${c.reset}  ${msg}`),
-    warn: (msg: string) => console.log(`${c.yellow}  ⚠${c.reset}  ${msg}`),
-    error: (msg: string) => console.log(`${c.red}  ✖${c.reset}  ${msg}`),
-    step: (msg: string) => console.log(`${c.cyan}  →${c.reset}  ${msg}`),
+// ── Paths ────────────────────────────────────────────────────────────────────
+// Registry is bundled with the package
+const REGISTRY_PATH = path.join(__dirname, "../registry");
+const REGISTRY_JSON = path.join(REGISTRY_PATH, "registry.json");
+const COMPONENTS_DIR = path.join(REGISTRY_PATH, "components");
+
+// ── Types ────────────────────────────────────────────────────────────────────
+interface Registry {
+    name: string;
+    components: Record<string, ComponentDef>;
+}
+
+interface ComponentDef {
+    name: string;
+    displayName: string;
+    description: string;
+    category: string;
+    dependencies: string[];
+    files: string[];
+}
+
+// ── Logger ───────────────────────────────────────────────────────────────────
+const logger = {
+    info: (msg: string) => console.log(chalk.cyan("  ℹ "), msg),
+    success: (msg: string) => console.log(chalk.green("  ✔ "), msg),
+    warn: (msg: string) => console.log(chalk.yellow("  ⚠ "), msg),
+    error: (msg: string) => console.log(chalk.red("  ✖ "), msg),
+    step: (msg: string) => console.log(chalk.cyan("  → "), msg),
     blank: () => console.log(),
 };
 
-// ── Registry URL ─────────────────────────────────────────────────────────────
-// When published, this points to the live site. Swap to localhost for dev.
-const REGISTRY_BASE =
-    process.env.PROGRESS_UI_REGISTRY || "https://progress-ui.vercel.app";
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-function fetchJson<T>(url: string): Promise<T> {
-    return new Promise((resolve, reject) => {
-        https
-            .get(url, (res) => {
-                if (res.statusCode === 301 || res.statusCode === 302) {
-                    const location = res.headers.location;
-                    if (!location) return reject(new Error("Redirect with no location"));
-                    fetchJson<T>(location).then(resolve).catch(reject);
-                    return;
-                }
-                if (res.statusCode !== 200) {
-                    return reject(
-                        new Error(`HTTP ${res.statusCode} from ${url}`)
-                    );
-                }
-                let data = "";
-                res.on("data", (chunk: Buffer) => (data += chunk.toString()));
-                res.on("end", () => {
-                    try {
-                        resolve(JSON.parse(data) as T);
-                    } catch {
-                        reject(new Error("Failed to parse JSON from registry"));
-                    }
-                });
-            })
-            .on("error", reject);
-    });
-}
-
+// ── Helpers ──────────────────────────────────────────────────────────────────
 function prompt(question: string): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -76,302 +54,253 @@ function prompt(question: string): Promise<string> {
     });
 }
 
-function ensureDir(dirPath: string) {
-    if (!fs.existsSync(dirPath)) {
-        fs.mkdirSync(dirPath, { recursive: true });
-        log.step(`Created directory ${c.dim}${dirPath}${c.reset}`);
+async function loadRegistry(): Promise<Registry> {
+    if (!(await fs.pathExists(REGISTRY_JSON))) {
+        throw new Error(`Registry not found at ${REGISTRY_JSON}`);
     }
+    return fs.readJson(REGISTRY_JSON);
 }
 
-// ── Banner ────────────────────────────────────────────────────────────────────
 function printBanner() {
     console.log();
     console.log(
-        `${c.cyan}${c.bold}  ██████╗ ██████╗  ██████╗  ██████╗ ██████╗ ███████╗███████╗███████╗${c.reset}`
+        chalk.cyan.bold(
+            "  ██████╗ ██████╗  ██████╗  ██████╗ ██████╗ ███████╗███████╗███████╗"
+        )
     );
     console.log(
-        `${c.cyan}${c.bold}  ██╔══██╗██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔════╝██╔════╝██╔════╝${c.reset}`
+        chalk.cyan.bold(
+            "  ██╔══██╗██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔════╝██╔════╝██╔════╝"
+        )
     );
     console.log(
-        `${c.cyan}${c.bold}  ██████╔╝██████╔╝██║   ██║██║  ███╗██████╔╝█████╗  ███████╗███████╗${c.reset}`
+        chalk.cyan.bold(
+            "  ██████╔╝██████╔╝██║   ██║██║  ███╗██████╔╝█████╗  ███████╗███████╗"
+        )
     );
     console.log(
-        `${c.cyan}${c.bold}  ██╔═══╝ ██╔══██╗██║   ██║██║   ██║██╔══██╗██╔══╝  ╚════██║╚════██║${c.reset}`
+        chalk.cyan.bold(
+            "  ██╔═══╝ ██╔══██╗██║   ██║██║   ██║██╔══██╗██╔══╝  ╚════██║╚════██║"
+        )
     );
     console.log(
-        `${c.cyan}${c.bold}  ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║███████╗███████║███████║${c.reset}`
+        chalk.cyan.bold(
+            "  ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║███████╗███████║███████║"
+        )
     );
     console.log(
-        `${c.cyan}${c.bold}  ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝${c.reset}`
+        chalk.cyan.bold(
+            "  ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝"
+        )
     );
     console.log();
     console.log(
-        `${c.dim}  UI Components for React & Next.js — zero config, just copy & use${c.reset}`
+        chalk.dim("  UI Components for React & Next.js — zero config, just copy & use")
     );
     console.log();
 }
 
-// ── Help ──────────────────────────────────────────────────────────────────────
-function printHelp() {
+// ── Commands ─────────────────────────────────────────────────────────────────
+async function initCommand(options: { path?: string; yes?: boolean }) {
     printBanner();
-    console.log(`${c.bold}  USAGE${c.reset}`);
-    console.log();
-    console.log(`    ${c.cyan}npx progress-ui${c.reset} ${c.white}<command>${c.reset} ${c.dim}[options]${c.reset}`);
-    console.log();
-    console.log(`${c.bold}  COMMANDS${c.reset}`);
-    console.log();
-    console.log(`    ${c.cyan}add${c.reset} ${c.white}<component>${c.reset}       Add a component to your project`);
-    console.log(`    ${c.cyan}list${c.reset}                  List all available components`);
-    console.log(`    ${c.cyan}info${c.reset} ${c.white}<component>${c.reset}      Show details about a component`);
-    console.log(`    ${c.cyan}help${c.reset}                  Show this help message`);
-    console.log();
-    console.log(`${c.bold}  EXAMPLES${c.reset}`);
-    console.log();
-    console.log(`    ${c.dim}$${c.reset} npx progress-ui add animated-button`);
-    console.log(`    ${c.dim}$${c.reset} npx progress-ui add animated-button --path src/components/ui`);
-    console.log(`    ${c.dim}$${c.reset} npx progress-ui list`);
-    console.log(`    ${c.dim}$${c.reset} npx progress-ui info animated-button`);
-    console.log();
-    console.log(`${c.bold}  OPTIONS${c.reset}`);
-    console.log();
-    console.log(`    ${c.cyan}--path${c.reset} ${c.white}<dir>${c.reset}          Target directory ${c.dim}(default: components/ui)${c.reset}`);
-    console.log(`    ${c.cyan}--overwrite${c.reset}           Overwrite existing files without prompting`);
-    console.log(`    ${c.cyan}--version, -v${c.reset}        Print version`);
-    console.log();
+
+    const cwd = process.cwd();
+    const targetDir = options.path || "components/ui";
+    const fullPath = path.resolve(cwd, targetDir);
+
+    logger.step(`Initializing your-ui in ${chalk.dim(targetDir)}...`);
+
+    // Create components/ui directory
+    await fs.ensureDir(fullPath);
+    logger.success(`Created directory ${chalk.dim(targetDir)}`);
+
+    // Create a components.json config file
+    const configPath = path.join(cwd, "components.json");
+    const config = {
+        $schema: "https://ui.shadcn.com/schema.json",
+        style: "default",
+        rsc: true,
+        tsx: true,
+        tailwind: {
+            config: "tailwind.config.ts",
+            css: "app/globals.css",
+            baseColor: "zinc",
+            cssVariables: true,
+        },
+        aliases: {
+            components: "@/components",
+            utils: "@/lib/utils",
+        },
+    };
+
+    if (await fs.pathExists(configPath)) {
+        if (!options.yes) {
+            const answer = await prompt(
+                `  ${chalk.yellow("⚠")}  components.json already exists. Overwrite? ${chalk.dim("(y/N)")} `
+            );
+            if (answer.toLowerCase() !== "y") {
+                logger.warn("Skipped overwriting components.json");
+                return;
+            }
+        }
+    }
+
+    await fs.writeJson(configPath, config, { spaces: 2 });
+    logger.success("Created components.json");
+
+    logger.blank();
+    logger.success("Initialization complete!");
+    logger.info(`Add components with: ${chalk.cyan("npx progress-ui add <component>")}`);
+    logger.blank();
 }
 
-// ── Registry types ────────────────────────────────────────────────────────────
-interface RegistryIndex {
-    components: {
-        name: string;
-        displayName: string;
-        description: string;
-        category: string;
-    }[];
-}
+async function addCommand(componentName: string, options: { path?: string; overwrite?: boolean }) {
+    console.log();
+    console.log(chalk.bold(`Adding ${chalk.cyan(componentName)} to your project...`));
+    logger.blank();
 
-interface RegistryFile {
-    name: string;
-    content: string;
-}
-
-interface RegistryComponent {
-    name: string;
-    displayName: string;
-    description: string;
-    category: string;
-    dependencies: string[];
-    files: RegistryFile[];
-}
-
-// ── Commands ──────────────────────────────────────────────────────────────────
-async function cmdList() {
-    log.step(`Fetching component list from registry…`);
-    log.blank();
-
-    let index: RegistryIndex;
+    // Load registry
+    let registry: Registry;
     try {
-        index = await fetchJson<RegistryIndex>(`${REGISTRY_BASE}/registry/index.json`);
+        registry = await loadRegistry();
     } catch (err) {
-        log.error(`Could not reach registry: ${(err as Error).message}`);
-        log.info(`Check your internet connection or try again later.`);
+        logger.error(`Failed to load registry: ${(err as Error).message}`);
         process.exit(1);
     }
 
-    const byCategory: Record<string, typeof index.components> = {};
-    for (const comp of index.components) {
+    // Find component
+    const component = registry.components[componentName];
+    if (!component) {
+        logger.error(`Component "${componentName}" not found.`);
+        logger.info(`Run ${chalk.cyan("npx progress-ui list")} to see available components.`);
+        process.exit(1);
+    }
+
+    logger.success(`Found ${chalk.white(component.displayName)}`);
+
+    // Show dependencies if any
+    if (component.dependencies && component.dependencies.length > 0) {
+        logger.blank();
+        logger.warn(`This component has dependencies: ${chalk.white(component.dependencies.join(", "))}`);
+        logger.info(`Install them with: ${chalk.cyan(`npm install ${component.dependencies.join(" ")}`)}`);
+    }
+
+    // Resolve output directory
+    const cwd = process.cwd();
+    const targetDir = options.path || "components/ui";
+    const outDir = path.resolve(cwd, targetDir);
+
+    await fs.ensureDir(outDir);
+
+    // Copy files
+    logger.blank();
+    for (const fileName of component.files) {
+        const sourcePath = path.join(COMPONENTS_DIR, fileName);
+        const targetPath = path.join(outDir, fileName);
+        const relPath = path.relative(cwd, targetPath);
+
+        if (!(await fs.pathExists(sourcePath))) {
+            logger.error(`Source file not found: ${chalk.dim(sourcePath)}`);
+            continue;
+        }
+
+        if (await fs.pathExists(targetPath)) {
+            if (!options.overwrite) {
+                const answer = await prompt(
+                    `  ${chalk.yellow("⚠")}  ${chalk.white(relPath)} already exists. Overwrite? ${chalk.dim("(y/N)")} `
+                );
+                if (answer.toLowerCase() !== "y") {
+                    logger.warn(`Skipped ${relPath}`);
+                    continue;
+                }
+            }
+        }
+
+        await fs.copy(sourcePath, targetPath);
+        logger.success(`Created ${chalk.white(relPath)}`);
+    }
+
+    logger.blank();
+    console.log(chalk.green.bold("  Done!"), "Import it in your code:");
+    logger.blank();
+    console.log(
+        chalk.dim(`  import ${component.displayName.replace(/\s/g, "")} from "@/${targetDir}/${component.files[0].replace(".tsx", "")}";`)
+    );
+    logger.blank();
+}
+
+async function listCommand() {
+    logger.step("Fetching available components...");
+    logger.blank();
+
+    let registry: Registry;
+    try {
+        registry = await loadRegistry();
+    } catch (err) {
+        logger.error(`Failed to load registry: ${(err as Error).message}`);
+        process.exit(1);
+    }
+
+    const components = Object.values(registry.components);
+    
+    // Group by category
+    const byCategory: Record<string, ComponentDef[]> = {};
+    for (const comp of components) {
         (byCategory[comp.category] ??= []).push(comp);
     }
 
     for (const [category, comps] of Object.entries(byCategory)) {
-        console.log(`  ${c.bold}${c.white}${category}${c.reset}`);
+        console.log(chalk.bold.white(`  ${category}`));
         for (const comp of comps) {
             console.log(
-                `    ${c.cyan}${comp.name.padEnd(24)}${c.reset}${c.dim}${comp.description}${c.reset}`
+                `    ${chalk.cyan(comp.name.padEnd(20))}${chalk.dim(comp.description)}`
             );
         }
-        log.blank();
+        logger.blank();
     }
 
     console.log(
-        `  ${c.dim}Run ${c.reset}${c.cyan}npx progress-ui add <name>${c.reset}${c.dim} to install any component.${c.reset}`
+        chalk.dim(`  Run ${chalk.cyan("npx progress-ui add <name>")} to install any component.`)
     );
-    log.blank();
+    logger.blank();
 }
 
-async function cmdInfo(name: string) {
-    log.step(`Fetching info for ${c.cyan}${name}${c.reset}…`);
+// ── CLI Setup ────────────────────────────────────────────────────────────────
+const program = new Command();
 
-    let comp: RegistryComponent;
-    try {
-        comp = await fetchJson<RegistryComponent>(
-            `${REGISTRY_BASE}/registry/${name}.json`
-        );
-    } catch {
-        log.error(`Component ${c.cyan}${name}${c.reset} not found in registry.`);
-        log.info(`Run ${c.cyan}npx progress-ui list${c.reset} to see all components.`);
-        process.exit(1);
-    }
+program
+    .name("progress-ui")
+    .description("CLI to add beautiful UI components to your project")
+    .version(packageJson.version);
 
-    log.blank();
-    console.log(`  ${c.bold}${c.white}${comp.displayName}${c.reset}  ${c.dim}(${comp.name})${c.reset}`);
-    console.log(`  ${c.dim}${comp.description}${c.reset}`);
-    log.blank();
-    console.log(`  ${c.bold}Category${c.reset}     ${comp.category}`);
-    console.log(
-        `  ${c.bold}Dependencies${c.reset} ${comp.dependencies.length ? comp.dependencies.join(", ") : c.dim + "none" + c.reset}`
-    );
-    console.log(
-        `  ${c.bold}Files${c.reset}        ${comp.files.map((f) => f.name).join(", ")}`
-    );
-    log.blank();
-    console.log(
-        `  ${c.dim}Install with: ${c.reset}${c.cyan}npx progress-ui add ${name}${c.reset}`
-    );
-    log.blank();
-}
+program
+    .command("init")
+    .description("Initialize your-ui in your project")
+    .option("-p, --path <path>", "Target directory for components", "components/ui")
+    .option("-y, --yes", "Skip confirmation prompts")
+    .action(initCommand);
 
-async function cmdAdd(
-    name: string,
-    targetDir: string,
-    overwrite: boolean
-) {
-    console.log();
-    console.log(
-        `  ${c.bold}Adding ${c.cyan}${name}${c.reset}${c.bold} to your project…${c.reset}`
-    );
-    log.blank();
+program
+    .command("add <component>")
+    .description("Add a component to your project")
+    .option("-p, --path <path>", "Target directory for components", "components/ui")
+    .option("-o, --overwrite", "Overwrite existing files without prompting")
+    .action(addCommand);
 
-    // 1. Fetch component from registry
-    log.step("Fetching component from registry…");
-    let comp: RegistryComponent;
-    try {
-        comp = await fetchJson<RegistryComponent>(
-            `${REGISTRY_BASE}/registry/${name}.json`
-        );
-    } catch {
-        log.error(`Component ${c.cyan}${name}${c.reset} not found.`);
-        log.info(`Run ${c.cyan}npx progress-ui list${c.reset} to see all available components.`);
-        process.exit(1);
-    }
+program
+    .command("list")
+    .alias("ls")
+    .description("List all available components")
+    .action(listCommand);
 
-    log.success(`Found ${c.white}${comp.displayName}${c.reset}`);
-
-    // 2. Dependencies
-    if (comp.dependencies.length > 0) {
-        log.blank();
-        log.warn(
-            `This component has dependencies: ${c.white}${comp.dependencies.join(", ")}${c.reset}`
-        );
-        log.info(
-            `Install them with: ${c.cyan}npm install ${comp.dependencies.join(" ")}${c.reset}`
-        );
-    }
-
-    // 3. Resolve output directory
-    const cwd = process.cwd();
-    const outDir = path.resolve(cwd, targetDir);
-    ensureDir(outDir);
-
-    // 4. Write files
-    log.blank();
-    for (const file of comp.files) {
-        const filePath = path.join(outDir, file.name);
-        const relPath = path.relative(cwd, filePath);
-
-        if (fs.existsSync(filePath) && !overwrite) {
-            const answer = await prompt(
-                `  ${c.yellow}⚠${c.reset}  ${c.white}${relPath}${c.reset} already exists. Overwrite? ${c.dim}(y/N)${c.reset} `
-            );
-            if (answer.toLowerCase() !== "y") {
-                log.warn(`Skipped ${relPath}`);
-                continue;
-            }
+// Show banner on default command
+program
+    .argument("[command]", "command to run")
+    .action((cmd) => {
+        if (!cmd) {
+            printBanner();
+            program.help();
         }
+    });
 
-        fs.writeFileSync(filePath, file.content, "utf-8");
-        log.success(`Created ${c.white}${relPath}${c.reset}`);
-    }
-
-    // 5. Done!
-    log.blank();
-    console.log(
-        `  ${c.green}${c.bold}Done!${c.reset} Import it in your code:`
-    );
-    log.blank();
-    console.log(
-        `  ${c.dim}import ${comp.displayName.replace(/\s/g, "")} from "@/components/ui/${comp.files[0].name.replace(".tsx", "")}";${c.reset}`
-    );
-    log.blank();
-    console.log(
-        `  ${c.dim}Visit ${c.reset}${c.cyan}https://progress-ui.vercel.app/docs${c.reset}${c.dim} for usage examples.${c.reset}`
-    );
-    log.blank();
-}
-
-// ── Entry point ───────────────────────────────────────────────────────────────
-async function main() {
-    const args = process.argv.slice(2);
-
-    // Flags
-    const overwrite = args.includes("--overwrite");
-    const pathIdx = args.indexOf("--path");
-    const targetDir = pathIdx !== -1 && args[pathIdx + 1]
-        ? args[pathIdx + 1]
-        : "components/ui";
-
-    // Strip flags for command parsing
-    const positional = args.filter(
-        (a, i) =>
-            a !== "--overwrite" &&
-            a !== "--path" &&
-            args[i - 1] !== "--path"
-    );
-
-    const [command, ...rest] = positional;
-
-    if (!command || command === "help" || command === "--help" || command === "-h") {
-        printHelp();
-        return;
-    }
-
-    if (command === "--version" || command === "-v") {
-        const pkg = require("../package.json") as { version: string };
-        console.log(`progress-ui v${pkg.version}`);
-        return;
-    }
-
-    if (command === "list") {
-        await cmdList();
-        return;
-    }
-
-    if (command === "info") {
-        if (!rest[0]) {
-            log.error("Please specify a component name.");
-            log.info("Usage: npx progress-ui info <component>");
-            process.exit(1);
-        }
-        await cmdInfo(rest[0]);
-        return;
-    }
-
-    if (command === "add") {
-        if (!rest[0]) {
-            log.error("Please specify a component name.");
-            log.info("Usage: npx progress-ui add <component>");
-            process.exit(1);
-        }
-        await cmdAdd(rest[0], targetDir, overwrite);
-        return;
-    }
-
-    log.error(`Unknown command: ${c.white}${command}${c.reset}`);
-    log.info(`Run ${c.cyan}npx progress-ui help${c.reset} for usage.`);
-    process.exit(1);
-}
-
-main().catch((err) => {
-    console.error(`\n  ${c.red}Unexpected error:${c.reset}`, err);
-    process.exit(1);
-});
+program.parse();
