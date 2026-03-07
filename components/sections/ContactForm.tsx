@@ -26,7 +26,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-black text-zinc-500 uppercase tracking-widest">Email</h4>
-                                    <p className="text-lg font-bold text-white">support@uilib.dev</p>
+                                    <p className="text-lg font-bold text-white">nehalingole2001@gmail.com</p>
                                 </div>
                             </div>
 
@@ -36,7 +36,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-black text-zinc-500 uppercase tracking-widest">Office</h4>
-                                    <p className="text-lg font-bold text-white">San Francisco, CA</p>
+                                    <p className="text-lg font-bold text-white">Pune</p>
                                 </div>
                             </div>
                         </div>
