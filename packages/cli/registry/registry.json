@@ -17,6 +17,14 @@
       "dependencies": ["framer-motion"],
       "files": ["card.tsx"]
     },
+    "loader": {
+      "name": "loader",
+      "displayName": "Equalizer Loader",
+      "description": "A minimalist equalizer-style loader with animated bars using CSS-only animations.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["loader.tsx"]
+    },
     "input": {
       "name": "input",
       "displayName": "Input",
@@ -72,6 +80,14 @@
       "category": "Animations",
       "dependencies": ["framer-motion"],
       "files": ["gradient-text.tsx"]
+    },
+    "page-transition": {
+      "name": "page-transition",
+      "displayName": "Page Transition",
+      "description": "A GSAP-powered SVG sweep animation that runs between route changes using next-transition-router.",
+      "category": "Animations",
+      "dependencies": ["gsap", "next-transition-router"],
+      "files": ["page-transition.tsx"]
     },
     "spotlight-card": {
       "name": "spotlight-card",
