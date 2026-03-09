@@ -5,7 +5,19 @@ import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import { ThreeDImageRing } from "@/components/ui/ThreeDImageRing";
 
-const sidebarItems = [
+type LocalSidebarItem = {
+  name: string;
+  href: string;
+  badge?: string;
+  active?: boolean;
+};
+
+type LocalSidebarSection = {
+  title: string;
+  items: LocalSidebarItem[];
+};
+
+const sidebarItems: LocalSidebarSection[] = [
   {
     title: "Getting Started",
     items: [
