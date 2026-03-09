@@ -23,7 +23,17 @@ const sidebarItems = [
             { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
         ],
     },
-    { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
+    {
+        title: "Animations",
+        items: [
+            { name: "Floating Dock", href: "/docs/components/floating-dock" },
+            { name: "Text Reveal", href: "/docs/components/text-reveal" },
+            { name: "Flip Card", href: "/docs/components/flip-card" },
+            { name: "Gradient Text", href: "/docs/components/gradient-text" },
+            { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
+            { name: "3D Image Ring", href: "/docs/components/3d-image-ring", badge: "NEW" },
+        ],
+    },
     { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
     { title: "3D Buttons", items: [{ name: "Overview", href: "/docs/components/3d-buttons" }, { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" }, { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", active: true }, { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" }, { name: "Showcase", href: "/docs/components/3d-buttons/showcase" }] },
     { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "Mega Navbar", href: "/docs/components/navbar-mega" }] },

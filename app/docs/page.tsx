@@ -46,6 +46,7 @@ const sidebarItems: SidebarSection[] = [
             { name: "Flip Card", href: "/docs/components/flip-card" },
             { name: "Gradient Text", href: "/docs/components/gradient-text" },
             { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
+            { name: "3D Image Ring", href: "/docs/components/3d-image-ring", badge: "NEW" },
         ],
     },
     {
