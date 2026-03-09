@@ -59,6 +59,16 @@ const sidebarItems: SidebarSection[] = [
         ],
     },
     {
+        title: "3D Buttons",
+        items: [
+            { name: "Overview", href: "/docs/components/3d-buttons" },
+            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" },
+            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube" },
+            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" },
+            { name: "Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
+        ],
+    },
+    {
         title: "Navigation",
         items: [
             { name: "Floating Navbar", href: "/docs/components/navbar-floating" },

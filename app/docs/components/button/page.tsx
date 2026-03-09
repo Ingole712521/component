@@ -21,6 +21,9 @@ const sidebarItems = [
             { name: "Input", href: "/docs/components/input" },
             { name: "Badge", href: "/docs/components/badge" },
             { name: "Timeline", href: "/docs/components/timeline" },
+            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" },
+            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube" },
+            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" },
         ],
     },
     {
