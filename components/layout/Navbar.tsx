@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -27,12 +27,13 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 px-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4">
       <div
-        className={`max-w-5xl mx-auto transition-all duration-300 ${scrolled
-          ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
-          : "bg-transparent py-5 px-6 border-transparent"
-          }`}
+        className={`max-w-5xl mx-auto mt-6 transition-all duration-300 ${
+          scrolled
+            ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
+            : "bg-transparent py-5 px-6 border-transparent"
+        }`}
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
