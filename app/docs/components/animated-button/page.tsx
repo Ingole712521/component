@@ -29,7 +29,10 @@ const sidebarItems: SidebarSection[] = [
     {
         title: "Components",
         items: [
-            { name: "Button", href: "/docs/components/button", active: true }, { name: "Ripple Button", href: "/docs/components/ripple-button" },
+            { name: "Button", href: "/docs/components/button", active: true },
+            { name: "Ripple Button", href: "/docs/components/ripple-button" },
+            { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
+            { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
             { name: "Card", href: "/docs/components/card" },
             { name: "Input", href: "/docs/components/input" },
             { name: "Badge", href: "/docs/components/badge" },

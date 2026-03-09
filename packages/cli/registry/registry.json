@@ -152,6 +152,22 @@
       "category": "Components",
       "dependencies": [],
       "files": ["ripple-button.tsx"]
+    },
+    "water-fill-button": {
+      "name": "water-fill-button",
+      "displayName": "Water Fill Button",
+      "description": "A motion-powered button that fills up like water from bottom to top on hover, built with Framer Motion.",
+      "category": "Components",
+      "dependencies": ["framer-motion"],
+      "files": ["water-fill-button.tsx"]
+    },
+    "orbit-logo-button": {
+      "name": "orbit-logo-button",
+      "displayName": "Orbit Logo Button",
+      "description": "A CTA button surrounded by orbiting bubbles that fly into the button on hover. Supports custom avatars and logos.",
+      "category": "Components",
+      "dependencies": ["framer-motion"],
+      "files": ["orbit-logo-button.tsx"]
     }
   }
 }

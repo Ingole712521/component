@@ -7,7 +7,22 @@ import { GSAP3DButton } from "@/components/3d-buttons";
 
 const sidebarItems = [
     { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
-    { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Ripple Button", href: "/docs/components/ripple-button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }, { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" }, { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", active: true }, { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" }] },
+    {
+        title: "Components",
+        items: [
+            { name: "Button", href: "/docs/components/button" },
+            { name: "Ripple Button", href: "/docs/components/ripple-button" },
+            { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
+            { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
+            { name: "Card", href: "/docs/components/card" },
+            { name: "Input", href: "/docs/components/input" },
+            { name: "Badge", href: "/docs/components/badge" },
+            { name: "Timeline", href: "/docs/components/timeline" },
+            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
+            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", active: true, badge: "NEW" },
+            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
+        ],
+    },
     { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock" }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
     { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
     { title: "3D Buttons", items: [{ name: "Overview", href: "/docs/components/3d-buttons" }, { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" }, { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", active: true }, { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" }, { name: "Showcase", href: "/docs/components/3d-buttons/showcase" }] },
@@ -78,14 +93,24 @@ export default function Cube3DButtonPage() {
                             {/* Preview */}
                             <div className="space-y-4">
                                 <h2 className="text-xl font-semibold text-white">Preview</h2>
-                                <div className="relative bg-zinc-900/50 rounded-xl border border-zinc-800 overflow-hidden min-h-[300px] flex items-center justify-center flex-col gap-6">
-                                    <p className="text-zinc-500 text-sm absolute top-4">Hover to see the 3D cube effect</p>
+                                <div className="relative bg-white rounded-xl border border-zinc-200 overflow-hidden min-h-[300px] flex items-center justify-center flex-col gap-6 text-zinc-900">
+                                <p className="text-zinc-700 text-sm absolute top-4">Hover to see the 3D cube effect</p>
                                     <div className="flex gap-4 flex-wrap justify-center">
-                                        <GSAP3DButton variant="cube" color="blue" size="md">Cube Blue</GSAP3DButton>
-                                        <GSAP3DButton variant="cube" color="purple" size="md">Cube Purple</GSAP3DButton>
-                                        <GSAP3DButton variant="cube" color="green" size="md">Cube Green</GSAP3DButton>
-                                        <GSAP3DButton variant="cube" color="orange" size="md">Cube Orange</GSAP3DButton>
-                                        <GSAP3DButton variant="cube" color="red" size="md">Cube Red</GSAP3DButton>
+                                        <GSAP3DButton variant="cube" color="blue" size="md" className="!text-blue-600">
+                                            Cube Blue
+                                        </GSAP3DButton>
+                                        <GSAP3DButton variant="cube" color="purple" size="md" className="!text-purple-600">
+                                            Cube Purple
+                                        </GSAP3DButton>
+                                        <GSAP3DButton variant="cube" color="green" size="md" className="!text-green-600">
+                                            Cube Green
+                                        </GSAP3DButton>
+                                        <GSAP3DButton variant="cube" color="orange" size="md" className="!text-orange-600">
+                                            Cube Orange
+                                        </GSAP3DButton>
+                                        <GSAP3DButton variant="cube" color="red" size="md" className="!text-red-600">
+                                            Cube Red
+                                        </GSAP3DButton>
                                     </div>
                                 </div>
                             </div>

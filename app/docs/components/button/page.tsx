@@ -16,14 +16,17 @@ const sidebarItems = [
     {
         title: "Components",
         items: [
-            { name: "Button", href: "/docs/components/button", active: true }, { name: "Ripple Button", href: "/docs/components/ripple-button" },
+            { name: "Button", href: "/docs/components/button", active: true },
+            { name: "Ripple Button", href: "/docs/components/ripple-button" },
+            { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
+            { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
             { name: "Card", href: "/docs/components/card" },
             { name: "Input", href: "/docs/components/input" },
             { name: "Badge", href: "/docs/components/badge" },
             { name: "Timeline", href: "/docs/components/timeline" },
-            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" },
-            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube" },
-            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" },
+            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
+            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
+            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
         ],
     },
     {
