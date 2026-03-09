@@ -2,64 +2,8 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import Link from "next/link";
 import AnimatedButton from "@/components/ui/AnimatedButton";
-
-const sidebarItems = [
-    {
-        title: "Getting Started",
-        items: [
-            { name: "Introduction", href: "/docs" },
-            { name: "Installation", href: "/docs#installation" },
-        ],
-    },
-    {
-        title: "Components",
-        items: [
-            { name: "Button", href: "/docs/components/button", active: true },
-            { name: "Ripple Button", href: "/docs/components/ripple-button" },
-            { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
-            { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
-            { name: "Card", href: "/docs/components/card" },
-            { name: "Input", href: "/docs/components/input" },
-            { name: "Badge", href: "/docs/components/badge" },
-            { name: "Timeline", href: "/docs/components/timeline" },
-            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
-            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
-            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
-        ],
-    },
-    {
-        title: "Animations",
-        items: [
-            { name: "Floating Dock", href: "/docs/components/floating-dock" },
-            { name: "Text Reveal", href: "/docs/components/text-reveal" },
-            { name: "Flip Card", href: "/docs/components/flip-card" },
-            { name: "Gradient Text", href: "/docs/components/gradient-text" },
-            { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
-        ],
-    },
-    {
-        title: "GSAP",
-        items: [
-            { name: "GSAP Button", href: "/docs/components/gsap-button" },
-            { name: "GSAP Card", href: "/docs/components/gsap-card" },
-            { name: "GSAP Input", href: "/docs/components/gsap-input" },
-            { name: "GSAP Badge", href: "/docs/components/gsap-badge" },
-            { name: "GSAP Alert", href: "/docs/components/gsap-alert" },
-            { name: "GSAP Modal", href: "/docs/components/gsap-modal" },
-            { name: "Auth Card", href: "/docs/components/auth-card" },
-        ],
-    },
-    {
-        title: "Navigation",
-        items: [
-            { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
-            { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
-            { name: "", href: "/docs/components/" },
-        ],
-    },
-];
+import DocsSidebar from "../../DocsSidebar";
 
 function CopyButton({ code }: { code: string }) {
     const [copied, setCopied] = useState(false);
@@ -81,24 +25,7 @@ export default function ButtonPage() {
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
                     {/* Sidebar */}
-                    <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5">
-                        <div className="space-y-8 pb-16">
-                            {sidebarItems.map((section) => (
-                                <div key={section.title}>
-                                    <h3 className="text-[10px] font-semibold text-white mb-4 tracking-widest uppercase opacity-50">{section.title}</h3>
-                                    <ul className="space-y-1.5">
-                                        {section.items.map((item) => (
-                                            <li key={item.name}>
-                                                <Link href={item.href} className={`group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all ${item.active ? "bg-accent/10 text-accent font-medium border border-accent/20" : "hover:text-white hover:bg-white/5 border border-transparent"}`}>
-                                                    <span>{item.name}</span>
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </aside>
+                    <DocsSidebar />
 
                     {/* Main Content */}
                     <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">

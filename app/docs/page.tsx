@@ -3,83 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
-
-interface SidebarItem {
-    name: string;
-    href: string;
-    active?: boolean;
-    version?: string;
-    badge?: string;
-}
-
-interface SidebarSection {
-    title: string;
-    items: SidebarItem[];
-}
-
-const sidebarItems: SidebarSection[] = [
-    {
-        title: "Getting Started",
-        items: [
-            { name: "Introduction", href: "/docs", active: true },
-            { name: "Installation", href: "#installation" },
-        ],
-    },
-    {
-        title: "Components",
-        items: [
-            { name: "Button", href: "/docs/components/button" },
-            { name: "Ripple Button", href: "/docs/components/ripple-button" },
-            { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
-            { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
-            { name: "Card", href: "/docs/components/card" },
-            { name: "Input", href: "/docs/components/input" },
-            { name: "Badge", href: "/docs/components/badge" },
-            { name: "Timeline", href: "/docs/components/timeline" },
-        ],
-    },
-    {
-        title: "Animations",
-        items: [
-            { name: "Floating Dock", href: "/docs/components/floating-dock" },
-            { name: "Text Reveal", href: "/docs/components/text-reveal" },
-            { name: "Flip Card", href: "/docs/components/flip-card" },
-            { name: "Gradient Text", href: "/docs/components/gradient-text" },
-            { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
-            { name: "3D Image Ring", href: "/docs/components/3d-image-ring", badge: "NEW" },
-        ],
-    },
-    {
-        title: "GSAP",
-        items: [
-            { name: "GSAP Button", href: "/docs/components/gsap-button" },
-            { name: "GSAP Card", href: "/docs/components/gsap-card" },
-            { name: "GSAP Input", href: "/docs/components/gsap-input" },
-            { name: "GSAP Badge", href: "/docs/components/gsap-badge" },
-            { name: "GSAP Alert", href: "/docs/components/gsap-alert" },
-            { name: "GSAP Modal", href: "/docs/components/gsap-modal" },
-            { name: "Auth Card", href: "/docs/components/auth-card" },
-        ],
-    },
-    {
-        title: "3D Buttons",
-        items: [
-            { name: "Overview", href: "/docs/components/3d-buttons" },
-            { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
-            { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
-            { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
-            { name: "Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
-        ],
-    },
-    {
-        title: "Navigation",
-        items: [
-            { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
-            { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
-            // { name: "", href: "/docs/components/" },
-        ],
-    },
-];
+import DocsSidebar from "./DocsSidebar";
 
 const tocItems = [
     { name: "Introduction", href: "#introduction" },
@@ -146,42 +70,7 @@ export default function DocsIntroduction() {
                 <div className="flex gap-12 h-full pt-24">
 
                     {/* ── LEFT SIDEBAR ── */}
-                    <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
-                        <div className="space-y-8 pb-16">
-                            {sidebarItems.map((section) => (
-                                <div key={section.title}>
-                                    <h3 className="text-[10px] font-semibold text-white mb-4 tracking-widest uppercase opacity-50">
-                                        {section.title}
-                                    </h3>
-                                    <ul className="space-y-1.5">
-                                        {section.items.map((item) => (
-                                            <li key={item.name}>
-                                                <Link
-                                                    href={item.href}
-                                                    className={`group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all ${item.active
-                                                        ? "bg-accent/10 text-accent font-medium border border-accent/20 shadow-[0_0_16px_rgba(14,165,233,0.1)]"
-                                                        : "hover:text-white hover:bg-white/5 border border-transparent"
-                                                        }`}
-                                                >
-                                                    <span>{item.name}</span>
-                                                    {item.version && (
-                                                        <span className="text-[10px] bg-white/5 px-1.5 py-0.5 rounded border border-white/10 text-zinc-500">
-                                                            {item.version}
-                                                        </span>
-                                                    )}
-                                                    {item.badge && (
-                                                        <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20 font-bold">
-                                                            {item.badge}
-                                                        </span>
-                                                    )}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </aside>
+                    <DocsSidebar />
 
                     {/* ── MAIN CONTENT ── */}
                     <main ref={mainRef} className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2 custom-scrollbar">
