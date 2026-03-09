@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Globe, Send, Phone, MapPin } from "lucide-react";
+import { Mail, Linkedin, Globe, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const contactMethods = [
     {
@@ -24,7 +26,63 @@ const contactMethods = [
     },
 ];
 
+const EMAILJS_SERVICE_ID = "service_wjmp58y";
+const EMAILJS_TEMPLATE_ID = "template_ag3pbpm";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as
+    | string
+    | undefined;
+
 export default function Contact() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+    const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!name || !email || !message) {
+            setErrorMessage("Please fill in your name, email, and message.");
+            setStatus("error");
+            return;
+        }
+
+        if (!EMAILJS_PUBLIC_KEY) {
+            setErrorMessage("Email service is not configured correctly. Please try again later.");
+            setStatus("error");
+            return;
+        }
+
+        setStatus("sending");
+        setErrorMessage("");
+
+        try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: name,
+                    email,
+                    subject,
+                    message,
+                    to_email: "nehalingole2001@gmail.com",
+                },
+                EMAILJS_PUBLIC_KEY,
+            );
+
+            setStatus("success");
+            setName("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+        } catch (err) {
+            console.error("EmailJS error", err);
+            setStatus("error");
+            setErrorMessage("Something went wrong while sending. Please try again.");
+        }
+    };
+
     return (
         <div className="bg-black text-white py-20 px-4">
             <div className="max-w-7xl mx-auto">
@@ -71,7 +129,7 @@ export default function Contact() {
                         animate={{ opacity: 1, scale: 1 }}
                         className="lg:col-span-2 p-10 rounded-3xl bg-zinc-900/30 border border-zinc-800"
                     >
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-zinc-400">Your Name</label>
@@ -79,6 +137,8 @@ export default function Contact() {
                                         type="text"
                                         className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-accent transition-colors"
                                         placeholder="John Doe"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -87,6 +147,8 @@ export default function Contact() {
                                         type="email"
                                         className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-accent transition-colors"
                                         placeholder="john@example.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -96,6 +158,8 @@ export default function Contact() {
                                     type="text"
                                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 focus:outline-none focus:border-accent transition-colors"
                                     placeholder="How can we help?"
+                                    value={subject}
+                                    onChange={(e) => setSubject(e.target.value)}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -103,15 +167,26 @@ export default function Contact() {
                                 <textarea
                                     className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 h-40 focus:outline-none focus:border-accent transition-colors resize-none"
                                     placeholder="Your message here..."
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                 />
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-white text-black font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                disabled={status === "sending"}
+                                className="w-full bg-white text-black font-black py-4 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {status === "sending" ? "Sending..." : "Send Message"}
                                 <Send className="h-5 w-5" />
                             </button>
+                            {status === "success" && (
+                                <p className="text-sm text-emerald-400 mt-2">
+                                    Thank you! Your message has been sent. Please check your email for confirmation.
+                                </p>
+                            )}
+                            {status === "error" && errorMessage && (
+                                <p className="text-sm text-red-400 mt-2">{errorMessage}</p>
+                            )}
                         </form>
                     </motion.div>
                 </div>

@@ -176,6 +176,46 @@
       "category": "Animations",
       "dependencies": ["framer-motion"],
       "files": ["3d-image-ring.tsx"]
+    },
+    "navbar-glass": {
+      "name": "navbar-glass",
+      "displayName": "Glassmorphism Navbar",
+      "description": "An elegant glassmorphism navbar with mouse-following glow, dropdown menus, and smooth GSAP animations.",
+      "category": "Navigation",
+      "dependencies": ["gsap", "lucide-react"],
+      "files": ["navbar-glass.tsx"]
+    },
+    "3d-buttons": {
+      "name": "3d-buttons",
+      "displayName": "3D Buttons Collection",
+      "description": "A collection of 3D animated buttons powered by CSS, GSAP, and Framer Motion.",
+      "category": "Components",
+      "dependencies": ["gsap", "framer-motion"],
+      "files": ["3d-buttons.tsx"]
+    },
+    "lift-3d-button": {
+      "name": "lift-3d-button",
+      "displayName": "Lift 3D Button",
+      "description": "A CSS-based 3D button that lifts up on hover.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["lift-3d-button.tsx"]
+    },
+    "cube-3d-button": {
+      "name": "cube-3d-button",
+      "displayName": "Cube 3D Button",
+      "description": "A GSAP-powered 3D button with cube rotation effects.",
+      "category": "Components",
+      "dependencies": ["gsap"],
+      "files": ["cube-3d-button.tsx"]
+    },
+    "spring-3d-button": {
+      "name": "spring-3d-button",
+      "displayName": "Spring 3D Button",
+      "description": "A Framer Motion-powered 3D button with spring physics.",
+      "category": "Components",
+      "dependencies": ["framer-motion"],
+      "files": ["spring-3d-button.tsx"]
     }
   }
 }
