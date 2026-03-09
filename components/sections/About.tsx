@@ -41,21 +41,23 @@ export default function About() {
         <section
             ref={containerRef}
             id="about"
-            className="relative bg-black overflow-hidden py-24 px-4"
+            className="relative bg-black overflow-hidden py-32 scroll-mt-32"
         >
             {/* Subtle background glow */}
             <div className="absolute inset-0 bg-accent/5 blur-[120px] rounded-full scale-150 -z-10" />
 
-            <div
-                ref={textRef}
-                className="max-w-4xl mx-auto text-center"
-            >
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tighter gradient-heading leading-none">
-                    The developer's secret weapon.
-                </h2>
-                <p className="text-zinc-400 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto font-medium">
-                    Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
-                </p>
+            <div className="page-container">
+                <div
+                    ref={textRef}
+                    className="max-w-3xl mx-auto text-center"
+                >
+                    <h2 className="section-heading lg:text-7xl mb-8 leading-none">
+                        The developer's secret weapon.
+                    </h2>
+                    <p className="section-subtitle max-w-3xl mx-auto font-medium">
+                        Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
+                    </p>
+                </div>
             </div>
         </section>
     );

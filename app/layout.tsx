@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-black text-white antialiased`}>
         <Navbar />
-        <main className="min-h-screen pt-0">
+        <main className="min-h-screen pt-28">
           {children}
         </main>
         {!isDocsPage && <Footer />}

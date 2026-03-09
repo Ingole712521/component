@@ -12,8 +12,8 @@ const reasons = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="relative py-32 px-4 bg-black overflow-hidden">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative py-32 bg-black overflow-hidden">
+            <div className="page-container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter gradient-heading">Why Choose Progress?</h2>
+                        <h2 className="section-heading mb-10">Why Choose Progress?</h2>
                         <div className="space-y-8">
                             {reasons.map((item, i) => (
                                 <div key={i} className="flex gap-5 group">

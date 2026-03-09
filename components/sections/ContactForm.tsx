@@ -5,8 +5,8 @@ import { Send, Mail, MapPin, Globe } from "lucide-react";
 
 export default function ContactForm() {
     return (
-        <section id="contact" className="relative py-32 px-4 bg-zinc-950/30 border-t border-white/5">
-            <div className="max-w-7xl mx-auto">
+        <section id="contact" className="relative py-32 bg-zinc-950/30 border-t border-white/5 scroll-mt-32">
+            <div className="page-container">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -14,8 +14,8 @@ export default function ContactForm() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter gradient-heading">Get in Touch</h2>
-                        <p className="text-zinc-500 text-lg mb-12 max-w-md">
+                        <h2 className="section-heading mb-8">Get in Touch</h2>
+                        <p className="section-subtitle mb-12 max-w-md">
                             Have questions or need custom solutions? Our core team is ready to help you integrate In Progress into your workflow.
                         </p>
 

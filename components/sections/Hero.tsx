@@ -25,7 +25,7 @@ export default function Hero() {
     }, [mouseX, mouseY]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center px-4 border-b border-white/5 group">
+        <section className="relative min-h-[90vh] flex items-center justify-center border-b border-white/5 group">
             {/* Background Decor */}
             <div className="absolute inset-0 grid-pattern opacity-[0.3] -z-10" />
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none -z-10" />
@@ -53,9 +53,9 @@ export default function Hero() {
             </div>
 
             {/* Hero Glows */}
-            <div className="absolute left-1/2 -translate-x-1/2 w-full h-[800px] bg-accent/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
+            <div className="absolute left-1/2 -translate-x-1/2 w-full h-[800px] bg-accent/5 blur-[120px] rounded-full pointer-events-none opacity-40" />
 
-            <div className="max-w-7xl mx-auto text-center relative z-10">
+            <div className="page-container text-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

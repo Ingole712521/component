@@ -18,6 +18,9 @@
   * {
     @apply border-zinc-800;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-black text-white antialiased selection:bg-accent selection:text-white;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -29,8 +32,20 @@
     @apply bg-[var(--color-glass-bg)] backdrop-blur-xl border border-[var(--color-glass-border)] shadow-2xl;
   }
 
+  .page-container {
+    @apply max-w-6xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+
   .gradient-heading {
     @apply bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent;
+  }
+
+  .section-heading {
+    @apply text-4xl md:text-6xl font-black tracking-tighter bg-gradient-to-br from-white via-white to-white/40 bg-clip-text text-transparent;
+  }
+
+  .section-subtitle {
+    @apply text-zinc-500 text-lg md:text-xl leading-relaxed;
   }
 
   .hero-glow {

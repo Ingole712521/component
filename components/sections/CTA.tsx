@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export default function CTA() {
     return (
-        <section className="relative py-32 px-4 border-t border-white/5 overflow-hidden">
+        <section className="relative py-32 border-t border-white/5 overflow-hidden">
             {/* Background decoration */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 blur-[120px] rounded-full opacity-30 -z-10" />
 
-            <div className="max-w-5xl mx-auto">
+            <div className="page-container max-w-5xl">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -21,11 +21,11 @@ export default function CTA() {
                     {/* Subtle noise/texture overlay placeholder */}
                     <div className="absolute inset-0 bg-white/[0.02] pointer-events-none" />
 
-                    <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tighter gradient-heading relative z-10 leading-[1.1]">
+                    <h2 className="section-heading mb-8 relative z-10 leading-[1.1]">
                         Ready to Build Something Incredible?
                     </h2>
 
-                    <p className="text-zinc-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto relative z-10">
+                    <p className="section-subtitle mb-12 max-w-2xl mx-auto relative z-10">
                         Join 2,000+ developers building high-performance SaaS applications with In Progress.
                     </p>
 

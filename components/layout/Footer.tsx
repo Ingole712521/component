@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <footer className="relative bg-black pt-32 pb-20 overflow-hidden border-t border-white/5">
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="page-container relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
                     {/* Logo & Copyright */}
                     <div className="lg:col-span-1">

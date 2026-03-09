@@ -27,15 +27,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4">
-      <div
-        className={`max-w-5xl mx-auto mt-6 transition-all duration-300 ${
-          scrolled
-            ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
-            : "bg-transparent py-5 px-6 border-transparent"
-        }`}
-      >
-        <div className="flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className="page-container">
+        <div
+          className={`mt-6 transition-all duration-300 ${
+            scrolled
+              ? "glass-panel rounded-2xl py-3 px-6 shadow-2xl border-white/10"
+              : "bg-transparent py-5 px-6 border-transparent"
+          }`}
+        >
+          <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group text-decoration-none">
             <div className="w-10 h-10 relative overflow-hidden rounded-xl shadow-[0_0_20px_rgba(14,165,233,0.3)] group-hover:shadow-[0_0_30px_rgba(14,165,233,0.5)] transition-all duration-300 border border-white/10 group-hover:border-accent/50">
@@ -93,6 +94,7 @@ export default function Navbar() {
           >
             {isOpen ? <X /> : <Menu />}
           </button>
+          </div>
         </div>
       </div>
 

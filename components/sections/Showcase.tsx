@@ -11,11 +11,11 @@ const items = [
 
 export default function Showcase() {
     return (
-        <section id="showcase" className="relative py-32 px-4 bg-zinc-950/20">
-            <div className="max-w-7xl mx-auto">
+        <section id="showcase" className="relative py-32 bg-zinc-950/20 scroll-mt-32">
+            <div className="page-container">
                 <div className="text-center mb-20 px-4">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight gradient-heading">Interactive Showcase</h2>
-                    <p className="text-zinc-500 text-lg max-w-2xl mx-auto">Experience the fluidity and power of our components in real-time.</p>
+                    <h2 className="section-heading mb-6">Interactive Showcase</h2>
+                    <p className="section-subtitle max-w-2xl mx-auto">Experience the fluidity and power of our components in real-time.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
