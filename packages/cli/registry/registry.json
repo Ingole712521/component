@@ -168,6 +168,14 @@
       "category": "Components",
       "dependencies": ["framer-motion"],
       "files": ["orbit-logo-button.tsx"]
+    },
+    "3d-image-ring": {
+      "name": "3d-image-ring",
+      "displayName": "3D Image Ring",
+      "description": "A rotating ring of avatars or logos that orbits smoothly around a center.",
+      "category": "Animations",
+      "dependencies": ["framer-motion"],
+      "files": ["3d-image-ring.tsx"]
     }
   }
 }

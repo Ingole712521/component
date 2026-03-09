@@ -156,6 +156,27 @@ export default function Example() {
                 </p>
               </div>
 
+              {/* Installation */}
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-white">Installation</h2>
+                <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
+                  <CopyButton code="npx @nehal712521/inprogress add 3d-image-ring" />
+                  <div className="p-4 font-mono text-sm">
+                    <span className="text-emerald-400">$ </span>
+                    <span className="text-white">npx </span>
+                    <span className="text-accent">@nehal712521/inprogress</span>
+                    <span className="text-white"> add </span>
+                    <span className="text-yellow-300">3d-image-ring</span>
+                  </div>
+                </div>
+                <p className="text-sm text-zinc-500">
+                  Requires:{" "}
+                  <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">
+                    framer-motion
+                  </code>
+                </p>
+              </div>
+
               {/* Preview */}
               <div className="space-y-10">
                 <h2 className="text-2xl font-bold text-white">Preview</h2>
