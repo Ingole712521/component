@@ -129,6 +129,14 @@
       "dependencies": ["gsap", "lucide-react"],
       "files": ["gsap-modal.tsx"]
     },
+    "mouse-tracker": {
+      "name": "mouse-tracker",
+      "displayName": "Mouse Tracker",
+      "description": "A GSAP-powered mouse tracker with glowing cursor, trail effects, and hover scaling.",
+      "category": "GSAP",
+      "dependencies": ["gsap"],
+      "files": ["mouse-tracker.tsx"]
+    },
     "auth-card": {
       "name": "auth-card",
       "displayName": "Auth Card",

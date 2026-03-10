@@ -62,6 +62,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "GSAP Alert", href: "/docs/components/gsap-alert" },
       { name: "GSAP Modal", href: "/docs/components/gsap-modal" },
       { name: "Auth Card", href: "/docs/components/auth-card" },
+      { name: "Mouse Tracker", href: "/docs/components/mouse-tracker", badge: "NEW" },
     ],
   },
   {

@@ -1,0 +1,245 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+
+interface MouseTrackerProps {
+  children?: React.ReactNode;
+  className?: string;
+  size?: number;
+  color?: string;
+  borderColor?: string;
+  borderWidth?: number;
+  blur?: number;
+  ease?: string;
+  duration?: number;
+  mixBlendMode?: React.CSSProperties["mixBlendMode"];
+  trail?: boolean;
+  trailCount?: number;
+  scaleOnHover?: boolean;
+  hoverScale?: number;
+}
+
+export function MouseTracker({
+  children,
+  className = "",
+  size = 24,
+  color = "rgba(255, 215, 150, 0.9)",
+  borderColor = "rgba(255, 255, 255, 0.95)",
+  borderWidth = 1.5,
+  blur = 32,
+  ease = "power4.out",
+  duration = 0.35,
+  mixBlendMode = "screen",
+  trail = true,
+  trailCount = 5,
+  scaleOnHover = true,
+  hoverScale = 2.5,
+}: MouseTrackerProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const dotRef = useRef<HTMLDivElement | null>(null);
+  const trailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isHovering, setIsHovering] = useState(false);
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const container = containerRef.current;
+    const dot = dotRef.current;
+    if (!container || !dot) return;
+
+    let isInside = false;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      const isOver =
+        x >= -50 && y >= -50 && x <= rect.width + 50 && y <= rect.height + 50;
+
+      if (!isOver) {
+        if (isInside) {
+          isInside = false;
+          gsap.to([dot, ...trailRefs.current.filter(Boolean)], {
+            opacity: 0,
+            scale: 0,
+            duration: 0.4,
+            ease: "power3.inOut",
+            stagger: 0.02,
+          });
+        }
+        return;
+      }
+
+      mousePosition.current = { x, y };
+
+      if (!isInside) {
+        isInside = true;
+        gsap.set([dot, ...trailRefs.current.filter(Boolean)], { opacity: 1 });
+        gsap.fromTo(
+          [dot, ...trailRefs.current.filter(Boolean)],
+          { scale: 0 },
+          {
+            scale: 1,
+            duration: 0.6,
+            ease: "elastic.out(1, 0.5)",
+            stagger: 0.05,
+          }
+        );
+      }
+
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+
+      rafId.current = window.requestAnimationFrame(() => {
+        const rect = container.getBoundingClientRect();
+        const { x, y } = mousePosition.current;
+
+        const clampedX = Math.min(
+          rect.width - size / 2,
+          Math.max(size / 2, x)
+        );
+        const clampedY = Math.min(
+          rect.height - size / 2,
+          Math.max(size / 2, y)
+        );
+
+        const targetX = clampedX - size / 2;
+        const targetY = clampedY - size / 2;
+
+        gsap.to(dot, {
+          x: targetX,
+          y: targetY,
+          scale: scaleOnHover && isHovering ? hoverScale : 1,
+          duration,
+          ease,
+        });
+
+        if (trail) {
+          trailRefs.current.forEach((trailDot, index) => {
+            if (!trailDot) return;
+
+            const trailX =
+              targetX -
+              (targetX - mousePosition.current.x) * (index + 1) * 0.15;
+            const trailY =
+              targetY -
+              (targetY - mousePosition.current.y) * (index + 1) * 0.15;
+
+            gsap.to(trailDot, {
+              x: trailX,
+              y: trailY,
+              scale:
+                scaleOnHover && isHovering
+                  ? hoverScale * (1 - index * 0.15)
+                  : 1 - index * 0.15,
+              opacity: 1 - index * 0.15,
+              duration: duration + index * 0.05,
+              ease,
+            });
+          });
+        }
+      });
+    };
+
+    const handleMouseEnter = () => {
+      setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const interactiveElements = container.querySelectorAll(
+      'button, a, input, [role="button"]'
+    );
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", handleMouseEnter);
+      el.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      interactiveElements.forEach((el) => {
+        el.removeEventListener("mouseenter", handleMouseEnter);
+        el.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, [size, duration, ease, scaleOnHover, hoverScale, trail, trailCount]);
+
+  const getTrailColor = (index: number) => {
+    const opacity = 1 - index * 0.15;
+    return color.replace(/[^,]+(?=\))/, opacity.toString());
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className={`relative overflow-hidden cursor-none ${className}`}
+    >
+      {trail &&
+        Array.from({ length: trailCount }).map((_, index) => (
+          <div
+            key={`trail-${index}`}
+            ref={(el) => {
+              trailRefs.current[index] = el;
+            }}
+            className="pointer-events-none rounded-full"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: size * (1 - index * 0.1),
+              height: size * (1 - index * 0.1),
+              background: getTrailColor(index),
+              border: `${borderWidth * 0.5}px solid ${borderColor}`,
+              boxShadow: blur
+                ? `0 0 ${blur * (1 - index * 0.2)}px ${
+                    blur / 3
+                  }px ${color}`
+                : undefined,
+              opacity: 0,
+              transform: "translate3d(0, 0, 0)",
+              mixBlendMode,
+              filter: `blur(${index * 1}px)`,
+              transition: "background 0.3s ease",
+            }}
+          />
+        ))}
+
+      <div
+        ref={dotRef}
+        className="pointer-events-none rounded-full"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: size,
+          height: size,
+          background: `radial-gradient(circle at 30% 30%, ${color}, ${color}dd)`,
+          border: `${borderWidth}px solid ${borderColor}`,
+          boxShadow: blur
+            ? `0 0 ${blur}px ${blur / 3}px ${color}, 0 0 ${blur * 2}px ${
+                blur / 4
+              }px rgba(255, 255, 255, 0.3)`
+            : undefined,
+          opacity: 0,
+          transform: "translate3d(0, 0, 0)",
+          mixBlendMode,
+          backdropFilter: "blur(2px)",
+          transition: "background 0.3s ease",
+        }}
+      />
+
+      <div className="relative z-10 h-full w-full [&_button]:cursor-none [&_a]:cursor-none [&_input]:cursor-none">
+        {children}
+      </div>
+    </div>
+  );
+}
+
