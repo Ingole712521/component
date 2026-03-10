@@ -116,6 +116,33 @@
   .glow-card:hover::before {
     @apply opacity-100;
   }
+
+  /* Tech marquee scrolling rows */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-60%);
+    }
+  }
+
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(60%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 42s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 50s linear infinite;
+  }
 }
 
 @keyframes spin-slow {

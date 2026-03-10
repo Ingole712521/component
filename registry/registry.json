@@ -41,6 +41,22 @@
       "dependencies": ["framer-motion"],
       "files": ["floating-dock.tsx"]
     },
+    "tech-marquee": {
+      "name": "tech-marquee",
+      "displayName": "Tech Marquee",
+      "description": "A looping marquee of tech cards with subtle skew and hover glow, perfect for showcasing your stack.",
+      "category": "Components",
+      "dependencies": ["react-icons"],
+      "files": ["tech-marquee.tsx"]
+    },
+    "scroll-reveal": {
+      "name": "scroll-reveal",
+      "displayName": "Scroll Reveal",
+      "description": "A GSAP + ScrollTrigger powered text reveal that animates words into view as you scroll.",
+      "category": "Animations",
+      "dependencies": ["gsap"],
+      "files": ["scroll-reveal.tsx"]
+    },
     "text-reveal": {
       "name": "text-reveal",
       "displayName": "Text Reveal",

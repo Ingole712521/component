@@ -49,6 +49,14 @@
       "dependencies": ["framer-motion"],
       "files": ["floating-dock.tsx"]
     },
+    "scroll-reveal": {
+      "name": "scroll-reveal",
+      "displayName": "Scroll Reveal",
+      "description": "A GSAP + ScrollTrigger powered text reveal that animates words into view as you scroll.",
+      "category": "Animations",
+      "dependencies": ["gsap"],
+      "files": ["scroll-reveal.tsx"]
+    },
     "navbar-floating": {
       "name": "navbar-floating",
       "displayName": "Floating Navbar",
@@ -56,6 +64,14 @@
       "category": "Navigation",
       "dependencies": ["gsap", "lucide-react"],
       "files": ["navbar-floating.tsx"]
+    },
+    "tech-marquee": {
+      "name": "tech-marquee",
+      "displayName": "Tech Marquee",
+      "description": "A looping marquee of tech cards with subtle skew and hover glow, perfect for showcasing your stack.",
+      "category": "Components",
+      "dependencies": ["react-icons"],
+      "files": ["tech-marquee.tsx"]
     },
     "text-reveal": {
       "name": "text-reveal",
