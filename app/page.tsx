@@ -5,6 +5,7 @@ import About from "@/components/sections/About";
 import BentoGrid from "@/components/sections/BentoGrid";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Showcase from "@/components/sections/Showcase";
+import Pricing from "@/components/sections/Pricing";
 import CTA from "@/components/sections/CTA";
 import ContactForm from "@/components/sections/ContactForm";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <BentoGrid />
       <WhyChooseUs />
       <Showcase />
+      <Pricing />
       <CTA />
       <ContactForm />
     </div>
