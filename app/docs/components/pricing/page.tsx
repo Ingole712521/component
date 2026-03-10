@@ -69,7 +69,7 @@ export default function PricingDocsPage() {
               </div>
 
               {/* Installation */}
-              <section className="space-y-4">
+              {/* <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-white">Installation</h2>
                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
                   <CopyButton code={installCode} />
@@ -83,7 +83,7 @@ export default function PricingDocsPage() {
                     <span className="text-yellow-300">pricing</span>
                   </div>
                 </div>
-              </section>
+              </section> */}
 
               {/* Live preview (external + embedded) */}
               <section className="space-y-4">
@@ -155,7 +155,7 @@ export default function PricingDocsPage() {
               </section>
 
               {/* Usage */}
-              <section className="space-y-4">
+              {/* <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-white">Usage</h2>
                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
                   <CopyButton code={usageCode} />
@@ -163,7 +163,7 @@ export default function PricingDocsPage() {
                     <code>{usageCode}</code>
                   </pre>
                 </div>
-              </section>
+              </section> */}
             </div>
           </main>
         </div>
