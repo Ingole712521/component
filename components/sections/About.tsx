@@ -55,7 +55,7 @@ export default function About() {
                         The developer's secret weapon.
                     </h2>
                     <p className="section-subtitle max-w-3xl mx-auto font-medium">
-                        Progress isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
+                    Animioui UI isn't just another component library. It's a comprehensive design system focused on high-end animations and seamless user experiences. We take care of the complex math and physics so you can focus on building your product.
                     </p>
                 </div>
             </div>

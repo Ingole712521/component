@@ -47,7 +47,7 @@ export default function Navbar() {
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white group-hover:text-accent transition-colors duration-300">Progress</span>
+            <span className="text-xl font-black tracking-tighter text-white group-hover:text-accent transition-colors duration-300">Animioui UI</span>
           </Link>
 
           {/* Desktop Nav */}

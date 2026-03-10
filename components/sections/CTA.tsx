@@ -25,9 +25,9 @@ export default function CTA() {
                         Ready to Build Something Incredible?
                     </h2>
 
-                    <p className="section-subtitle mb-12 max-w-2xl mx-auto relative z-10">
-                        Join 2,000+ developers building high-performance SaaS applications with In Progress.
-                    </p>
+                    {/* <p className="section-subtitle mb-12 max-w-2xl mx-auto relative z-10">
+                        Join 2,000+ developers building high-performance SaaS applications with In Animioui UI.
+                    </p> */}
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10 w-full">
                         <Link

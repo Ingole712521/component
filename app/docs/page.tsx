@@ -89,7 +89,7 @@ export default function DocsIntroduction() {
                                         Introduction
                                     </h1>
                                     <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">
-                                        Welcome to <span className="text-white font-semibold">Progress UI</span>.
+                                        Welcome to <span className="text-white font-semibold">Animioui UI</span>.
                                         Beautifully designed components that you can copy and paste into your apps.
                                         Accessible. Customizable. Open Source.
                                     </p>

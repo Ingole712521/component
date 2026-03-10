@@ -21,7 +21,7 @@ export default function WhyChooseUs() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="section-heading mb-10">Why Choose Progress?</h2>
+                        <h2 className="section-heading mb-10">Why Choose Animioui UI?</h2>
                         <div className="space-y-8">
                             {reasons.map((item, i) => (
                                 <div key={i} className="flex gap-5 group">

@@ -19,7 +19,7 @@ export default function Footer() {
                                     className="object-cover"
                                 />
                             </div>
-                            <span className="text-xl font-bold text-white tracking-tight">Progress</span>
+                            <span className="text-xl font-bold text-white tracking-tight">Animioui UI</span>
                         </Link>
                         <p className="text-zinc-500 text-sm leading-relaxed max-w-[200px]">
                             © copyright In Progress{new Date().getFullYear()}. All rights reserved.
@@ -73,7 +73,7 @@ export default function Footer() {
                 {/* Massive Backdrop Branding */}
                 <div className=" bottom-0 left-0 right-0 flex justify-center pointer-events-none select-none -z-10 translate-y-1/2 md:translate-y-1/3">
                     <h2 className="text-[15vw] font-black text-[#111111] leading-none tracking-tighter uppercase whitespace-nowrap">
-                        Progress
+                    Animioui UI
                     </h2>
                 </div>
             </div>

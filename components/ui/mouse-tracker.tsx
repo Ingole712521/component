@@ -53,7 +53,7 @@ export function MouseTracker({
   const trailRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isHovering, setIsHovering] = useState(false);
   const mousePosition = useRef({ x: 0, y: 0 });
-  const rafId = useRef<number>();
+  const rafId = useRef<number | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
