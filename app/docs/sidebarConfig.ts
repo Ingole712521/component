@@ -44,6 +44,7 @@ export const sidebarItems: SidebarSection[] = [
     items: [
       { name: "Floating Dock", href: "/docs/components/floating-dock" },
       { name: "Text Reveal", href: "/docs/components/text-reveal" },
+      { name: "Scroll Reveal", href: "/docs/components/scroll-reveal", badge: "NEW" },
       { name: "Flip Card", href: "/docs/components/flip-card" },
       { name: "Gradient Text", href: "/docs/components/gradient-text" },
       { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
