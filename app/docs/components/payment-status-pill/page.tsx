@@ -109,11 +109,10 @@ export default function PaymentStatusPillDocsPage() {
                       <button
                         key={v}
                         onClick={() => setVariant(v)}
-                        className={`px-3 py-1.5 rounded-full border text-xs sm:text-sm transition-all ${
-                          variant === v
+                        className={`px-3 py-1.5 rounded-full border text-xs sm:text-sm transition-all ${variant === v
                             ? "border-accent bg-accent/10 text-accent"
                             : "border-white/10 bg-white/5 hover:bg-white/10 text-zinc-300"
-                        }`}
+                          }`}
                       >
                         {v[0].toUpperCase() + v.slice(1)}
                       </button>
@@ -126,19 +125,20 @@ export default function PaymentStatusPillDocsPage() {
                         variant === "processing"
                           ? "Processing payment..."
                           : variant === "success"
-                          ? "Payment successful"
-                          : "Payment failed"
+                            ? "Payment successful"
+                            : "Payment failed"
                       }
                       caption={
                         variant === "processing"
                           ? "We’re confirming things with your bank"
                           : variant === "success"
-                          ? "Funds have been captured"
-                          : "Please try again or use a different card"
+                            ? "Funds have been captured"
+                            : "Please try again or use a different card"
                       }
                       amount="$100.00"
                       variant={variant}
                       fullWidth={false}
+
                     />
                   </div>
                 </div>

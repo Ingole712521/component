@@ -146,7 +146,7 @@ export function PaymentStatusPill({
     "shadow-2xl",
     "text-sm sm:text-base text-zinc-100",
     "overflow-hidden",
-    "transition-all duration-300 ease-out",
+    "transition-all duration-500 ease-out",
     "hover:scale-[1.02] hover:border-white/20 hover:shadow-2xl",
     "active:scale-[0.99]",
     fullWidth ? "w-full" : "w-auto",
@@ -178,11 +178,10 @@ export function PaymentStatusPill({
       <style>{animationStyles}</style>
 
       <div className={containerClasses} onClick={onClick} {...props}>
-        {/* Outer glow on hover */}
         <div
           className={[
             "absolute -inset-0.5 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition duration-1000",
-            "bg-gradient-to-r",
+            "bg-linear-to-r",
             colors.gradient,
           ].join(" ")}
           style={{ opacity: 0, transition: "opacity 1000ms" }}
@@ -190,21 +189,17 @@ export function PaymentStatusPill({
 
         {/* Main pill */}
         <div className={pillClasses}>
-          {/* Shimmer effect for processing */}
           {shimmer && variant === "processing" && (
             <div className="absolute inset-0 -translate-x-full animate-shimmer">
-              <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12" />
+              <div className="w-1/2 h-full bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12" />
             </div>
           )}
 
-          {/* Inner glow */}
           <div
             className={["absolute inset-0 opacity-20", colors.bg].join(" ")}
           />
 
-          {/* Left section */}
           <div className="flex items-center gap-3 min-w-0 relative z-10">
-            {/* Spinner */}
             {!hideSpinner && (
               <div className={customStyles.spinner || ""}>
                 {customSpinner || <StatusSpinner variant={variant} />}
@@ -294,7 +289,7 @@ function StatusSpinner({ variant }: { variant: StatusVariant }) {
     <div className="relative w-5 h-5 sm:w-6 sm:h-6">
       <svg
         className="absolute inset-0"
-        style={{ animation: "scaleIn 0.2s ease-out" }}
+        style={{ animation: "scaleIn 0.8s ease-out" }}
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
@@ -309,7 +304,7 @@ function StatusSpinner({ variant }: { variant: StatusVariant }) {
             style={{
               strokeDasharray: 50,
               strokeDashoffset: 0,
-              animation: "drawCheck 0.3s ease-out",
+              animation: "drawCheck 0.9s ease-out",
             }}
           />
         ) : (
@@ -322,7 +317,7 @@ function StatusSpinner({ variant }: { variant: StatusVariant }) {
               style={{
                 strokeDasharray: 30,
                 strokeDashoffset: 0,
-                animation: "drawX 0.3s ease-out",
+                animation: "drawX 0.9s ease-out",
               }}
             />
             <path
@@ -333,7 +328,7 @@ function StatusSpinner({ variant }: { variant: StatusVariant }) {
               style={{
                 strokeDasharray: 30,
                 strokeDashoffset: 0,
-                animation: "drawX 0.3s ease-out 0.1s",
+                animation: "drawX 0.9s ease-out 0.9s",
               }}
             />
           </>
