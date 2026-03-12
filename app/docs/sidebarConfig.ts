@@ -32,6 +32,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "Input", href: "/docs/components/input" },
       { name: "Badge", href: "/docs/components/badge" },
       { name: "Timeline", href: "/docs/components/timeline" },
+      { name: "Payment Status", href: "/docs/components/payment-status-pill", badge: "NEW" },
       { name: "Tech Marquee", href: "/docs/components/tech-marquee", badge: "NEW" },
       { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
       { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
