@@ -73,6 +73,14 @@
       "dependencies": ["react-icons"],
       "files": ["tech-marquee.tsx"]
     },
+    "payment-status-pill": {
+      "name": "payment-status-pill",
+      "displayName": "Payment Status Pill",
+      "description": "A compact, animated pill for showing payment or transaction status with a spinner, label, and amount.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["payment-status-pill.tsx"]
+    },
     "text-reveal": {
       "name": "text-reveal",
       "displayName": "Text Reveal",
@@ -256,6 +264,14 @@
       "category": "Components",
       "dependencies": ["framer-motion"],
       "files": ["spring-3d-button.tsx"]
+    },
+    "carousel": {
+      "name": "carousel",
+      "displayName": "Carousel",
+      "description": "A smooth, draggable carousel with infinite looping, spring animations, and responsive design powered by Framer Motion",
+      "category": "Animations",
+      "dependencies": ["framer-motion", "lucide-react"],
+      "files": ["carousel.tsx"]
     }
   }
 }
