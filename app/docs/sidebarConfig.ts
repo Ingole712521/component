@@ -29,6 +29,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
       { name: "Card", href: "/docs/components/card" },
       { name: "Loader", href: "/docs/components/loader", badge: "NEW" },
+      { name: "Loading Screen", href: "/docs/components/loading-screen", badge: "NEW" },
       { name: "Input", href: "/docs/components/input" },
       { name: "Badge", href: "/docs/components/badge" },
       { name: "Timeline", href: "/docs/components/timeline" },

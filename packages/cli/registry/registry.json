@@ -272,6 +272,14 @@
       "category": "Animations",
       "dependencies": ["framer-motion", "lucide-react"],
       "files": ["carousel.tsx"]
+    },
+    "loading-screen": {
+      "name": "loading-screen",
+      "displayName": "Loading Screen",
+      "description": "A highly customizable loading transition with progress bar, split/rotate/close animation, and a final expand screen overlay.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["loading-screen.tsx"]
     }
   }
 }
