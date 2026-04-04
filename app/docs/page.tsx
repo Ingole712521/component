@@ -125,7 +125,7 @@ export default function DocsIntroduction() {
                                     Available components:
                                 </p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                    {["button", "card", "input", "badge", "loading-screen", "floating-dock", "text-reveal", "flip-card", "gradient-text", "spotlight-card", "timeline"].map((comp) => (
+                                    {["button", "card", "input", "badge", "loading-screen", "smart-wrap-text", "floating-dock", "text-reveal", "flip-card", "gradient-text", "spotlight-card", "timeline"].map((comp) => (
                                         <CodeBlock key={comp} code={`npx @nehal712521/progress-ui add ${comp}`}>
                                             <div className="bg-zinc-900/50 rounded-lg border border-zinc-800 p-3 font-mono text-sm text-zinc-300 flex items-center justify-between group hover:border-zinc-700 transition-colors">
                                                 <span>npx @nehal712521/progress-ui add {comp}</span>

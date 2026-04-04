@@ -30,6 +30,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "Card", href: "/docs/components/card" },
       { name: "Loader", href: "/docs/components/loader", badge: "NEW" },
       { name: "Loading Screen", href: "/docs/components/loading-screen", badge: "NEW" },
+      { name: "Smart Wrap Text", href: "/docs/components/smart-wrap-text", badge: "NEW" },
       { name: "Input", href: "/docs/components/input" },
       { name: "Badge", href: "/docs/components/badge" },
       { name: "Timeline", href: "/docs/components/timeline" },

@@ -280,6 +280,14 @@
       "category": "Components",
       "dependencies": [],
       "files": ["loading-screen.tsx"]
+    },
+    "smart-wrap-text": {
+      "name": "smart-wrap-text",
+      "displayName": "Smart Wrap Text",
+      "description": "Canvas text reflows around a draggable HTML box: drop in an image, video, or any React node; default avatar image; highly customizable box and media styling.",
+      "category": "Components",
+      "dependencies": [],
+      "files": ["smart-wrap-text.tsx"]
     }
   }
 }
