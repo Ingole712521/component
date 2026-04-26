@@ -1,36 +1,64 @@
+# AnimioUI Component
 
+AnimioUI is a Next.js project for showcasing beautiful, copy-paste-ready UI components and animation patterns.
+It includes a docs experience, interactive previews, and reusable component implementations.
+
+## Creator
+
+Created by **Nehal Ingole**  
+Portfolio: [https://nehalingole.in/](https://nehalingole.in/)
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP
 
 ## Getting Started
 
-First, run the development server:
+### 1) Clone and install
+
+```bash
+git clone <your-repo-url>
+cd component
+npm install
+```
+
+### 2) Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - start local development server
+- `npm run build` - create production build
+- `npm run start` - run production server
+- `npm run lint` - run ESLint checks
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` - app routes and docs pages
+- `components/` - reusable UI and layout components
+- `public/` - static assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome.
+Please read `CONTRIBUTING.md` before opening a PR.
 
-## Deploy on Vercel
+## Code of Conduct
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project follows the `CODE_OF_CONDUCT.md`.
+By participating, you agree to uphold it.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is open source under the MIT License.
+See `LICENSE` for details.
