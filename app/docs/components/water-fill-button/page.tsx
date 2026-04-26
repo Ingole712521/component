@@ -139,7 +139,7 @@ export default function WaterFillButtonDocs() {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
           {/* Left sidebar */}
-          <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
+          <aside className="hidden lg:block w-64 shrink-0 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
             <div className="space-y-8 pb-16">
               {sidebarItems.map((section) => (
                 <div key={section.title}>
@@ -347,7 +347,7 @@ export default function WaterFillButtonDocs() {
           </main>
 
           {/* Right TOC */}
-          <aside className="hidden xl:block w-56 shrink-0 h-full overflow-y-auto pl-2 custom-scrollbar">
+          <aside className="hidden xl:block w-56 shrink-0 h-[calc(100vh-7rem)] overflow-y-auto pl-2 custom-scrollbar">
             <div className="space-y-6 pb-16">
               <div>
                 <h3 className="text-xs font-semibold text-white mb-3 uppercase tracking-wider opacity-50">

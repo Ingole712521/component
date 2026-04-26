@@ -8,7 +8,7 @@ export default function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
+    <aside className="hidden lg:block w-64 shrink-0 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
       <div className="space-y-8 pb-16">
         {sidebarItems.map((section) => (
           <div key={section.title}>

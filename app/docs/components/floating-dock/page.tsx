@@ -2,22 +2,31 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check, Home, User, Settings, Mail } from "lucide-react";
-import Link from "next/link";
 import { FloatingDock } from "@/components/ui/floating-dock";
-
-const sidebarItems = [
-    { title: "Getting Started", items: [{ name: "Introduction", href: "/docs" }, { name: "Installation", href: "/docs#installation" }] },
-    { title: "Components", items: [{ name: "Button", href: "/docs/components/button" }, { name: "Ripple Button", href: "/docs/components/ripple-button" }, { name: "Card", href: "/docs/components/card" }, { name: "Input", href: "/docs/components/input" }, { name: "Badge", href: "/docs/components/badge" }, { name: "Timeline", href: "/docs/components/timeline" }, { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" }, { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube" }, { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" }] },
-    { title: "Animations", items: [{ name: "Floating Dock", href: "/docs/components/floating-dock", active: true }, { name: "Text Reveal", href: "/docs/components/text-reveal" }, { name: "Flip Card", href: "/docs/components/flip-card" }, { name: "Gradient Text", href: "/docs/components/gradient-text" }, { name: "Spotlight Card", href: "/docs/components/spotlight-card" }] },
-    { title: "GSAP", items: [{ name: "GSAP Button", href: "/docs/components/gsap-button" }, { name: "GSAP Card", href: "/docs/components/gsap-card" }, { name: "GSAP Input", href: "/docs/components/gsap-input" }, { name: "GSAP Badge", href: "/docs/components/gsap-badge" }, { name: "GSAP Alert", href: "/docs/components/gsap-alert" }, { name: "GSAP Modal", href: "/docs/components/gsap-modal" }, { name: "Auth Card", href: "/docs/components/auth-card" }] },
-    { title: "Navigation", items: [{ name: "Floating Navbar", href: "/docs/components/navbar-floating" }, { name: "Glass Navbar", href: "/docs/components/navbar-glass" }, { name: "", href: "/docs/components/" }] },
-];
+import { motion } from "framer-motion";
+import DocsSidebar from "../../DocsSidebar";
 
 const dockItems = [
     { icon: <Home className="w-5 h-5" />, label: "Home" },
     { icon: <User className="w-5 h-5" />, label: "Profile" },
     { icon: <Mail className="w-5 h-5" />, label: "Messages" },
     { icon: <Settings className="w-5 h-5" />, label: "Settings" },
+];
+
+const loopItems = [
+    "Jam",
+    "Stripe",
+    "Betterstack",
+    "Intercom",
+    "GitHub",
+    "Notion",
+    "Granola",
+    "Glean",
+    "Attio",
+    "Incident.io",
+    "PostHog",
+    "Sentry",
+    "Amplitude",
 ];
 
 function CopyButton({ code }: { code: string }) {
@@ -31,20 +40,7 @@ export default function FloatingDockPage() {
         <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
-                    <aside className="hidden lg:block w-64 shrink-0 h-full overflow-y-auto pr-4 border-r border-white/5">
-                        <div className="space-y-8 pb-16">
-                            {sidebarItems.map((section) => (
-                                <div key={section.title}>
-                                    <h3 className="text-[10px] font-semibold text-white mb-4 tracking-widest uppercase opacity-50">{section.title}</h3>
-                                    <ul className="space-y-1.5">
-                                        {section.items.map((item) => (
-                                            <li key={item.name}><Link href={item.href} className={`group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all ${item.active ? "bg-accent/10 text-accent font-medium border border-accent/20" : "hover:text-white hover:bg-white/5 border border-transparent"}`}><span>{item.name}</span></Link></li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    </aside>
+                    <DocsSidebar />
                     <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
                         <div className="pb-24 space-y-12">
                             <div className="space-y-4">
@@ -62,6 +58,30 @@ export default function FloatingDockPage() {
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>
+                                <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 h-64 relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.2),transparent_55%)]" />
+                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-20 w-40 bg-linear-to-r from-zinc-950/95 via-zinc-950/70 to-transparent backdrop-blur-md z-20" />
+                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 h-20 w-40 bg-linear-to-l from-zinc-950/95 via-zinc-950/70 to-transparent backdrop-blur-md z-20" />
+                                    <div className="relative z-20 h-full flex items-center justify-center overflow-hidden">
+                                        <motion.div
+                                            className="flex w-max gap-3"
+                                            animate={{ x: ["0%", "-50%"] }}
+                                            transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            {[...loopItems, ...loopItems].map((item, index) => (
+                                                <div
+                                                    key={`${item}-${index}`}
+                                                    className="shrink-0 w-44 rounded-xl border border-white/10 bg-zinc-800/40 backdrop-blur-sm px-3 py-2 text-center text-zinc-200 shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
+                                                >
+                                                    {item}
+                                                </div>
+                                            ))}
+                                        </motion.div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-2xl font-bold text-white">Original Dock Variant</h2>
                                 <div className="rounded-2xl border border-white/8 bg-zinc-950 p-8 h-64 relative overflow-hidden">
                                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
                                         <FloatingDock items={dockItems} />
