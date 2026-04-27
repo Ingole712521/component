@@ -51,6 +51,9 @@ export function SpotlightCard({
             onFocus={handleFocus}
             onBlur={handleBlur}
             onMouseEnter={handleMouseEnter}
+
+
+            
             onMouseLeave={handleMouseLeave}
             className={`relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 ${className}`}
             initial={{ opacity: 0, y: 20 }}
