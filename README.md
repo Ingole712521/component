@@ -40,7 +40,6 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run dev` - start local development server
 - `npm run build` - create production build
 - `npm run start` - run production server
-- `npm run lint` - run ESLint checks
 
 ## Project Structure
 
