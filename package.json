@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepublishOnly": "node scripts/block-root-publish.cjs",
+    "publish:cli": "npm run publish:npm --prefix packages/cli"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

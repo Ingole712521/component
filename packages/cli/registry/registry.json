@@ -113,6 +113,14 @@
       "dependencies": ["gsap", "next-transition-router"],
       "files": ["page-transition.tsx"]
     },
+    "svg-path-page-transition": {
+      "name": "svg-path-page-transition",
+      "displayName": "SvgPathPageTransition",
+      "description": "Vertical SVG path page transition with Open/Back views, powered by GSAP. Inspired by Codrops Sketch 021 (021-svg-path-page-transition-vertical).",
+      "category": "Animations",
+      "dependencies": ["gsap"],
+      "files": ["svg-path-page-transition.tsx", "svg-path-page-transition.module.css"]
+    },
     "spotlight-card": {
       "name": "spotlight-card",
       "displayName": "Spotlight Card",

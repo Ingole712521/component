@@ -41,6 +41,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
       { name: "3D Buttons Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
       { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
+      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
     ],
   },
   {
@@ -55,6 +56,7 @@ export const sidebarItems: SidebarSection[] = [
       { name: "3D Image Ring", href: "/docs/components/3d-image-ring", badge: "NEW" },
       { name: "Animated Button", href: "/docs/components/animated-button", badge: "NEW" },
       { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
+      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
       { name: "Carousel", href: "/docs/components/carousel", badge: "NEW" },
     ],
   },
