@@ -1,10 +1,6 @@
-"use client";
-
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import { usePathname } from "next/navigation";
+import ClientShell from "@/components/layout/ClientShell";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,17 +9,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const isDocsPage = pathname?.startsWith("/docs");
-
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.className} bg-black text-white antialiased`}>
-        <Navbar />
-        <main className={`min-h-screen ${isDocsPage ? "pt-0" : "pt-28"}`}>
-          {children}
-        </main>
-        {!isDocsPage && <Footer />}
+        <ClientShell>{children}</ClientShell>
       </body>
     </html>
   );

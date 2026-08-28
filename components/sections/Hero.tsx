@@ -3,13 +3,22 @@
 import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+const springConfig = { damping: 25, stiffness: 150 };
+
+const SHOOTING_STARS = [
+    { top: "12%", left: "8%", animationDelay: "0ms", rotation: 45 },
+    { top: "34%", left: "72%", animationDelay: "1200ms", rotation: 120 },
+    { top: "58%", left: "22%", animationDelay: "2400ms", rotation: 200 },
+    { top: "18%", left: "88%", animationDelay: "800ms", rotation: 310 },
+    { top: "76%", left: "55%", animationDelay: "3600ms", rotation: 15 },
+    { top: "42%", left: "40%", animationDelay: "4800ms", rotation: 265 },
+] as const;
 
 export default function Hero() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-
-    const springConfig = { damping: 25, stiffness: 150 };
     const dx = useSpring(mouseX, springConfig);
     const dy = useSpring(mouseY, springConfig);
 
@@ -38,15 +47,15 @@ export default function Hero() {
 
             {/* Shooting Stars Background */}
             <div className="absolute inset-0 pointer-events-none">
-                {[...Array(6)].map((_, i) => (
+                {SHOOTING_STARS.map((star, i) => (
                     <div
                         key={i}
                         className="shooting-star"
                         style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5000}ms`,
-                            transform: `rotate(${Math.random() * 360}deg)`,
+                            top: star.top,
+                            left: star.left,
+                            animationDelay: star.animationDelay,
+                            transform: `rotate(${star.rotation}deg)`,
                         }}
                     />
                 ))}
