@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 
 function CopyButton({ code }: { code: string }) {
     const [copied, setCopied] = useState(false);

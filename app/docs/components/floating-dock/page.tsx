@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronRight, Copy, Check, Home, User, Settings, Mail } from "lucide-react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { motion } from "framer-motion";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 
 const dockItems = [
     { icon: <Home className="w-5 h-5" />, label: "Home" },

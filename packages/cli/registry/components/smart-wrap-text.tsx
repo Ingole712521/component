@@ -31,10 +31,14 @@ export interface SmartWrapTextProps {
   /** Used when `children` is omitted. Defaults to `/Profile_with_background.png`. */
   defaultMediaSrc?: string;
   mediaAlt?: string;
+  /** `object-fit` for the default `<img>` (and a sensible default for your own tags via `boxContentClassName`). */
   mediaFit?: React.CSSProperties["objectFit"];
+  /** Classes on the draggable box (e.g. rounded corners, ring, shadow). */
   boxClassName?: string;
   boxStyle?: React.CSSProperties;
+  /** Classes on an inner wrapper around media (overflow clip, flex center). */
   boxContentClassName?: string;
+  /** Draw the debug rectangle on the canvas (usually off when showing media). */
   showBoxOutline?: boolean;
 }
 

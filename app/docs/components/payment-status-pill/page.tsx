@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import { PaymentStatusPill } from "@/components/ui/payment-status-pill";
 
 function CopyButton({ code }: { code: string }) {

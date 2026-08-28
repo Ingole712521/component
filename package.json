@@ -1,5 +1,5 @@
 {
-  "name": "work",
+  "name": "animioui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "prepublishOnly": "node scripts/block-root-publish.cjs",
-    "publish:cli": "npm run publish:npm --prefix packages/cli"
+    "sync:cli": "node scripts/sync-cli-registry.mjs",
+    "docs:imports": "node scripts/update-docs-imports.mjs",
+    "publish:cli": "npm run sync:cli && npm run publish:npm --prefix packages/cli"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

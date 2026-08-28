@@ -11,7 +11,7 @@ export interface SidebarSection {
   items: SidebarItem[];
 }
 
-export const sidebarItems: SidebarSection[] = [
+export const sidebarSections: SidebarSection[] = [
   {
     title: "Getting Started",
     items: [
@@ -40,8 +40,6 @@ export const sidebarItems: SidebarSection[] = [
       { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
       { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
       { name: "3D Buttons Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
-      { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
-      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
     ],
   },
   {
@@ -82,3 +80,5 @@ export const sidebarItems: SidebarSection[] = [
   },
 ];
 
+/** @deprecated Use sidebarSections */
+export const sidebarItems = sidebarSections;

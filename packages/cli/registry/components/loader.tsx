@@ -19,57 +19,51 @@ export default function Loader({ className = "" }: LoaderProps) {
         .equalizer-loader {
           display: inline-flex;
           align-items: flex-end;
-          gap: 8px;
+          gap: 10px;
         }
 
         .equalizer-bar {
-          width: 18px;
-          height: 26px;
+          width: 24px;
+          height: 24px;
           border-radius: 6px;
           background: #ff7a1a;
-          transform-origin: bottom center;
-          animation: equalizer-pulse 1s ease-in-out infinite;
+          animation: equalizer-bounce 1s ease-in-out infinite;
         }
 
         .equalizer-bar:nth-child(1) {
           background: #ff9100;
-          animation-duration: 0.9s;
           animation-delay: 0s;
         }
 
         .equalizer-bar:nth-child(2) {
           background: #ff7a1a;
-          animation-duration: 1.05s;
-          animation-delay: 0.1s;
+          animation-delay: 0.08s;
         }
 
         .equalizer-bar:nth-child(3) {
           background: #ff5c3c;
-          animation-duration: 0.95s;
-          animation-delay: 0.2s;
+          animation-delay: 0.16s;
         }
 
         .equalizer-bar:nth-child(4) {
           background: #ff3f5e;
-          animation-duration: 1.1s;
-          animation-delay: 0.3s;
+          animation-delay: 0.24s;
         }
 
         .equalizer-bar:nth-child(5) {
           background: #ff2d7a;
-          animation-duration: 0.9s;
-          animation-delay: 0.4s;
+          animation-delay: 0.32s;
         }
 
-        @keyframes equalizer-pulse {
+        @keyframes equalizer-bounce {
           0%, 100% {
-            transform: scaleY(0.45);
+            transform: translateY(0);
           }
           40% {
-            transform: scaleY(1);
+            transform: translateY(-18px);
           }
           60% {
-            transform: scaleY(0.7);
+            transform: translateY(-6px);
           }
         }
       `}</style>

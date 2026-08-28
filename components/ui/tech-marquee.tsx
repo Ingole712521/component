@@ -14,12 +14,7 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/lib/utils";
 
 export type TechMarqueeItem = {
   name: string;

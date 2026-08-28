@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import gsap from "gsap";
 // @ts-ignore
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";

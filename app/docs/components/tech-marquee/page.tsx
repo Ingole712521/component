@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import { TechMarquee } from "@/components/ui/tech-marquee";
 
 function CopyButton({ code }: { code: string }) {

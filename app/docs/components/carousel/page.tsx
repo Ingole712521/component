@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import { Carousel, CardSlide } from "@/components/ui/carousel";
-import { sidebarItems } from "../../sidebarConfig";
+import { sidebarItems } from "../../_config/sidebar";
 
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);

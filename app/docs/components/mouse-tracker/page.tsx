@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import { MouseTracker } from "@/components/ui/mouse-tracker";
 
 function CopyButton({ code }: { code: string }) {

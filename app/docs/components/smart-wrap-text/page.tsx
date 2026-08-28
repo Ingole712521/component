@@ -2,7 +2,7 @@
 
 import { ChevronRight, Copy, Check } from "lucide-react";
 import { useState } from "react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import SmartWrapText from "@/components/ui/SmartWrapText";
 
 function CopyButton({ code }: { code: string }) {

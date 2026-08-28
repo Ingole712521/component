@@ -1,11 +1,9 @@
 // Quick Start Guide - 3D Button Component Library
 // Copy and paste this code into your page to get started!
 
-import { 
-  Motion3DButton, 
-  GSAP3DButton, 
-  FramerMotion3DButton 
-} from "@/components/3d-buttons";
+import { Motion3DButton } from "@/components/3d-buttons/Motion3DButton";
+import { GSAP3DButton } from "@/components/3d-buttons/GSAP3DButton";
+import { FramerMotion3DButton } from "@/components/3d-buttons/FramerMotion3DButton";
 
 export default function QuickStartExample() {
   return (

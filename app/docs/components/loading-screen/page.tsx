@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../DocsSidebar";
+import DocsSidebar from "../../_components/docs-sidebar";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 
 function CopyButton({ code }: { code: string }) {
