@@ -153,7 +153,7 @@ const autoPlayCode = `<Carousel
 
 export default function CarouselPage() {
   return (
-    <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
                     
@@ -162,7 +162,7 @@ export default function CarouselPage() {
             <div className="pb-24 space-y-12">
               {/* Header */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Animations</span>
                   <ChevronRight className="w-4 h-4" />
                   <span className="text-white">Carousel</span>
@@ -185,17 +185,17 @@ export default function CarouselPage() {
                   <div className="p-4 font-mono text-sm">
                     <span className="text-emerald-400">$ </span>
                     <span className="text-white">npx </span>
-                    <span className="text-accent">@nehal712521/inprogress</span>
+                    <span className="text-accent-secondary">@nehal712521/inprogress</span>
                     <span className="text-white"> add </span>
                     <span className="text-yellow-300">carousel</span>
                   </div>
                 </div>
                 <p className="text-sm text-zinc-500">
                   Requires:{" "}
-                  <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">
+                  <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded">
                     framer-motion
                   </code>{" "}
-                  <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded ml-2">
+                  <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded ml-2">
                     lucide-react
                   </code>
                 </p>
@@ -284,11 +284,11 @@ export default function CarouselPage() {
                 <p className="text-zinc-400">
                   You can use any React content as slides. The carousel
                   automatically handles sizing based on your{" "}
-                  <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">
+                  <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded">
                     slideWidth
                   </code>{" "}
                   and{" "}
-                  <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">
+                  <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded">
                     slideHeight
                   </code>{" "}
                   props.
@@ -395,7 +395,7 @@ export default function CarouselPage() {
                         },
                       ].map((row) => (
                         <tr key={row.prop}>
-                          <td className="p-4 font-mono text-accent">
+                          <td className="p-4 font-mono text-accent-secondary">
                             {row.prop}
                           </td>
                           <td className="p-4 font-mono text-yellow-300">
@@ -422,7 +422,7 @@ export default function CarouselPage() {
                 <div className="space-y-4">
                   <div className="p-4 rounded-xl border border-white/8 bg-white/2">
                     <h3 className="text-white font-medium mb-2">
-                      <code className="text-accent">CardSlide</code>
+                      <code className="text-accent-secondary">CardSlide</code>
                     </h3>
                     <p className="text-sm text-zinc-500 mb-2">
                       A gradient card with title, description, and optional
@@ -434,7 +434,7 @@ export default function CarouselPage() {
                   </div>
                   <div className="p-4 rounded-xl border border-white/8 bg-white/2">
                     <h3 className="text-white font-medium mb-2">
-                      <code className="text-accent">ImageSlide</code>
+                      <code className="text-accent-secondary">ImageSlide</code>
                     </h3>
                     <p className="text-sm text-zinc-500 mb-2">
                       A full-bleed image slide with optional gradient overlay.
@@ -445,7 +445,7 @@ export default function CarouselPage() {
                   </div>
                   <div className="p-4 rounded-xl border border-white/8 bg-white/2">
                     <h3 className="text-white font-medium mb-2">
-                      <code className="text-accent">CarouselSlide</code>
+                      <code className="text-accent-secondary">CarouselSlide</code>
                     </h3>
                     <p className="text-sm text-zinc-500 mb-2">
                       The base slide wrapper with scale and shadow animations.

@@ -22,7 +22,7 @@ export default function Cube3DButtonPage() {
 </GSAP3DButton>`;
 
     return (
-        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
                     
@@ -33,7 +33,7 @@ export default function Cube3DButtonPage() {
                         <div className="pb-24 space-y-10">
                             {/* Header */}
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                                     <Link href="/docs/components/3d-buttons" className="hover:text-white">3D Buttons</Link>
                                     <ChevronRight className="w-4 h-4" />
                                     <span className="text-white">Cube 3D Button</span>
@@ -99,9 +99,9 @@ export default function Cube3DButtonPage() {
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-zinc-800">
-                                            <tr><td className="px-4 py-3 text-accent">variant</td><td className="px-4 py-3 text-zinc-400">&quot;cube&quot; | &quot;neon&quot; | &quot;isometric&quot; | &quot;extruded&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;cube&quot;</td><td className="px-4 py-3 text-zinc-400">Animation variant</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">color</td><td className="px-4 py-3 text-zinc-400">&quot;blue&quot; | &quot;purple&quot; | &quot;green&quot; | &quot;orange&quot; | &quot;red&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;blue&quot;</td><td className="px-4 py-3 text-zinc-400">Button color scheme</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">size</td><td className="px-4 py-3 text-zinc-400">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;md&quot;</td><td className="px-4 py-3 text-zinc-400">Button size</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">variant</td><td className="px-4 py-3 text-zinc-400">&quot;cube&quot; | &quot;neon&quot; | &quot;isometric&quot; | &quot;extruded&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;cube&quot;</td><td className="px-4 py-3 text-zinc-400">Animation variant</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">color</td><td className="px-4 py-3 text-zinc-400">&quot;blue&quot; | &quot;purple&quot; | &quot;green&quot; | &quot;orange&quot; | &quot;red&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;blue&quot;</td><td className="px-4 py-3 text-zinc-400">Button color scheme</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">size</td><td className="px-4 py-3 text-zinc-400">&quot;sm&quot; | &quot;md&quot; | &quot;lg&quot;</td><td className="px-4 py-3 text-zinc-500">&quot;md&quot;</td><td className="px-4 py-3 text-zinc-400">Button size</td></tr>
                                             <tr><td className="px-4 py-3 text-zinc-500">onClick</td><td className="px-4 py-3 text-zinc-400">() ={'>'} void</td><td className="px-4 py-3 text-zinc-500">-</td><td className="px-4 py-3 text-zinc-400">Click handler</td></tr>
                                             <tr><td className="px-4 py-3 text-zinc-500">disabled</td><td className="px-4 py-3 text-zinc-400">boolean</td><td className="px-4 py-3 text-zinc-500">false</td><td className="px-4 py-3 text-zinc-400">Disable button</td></tr>
                                         </tbody>

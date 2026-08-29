@@ -45,7 +45,7 @@ export default function Page() {
 
 export default function SvgPathPageTransitionPage() {
   return (
-    <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
           <DocsSidebar />
@@ -53,7 +53,7 @@ export default function SvgPathPageTransitionPage() {
           <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
             <div className="pb-24 space-y-12">
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Animations</span>
                   <ChevronRight className="w-4 h-4" />
                   <span className="text-white">SVG Path Page Transition</span>
@@ -71,7 +71,7 @@ export default function SvgPathPageTransitionPage() {
                     href={SVG_PATH_PAGE_TRANSITION_INSPIRATION.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:underline"
+                    className="text-accent-secondary hover:underline"
                   >
                     {SVG_PATH_PAGE_TRANSITION_INSPIRATION.name}
                   </a>{" "}
@@ -103,7 +103,7 @@ export default function SvgPathPageTransitionPage() {
                         href={SVG_PATH_PAGE_TRANSITION_INSPIRATION.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent hover:underline"
+                        className="text-accent-secondary hover:underline"
                       >
                         021-svg-path-page-transition-vertical
                       </a>
@@ -114,7 +114,7 @@ export default function SvgPathPageTransitionPage() {
                         href="https://github.com/codrops/codrops-sketches"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent hover:underline"
+                        className="text-accent-secondary hover:underline"
                       >
                         codrops/codrops-sketches
                       </a>
@@ -125,7 +125,7 @@ export default function SvgPathPageTransitionPage() {
                         href={SVG_PATH_PAGE_TRANSITION_INSPIRATION.archiveHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent hover:underline"
+                        className="text-accent-secondary hover:underline"
                       >
                         Codrops Sketches
                       </a>

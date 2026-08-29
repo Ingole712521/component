@@ -9,7 +9,7 @@ import Button3DShowcase from "@/components/3d-buttons/Showcase";
 
 export default function ThreeDButtonsShowcasePage() {
     return (
-        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
                     
@@ -20,7 +20,7 @@ export default function ThreeDButtonsShowcasePage() {
                         <div className="pb-24 space-y-10">
                             {/* Header */}
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                                     <Link href="/docs/components/3d-buttons" className="hover:text-white">3D Buttons</Link>
                                     <ChevronRight className="w-4 h-4" />
                                     <span className="text-white">Showcase</span>
@@ -53,9 +53,9 @@ export default function ThreeDButtonsShowcasePage() {
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-zinc-800">
-                                            <tr><td className="px-4 py-3 text-accent">Lift 3D Button</td><td className="px-4 py-3 text-zinc-400">5 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Lightweight, no dependencies</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">Cube 3D Button</td><td className="px-4 py-3 text-zinc-400">4 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Advanced 3D animations</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">Spring 3D Button</td><td className="px-4 py-3 text-zinc-400">3 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Playful spring animations</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">Lift 3D Button</td><td className="px-4 py-3 text-zinc-400">5 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Lightweight, no dependencies</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">Cube 3D Button</td><td className="px-4 py-3 text-zinc-400">4 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Advanced 3D animations</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">Spring 3D Button</td><td className="px-4 py-3 text-zinc-400">3 variants</td><td className="px-4 py-3 text-zinc-400">5 colors</td><td className="px-4 py-3 text-zinc-400">Playful spring animations</td></tr>
                                         </tbody>
                                     </table>
                                 </div>

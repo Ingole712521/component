@@ -32,7 +32,7 @@ export default function Page() {
     const [showVariants, setShowVariants] = useState(false);
 
     return (
-        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
                     <DocsSidebar />
@@ -42,7 +42,7 @@ export default function Page() {
                         <div className="pb-24 space-y-10">
                             {/* Header */}
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                                     <span>Components</span>
                                     <ChevronRight className="w-4 h-4" />
                                     <span className="text-white">Ripple Button</span>
@@ -127,9 +127,9 @@ export default function Page() {
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-zinc-800">
-                                            <tr><td className="px-4 py-3 text-accent">buttonColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;#18181b&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the background color.</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">textColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;#ffffff&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the text color.</td></tr>
-                                            <tr><td className="px-4 py-3 text-accent">rippleColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;rgba(255, 255, 255, 0.3)&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the concentric rings color.</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">buttonColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;#18181b&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the background color.</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">textColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;#ffffff&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the text color.</td></tr>
+                                            <tr><td className="px-4 py-3 text-accent-secondary">rippleColor</td><td className="px-4 py-3 text-zinc-400">string</td><td className="px-4 py-3 text-zinc-500">&quot;rgba(255, 255, 255, 0.3)&quot;</td><td className="px-4 py-3 text-zinc-400">Controls the concentric rings color.</td></tr>
                                             <tr><td className="px-4 py-3 text-zinc-500">...props</td><td className="px-4 py-3 text-zinc-400">ButtonHTMLAttributes</td><td className="px-4 py-3 text-zinc-500">-</td><td className="px-4 py-3 text-zinc-400">Accepts standard HTML button props like onClick.</td></tr>
                                         </tbody>
                                     </table>

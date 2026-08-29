@@ -43,7 +43,7 @@ export default function Page() {
 
 export default function PricingDocsPage() {
   return (
-    <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
           <DocsSidebar />
@@ -53,7 +53,7 @@ export default function PricingDocsPage() {
             <div className="pb-24 space-y-12">
               {/* Header */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Components</span>
                   <ChevronRight className="w-4 h-4" />
                   <span className="text-white">Pricing</span>
@@ -75,7 +75,7 @@ export default function PricingDocsPage() {
                   <div className="p-4 font-mono text-sm">
                     <span className="text-emerald-400">$ </span>
                     <span className="text-white">npx </span>
-                    <span className="text-accent">
+                    <span className="text-accent-secondary">
                       @nehal712521/inprogress
                     </span>
                     <span className="text-white"> add </span>
@@ -93,7 +93,7 @@ export default function PricingDocsPage() {
                   <Link
                     href="https://pricing-component-one-ivory.vercel.app/"
                     target="_blank"
-                    className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-accent hover:bg-accent/20 hover:border-accent transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-accent-secondary hover:bg-accent/20 hover:border-accent transition-colors"
                   >
                     Open live preview
                     <ExternalLink className="w-3.5 h-3.5" />

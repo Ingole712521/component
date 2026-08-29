@@ -172,7 +172,7 @@ export default function AnimatedButtonDocs() {
     }, []);
 
     return (
-        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
 
@@ -185,7 +185,7 @@ export default function AnimatedButtonDocs() {
 
                             {/* ── HEADER ── */}
                             <div id="animated-button" className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                                     <span>Components</span>
                                     <ChevronRight className="w-4 h-4" />
                                     <span className="text-white">Animated Button</span>
@@ -249,7 +249,7 @@ export default function AnimatedButtonDocs() {
                                     <div className="space-y-5">
                                         <p className="text-sm text-zinc-400 leading-relaxed">
                                             Run this command in your project root. The CLI will create{" "}
-                                            <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">components/ui/</code>
+                                            <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">components/ui/</code>
                                             {" "}and write the file automatically.
                                         </p>
 
@@ -266,7 +266,7 @@ export default function AnimatedButtonDocs() {
                                                 <p className="pr-10">
                                                     <span className="text-emerald-400 select-none">$ </span>
                                                     <span className="text-white">npx </span>
-                                                    <span className="text-accent">@nehal712521/inprogress</span>
+                                                    <span className="text-accent-secondary">@nehal712521/inprogress</span>
                                                     <span className="text-white"> add </span>
                                                     <span className="text-yellow-300">button</span>
                                                 </p>
@@ -293,7 +293,7 @@ export default function AnimatedButtonDocs() {
 
                                         <p className="text-xs text-zinc-500">
                                             See all available components →{" "}
-                                            <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded font-mono">npx @nehal712521/inprogress list</code>
+                                            <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded font-mono">npx @nehal712521/inprogress list</code>
                                         </p>
                                     </div>
                                 )}
@@ -303,13 +303,13 @@ export default function AnimatedButtonDocs() {
                                     <div className="space-y-4">
                                         <p className="text-sm text-zinc-400 leading-relaxed">
                                             <span className="text-white font-semibold">Step 1.</span>{" "}
-                                            Copy <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">AnimatedButton.tsx</code> into your project:
+                                            Copy <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">AnimatedButton.tsx</code> into your project:
                                         </p>
                                         <CodeBlock code={manualInstallCode} language="bash" />
 
                                         <p className="text-sm text-zinc-400 leading-relaxed">
                                             <span className="text-white font-semibold">Step 2.</span>{" "}
-                                            Paste the full source from the <span className="text-accent">Component Source</span> section below.
+                                            Paste the full source from the <span className="text-accent-secondary">Component Source</span> section below.
                                         </p>
 
                                         <p className="text-sm text-zinc-400 leading-relaxed">
@@ -400,8 +400,8 @@ export default function AnimatedButtonDocs() {
                                             className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] space-y-4 hover:bg-white/[0.04] transition-colors"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <div className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-                                                    <Icon className="w-4 h-4 text-accent" />
+                                                <div className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center">
+                                                    <Icon className="w-4 h-4 text-accent-secondary" />
                                                 </div>
                                                 <div>
                                                     <p className="text-white font-semibold text-sm">{title}</p>
@@ -456,12 +456,12 @@ export default function AnimatedButtonDocs() {
                             {/* ── COMPONENT SOURCE ── */}
                             <div className="space-y-4">
                                 <div className="flex items-center gap-2">
-                                    <Code2 className="w-5 h-5 text-accent" />
+                                    <Code2 className="w-5 h-5 text-accent-secondary" />
                                     <h2 className="text-lg font-bold text-white">Component Source</h2>
                                 </div>
                                 <p className="text-sm text-zinc-500">
                                     Copy this into{" "}
-                                    <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
+                                    <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
                                         components/ui/AnimatedButton.tsx
                                     </code>
                                 </p>
@@ -489,7 +489,7 @@ export default function AnimatedButtonDocs() {
                                         <tbody>
                                             {apiRows.map((row, i) => (
                                                 <tr key={row.prop} className={`border-b border-white/5 ${i % 2 === 0 ? "bg-transparent" : "bg-white/[0.01]"} hover:bg-white/[0.03] transition-colors`}>
-                                                    <td className="px-4 py-3 font-mono text-accent text-xs">{row.prop}</td>
+                                                    <td className="px-4 py-3 font-mono text-accent-secondary text-xs">{row.prop}</td>
                                                     <td className="px-4 py-3 font-mono text-zinc-400 text-xs">{row.type}</td>
                                                     <td className="px-4 py-3 font-mono text-emerald-400 text-xs">{row.default}</td>
                                                     <td className="px-4 py-3 text-zinc-500 text-xs leading-relaxed">{row.desc}</td>
@@ -520,7 +520,7 @@ export default function AnimatedButtonDocs() {
                                             >
                                                 <Link
                                                     href={item.href}
-                                                    className={`text-xs transition-colors duration-200 ${isActive ? "text-accent font-semibold" : "text-zinc-500 hover:text-white"}`}
+                                                    className={`text-xs transition-colors duration-200 ${isActive ? "text-accent-secondary font-semibold" : "text-zinc-500 hover:text-white"}`}
                                                 >
                                                     {item.name}
                                                 </Link>
@@ -533,7 +533,7 @@ export default function AnimatedButtonDocs() {
                             <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-20 h-20 bg-accent/10 blur-2xl rounded-full" />
                                 <p className="text-xs font-medium text-white mb-1.5 relative z-10">Question? Give us feedback</p>
-                                <Link href="#" className="text-xs text-zinc-500 hover:text-accent transition-colors relative z-10 flex items-center gap-1 group">
+                                <Link href="#" className="text-xs text-zinc-500 hover:text-accent-secondary transition-colors relative z-10 flex items-center gap-1 group">
                                     Edit this page <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                                 </Link>
                             </div>

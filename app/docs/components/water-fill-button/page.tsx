@@ -72,7 +72,7 @@ export default function WaterFillButtonDocs() {
   }, []);
 
   return (
-    <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
           
@@ -83,7 +83,7 @@ export default function WaterFillButtonDocs() {
             <div className="pb-24 space-y-16">
               {/* Header */}
               <section id="water-fill-button" className="space-y-4">
-                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Components</span>
                   <ChevronRight className="w-4 h-4" />
                   <span className="text-white">Water Fill Button</span>
@@ -99,8 +99,8 @@ export default function WaterFillButtonDocs() {
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-                      <Droplets className="w-4 h-4 text-accent" />
+                    <div className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center">
+                      <Droplets className="w-4 h-4 text-accent-secondary" />
                     </div>
                     <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       Motion powered
@@ -140,7 +140,7 @@ export default function WaterFillButtonDocs() {
                   <div className="space-y-5">
                     <p className="text-sm text-zinc-400 leading-relaxed">
                       Run this command in your project root. The CLI will create{" "}
-                      <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
+                      <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
                         components/ui/WaterFillButton.tsx
                       </code>{" "}
                       and write the file automatically.
@@ -158,7 +158,7 @@ export default function WaterFillButtonDocs() {
                         <p className="pr-10">
                           <span className="text-emerald-400 select-none">$ </span>
                           <span className="text-white">npx </span>
-                          <span className="text-accent">@nehal712521/inprogress</span>
+                          <span className="text-accent-secondary">@nehal712521/inprogress</span>
                           <span className="text-white"> add </span>
                           <span className="text-yellow-300">water-fill-button</span>
                         </p>
@@ -198,18 +198,18 @@ export default function WaterFillButtonDocs() {
                     <p className="text-sm text-zinc-400 leading-relaxed">
                       <span className="text-white font-semibold">Step 1.</span>{" "}
                       Copy{" "}
-                      <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
+                      <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
                         WaterFillButton.tsx
                       </code>{" "}
                       into your project inside{" "}
-                      <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
+                      <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
                         components/ui/
                       </code>
                       .
                     </p>
                     <p className="text-sm text-zinc-400 leading-relaxed">
                       <span className="text-white font-semibold">Step 2.</span> Make sure{" "}
-                      <code className="text-accent font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
+                      <code className="text-accent-secondary font-mono text-xs bg-accent/10 px-1.5 py-0.5 rounded">
                         framer-motion
                       </code>{" "}
                       is installed.
@@ -272,7 +272,7 @@ export default function WaterFillButtonDocs() {
                         <Link
                           href={item.href}
                           className={`text-xs transition-colors duration-200 ${
-                            isActive ? "text-accent font-semibold" : "text-zinc-500 hover:text-white"
+                            isActive ? "text-accent-secondary font-semibold" : "text-zinc-500 hover:text-white"
                           }`}
                         >
                           {item.name}

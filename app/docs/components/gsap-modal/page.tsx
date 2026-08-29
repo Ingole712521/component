@@ -18,7 +18,7 @@ export default function GSAPModalPage() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
                     
@@ -26,7 +26,7 @@ export default function GSAPModalPage() {
 <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
                         <div className="pb-24 space-y-12">
                             <div className="space-y-4">
-                                <div className="flex items-center gap-2 text-accent text-sm font-medium"><span>GSAP</span><ChevronRight className="w-4 h-4" /><span className="text-white">GSAP Modal</span></div>
+                                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium"><span>GSAP</span><ChevronRight className="w-4 h-4" /><span className="text-white">GSAP Modal</span></div>
                                 <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">GSAP Modal</h1>
                                 <p className="text-zinc-400 max-w-xl">Professional modal with backdrop fade, scale entry, and staggered content animations using GSAP.</p>
                             </div>
@@ -34,9 +34,9 @@ export default function GSAPModalPage() {
                                 <h2 className="text-2xl font-bold text-white">Installation</h2>
                                 <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden">
                                     <CopyButton code="npx @nehal712521/inprogress add gsap-modal" />
-                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">gsap-modal</span></div>
+                                    <div className="p-4 font-mono text-sm"><span className="text-emerald-400">$ </span><span className="text-white">npx </span><span className="text-accent-secondary">@nehal712521/inprogress</span><span className="text-white"> add </span><span className="text-yellow-300">gsap-modal</span></div>
                                 </div>
-                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">gsap</code>, <code className="text-accent bg-accent/10 px-1.5 py-0.5 rounded">lucide-react</code></p>
+                                <p className="text-sm text-zinc-500">Requires: <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded">gsap</code>, <code className="text-accent-secondary bg-accent/10 px-1.5 py-0.5 rounded">lucide-react</code></p>
                             </div>
                             <div className="space-y-4">
                                 <h2 className="text-2xl font-bold text-white">Preview</h2>

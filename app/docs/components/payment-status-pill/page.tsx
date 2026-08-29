@@ -51,7 +51,7 @@ export default function PaymentStatusPillDocsPage() {
   );
 
   return (
-    <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
+    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
           <DocsSidebar />
@@ -61,7 +61,7 @@ export default function PaymentStatusPillDocsPage() {
             <div className="pb-24 space-y-12">
               {/* Header */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Components</span>
                   <ChevronRight className="w-4 h-4" />
                   <span className="text-white">Payment Status</span>
@@ -83,7 +83,7 @@ export default function PaymentStatusPillDocsPage() {
                   <div className="p-4 font-mono text-sm">
                     <span className="text-emerald-400">$ </span>
                     <span className="text-white">npx </span>
-                    <span className="text-accent">
+                    <span className="text-accent-secondary">
                       @nehal712521/inprogress
                     </span>
                     <span className="text-white"> add </span>
@@ -109,7 +109,7 @@ export default function PaymentStatusPillDocsPage() {
                         key={v}
                         onClick={() => setVariant(v)}
                         className={`px-3 py-1.5 rounded-full border text-xs sm:text-sm transition-all ${variant === v
-                            ? "border-accent bg-accent/10 text-accent"
+                            ? "border-accent bg-accent/10 text-accent-secondary"
                             : "border-white/10 bg-white/5 hover:bg-white/10 text-zinc-300"
                           }`}
                       >
