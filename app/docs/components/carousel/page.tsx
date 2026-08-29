@@ -1,10 +1,11 @@
 "use client";
 
+import DocsSidebar from "../../_components/docs-sidebar";
+
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import { Carousel, CardSlide } from "@/components/ui/carousel";
-import { sidebarItems } from "../../_config/sidebar";
 
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
@@ -155,44 +156,9 @@ export default function CarouselPage() {
     <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex gap-12 h-full pt-24">
-          <aside className="hidden lg:block w-64 shrink-0 h-[calc(100vh-7rem)] overflow-y-auto pr-4 border-r border-white/5 custom-scrollbar">
-            <div className="space-y-8 pb-16">
-              {sidebarItems.map((section) => (
-                <div key={section.title}>
-                  <h3 className="text-[10px] font-semibold text-white mb-4 tracking-widest uppercase opacity-50">
-                    {section.title}
-                  </h3>
-                  <ul className="space-y-1.5">
-                    {section.items.map((item) => {
-                      const isActive =
-                        item.href === "/docs/components/carousel";
-                      return (
-                        <li key={item.name}>
-                          <Link
-                            href={item.href}
-                            className={`group flex items-center justify-between px-3 py-1.5 rounded-lg text-sm transition-all ${
-                              isActive
-                                ? "bg-accent/10 text-accent font-medium border border-accent/20 shadow-[0_0_16px_rgba(14,165,233,0.1)]"
-                                : "hover:text-white hover:bg-white/5 border border-transparent"
-                            }`}
-                          >
-                            <span>{item.name}</span>
-                            {item.badge && (
-                              <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20 font-bold">
-                                {item.badge}
-                              </span>
-                            )}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </aside>
-
-          <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2 custom-scrollbar">
+                    
+                    <DocsSidebar />
+<main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2 custom-scrollbar">
             <div className="pb-24 space-y-12">
               {/* Header */}
               <div className="space-y-4">

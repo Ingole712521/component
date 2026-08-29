@@ -24,7 +24,6 @@ export default function ButtonPage() {
         <div className="h-screen overflow-hidden bg-black text-zinc-400 font-sans">
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                 <div className="flex gap-12 h-full pt-24">
-                    {/* Sidebar */}
                     <DocsSidebar />
 
                     {/* Main Content */}

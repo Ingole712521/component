@@ -36,10 +36,13 @@ export const sidebarSections: SidebarSection[] = [
       { name: "Timeline", href: "/docs/components/timeline" },
       { name: "Payment Status", href: "/docs/components/payment-status-pill", badge: "NEW" },
       { name: "Tech Marquee", href: "/docs/components/tech-marquee", badge: "NEW" },
+      { name: "3D Buttons", href: "/docs/components/3d-buttons", badge: "NEW" },
       { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
       { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
       { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
       { name: "3D Buttons Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
+      { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
+      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
     ],
   },
   {
@@ -76,9 +79,9 @@ export const sidebarSections: SidebarSection[] = [
     items: [
       { name: "Floating Navbar", href: "/docs/components/navbar-floating" },
       { name: "Glass Navbar", href: "/docs/components/navbar-glass" },
+      { name: "Mega Navbar", href: "/docs/components/navbar-mega" },
     ],
   },
 ];
 
-/** @deprecated Use sidebarSections */
 export const sidebarItems = sidebarSections;
