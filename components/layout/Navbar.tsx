@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { Github, Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -22,10 +23,18 @@ function isLinkActive(pathname: string, href: string) {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -35,10 +44,17 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 h-16 border-b border-white/8 bg-[var(--background)]/90 backdrop-blur-md">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 h-16 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-violet-500/15 bg-[var(--background)]/80 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(139,92,246,0.2)]"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
       <div className="page-container-wide h-full flex items-center justify-between gap-6">
-        <Link href="/" className="text-sm font-medium text-white tracking-tight shrink-0">
-          Animioui
+        <Link href="/" className="flex items-center gap-2 shrink-0 group">
+          <span className="w-2 h-2 rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 group-hover:scale-125 transition-transform" />
+          <span className="text-sm font-semibold text-white tracking-tight">Animioui</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -46,9 +62,15 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`nav-link ${isLinkActive(pathname, link.href) ? "nav-link-active" : ""}`}
+              className={`nav-link relative ${isLinkActive(pathname, link.href) ? "nav-link-active" : ""}`}
             >
               {link.name}
+              {isLinkActive(pathname, link.href) && (
+                <motion.span
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-violet-400 to-cyan-400"
+                />
+              )}
             </Link>
           ))}
         </nav>
@@ -78,29 +100,43 @@ export default function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden absolute top-16 inset-x-0 border-b border-white/8 bg-[var(--background)] px-5 py-4">
-          <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`px-2 py-3 rounded-md text-sm ${
-                  isLinkActive(pathname, link.href)
-                    ? "text-white bg-white/5"
-                    : "text-[var(--muted)]"
-                }`}
-              >
-                {link.name}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-16 inset-x-0 border-b border-violet-500/15 bg-[var(--background)]/95 backdrop-blur-xl px-5 py-4"
+          >
+            <nav className="flex flex-col gap-1">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={`block px-2 py-3 rounded-lg text-sm transition-colors ${
+                      isLinkActive(pathname, link.href)
+                        ? "text-white bg-violet-500/10 border border-violet-500/20"
+                        : "text-[var(--muted)]"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <hr className="border-white/8 my-2" />
+              <Link href="/docs" className="btn-primary w-full mt-1">
+                Get started
               </Link>
-            ))}
-            <hr className="border-white/8 my-2" />
-            <Link href="/docs" className="btn-primary w-full mt-1">
-              Get started
-            </Link>
-          </nav>
-        </div>
-      )}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

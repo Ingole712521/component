@@ -23,10 +23,10 @@ export default function DocsSidebar() {
                     <li key={item.name}>
                       <Link
                         href={item.href}
-                        className={`block px-2 py-1.5 text-sm rounded-md transition-colors ${
+                        className={`block px-2 py-1.5 text-sm rounded-lg transition-all duration-200 ${
                           isActive
-                            ? "text-white bg-white/5"
-                            : "text-[var(--muted)] hover:text-white"
+                            ? "text-white bg-violet-500/10 border border-violet-500/20 shadow-[0_0_20px_-8px_var(--glow-violet)]"
+                            : "text-[var(--muted)] hover:text-white hover:bg-white/[0.04]"
                         }`}
                       >
                         {item.name}

@@ -9,17 +9,21 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/8">
+    <footer className="border-t border-violet-500/10 relative">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
       <div className="page-container py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <p className="text-sm font-medium text-white mb-1">Animioui UI</p>
+          <p className="text-sm font-semibold text-white mb-1 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-violet-400 to-cyan-400" />
+            Animioui UI
+          </p>
           <p className="text-xs text-[var(--muted)]">
             © {new Date().getFullYear()} · Built by{" "}
             <a
               href="https://nehalingole.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-violet-300 transition-colors"
             >
               Nehal Ingole
             </a>

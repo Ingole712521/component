@@ -1,10 +1,16 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import ClientShell from "@/components/layout/ClientShell";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
   display: "swap",
 });
 
@@ -20,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en">
+      <body className={`${inter.variable} ${syne.variable} ${jetbrains.variable}`}>
         <ClientShell>{children}</ClientShell>
       </body>
     </html>
