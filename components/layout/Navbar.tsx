@@ -47,13 +47,13 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-50 h-16 transition-all duration-300 ${
         scrolled
-          ? "border-b border-violet-500/15 bg-[var(--background)]/80 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(139,92,246,0.2)]"
+          ? "border-b border-white/8 bg-[var(--background)]/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="page-container-wide h-full flex items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <span className="w-2 h-2 rounded-full bg-gradient-to-br from-violet-400 to-cyan-400 group-hover:scale-125 transition-transform" />
+          <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-125 transition-transform" />
           <span className="text-sm font-semibold text-white tracking-tight">Animioui</span>
         </Link>
 
@@ -68,7 +68,7 @@ export default function Navbar() {
               {isLinkActive(pathname, link.href) && (
                 <motion.span
                   layoutId="nav-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-px bg-gradient-to-r from-violet-400 to-cyan-400"
+                  className="absolute -bottom-1 left-0 right-0 h-px bg-blue-500"
                 />
               )}
             </Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-16 inset-x-0 border-b border-violet-500/15 bg-[var(--background)]/95 backdrop-blur-xl px-5 py-4"
+            className="md:hidden absolute top-16 inset-x-0 border-b border-white/8 bg-[var(--background)]/95 backdrop-blur-xl px-5 py-4"
           >
             <nav className="flex flex-col gap-1">
               {navLinks.map((link, i) => (
@@ -121,7 +121,7 @@ export default function Navbar() {
                     href={link.href}
                     className={`block px-2 py-3 rounded-lg text-sm transition-colors ${
                       isLinkActive(pathname, link.href)
-                        ? "text-white bg-violet-500/10 border border-violet-500/20"
+                        ? "text-white bg-blue-500/10 border border-blue-500/20"
                         : "text-[var(--muted)]"
                     }`}
                   >

@@ -8,10 +8,8 @@ import { usePathname } from "next/navigation";
 function AmbientBackground() {
   return (
     <div className="ambient-bg" aria-hidden>
-      <div className="ambient-orb ambient-orb-violet w-[520px] h-[520px] -top-32 -left-32" />
-      <div className="ambient-orb ambient-orb-cyan w-[480px] h-[480px] top-1/3 -right-40" />
-      <div className="ambient-orb ambient-orb-violet w-[400px] h-[400px] bottom-0 left-1/3 opacity-40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.08),transparent_50%)]" />
+      <div className="ambient-glow w-[600px] h-[600px] -top-40 -right-32 opacity-50" />
+      <div className="ambient-glow w-[400px] h-[400px] bottom-0 left-1/4 opacity-30" />
     </div>
   );
 }
@@ -25,6 +23,7 @@ function AppChrome({
 }>) {
   return (
     <>
+      <div className="grain-overlay" aria-hidden />
       <AmbientBackground />
       <Navbar />
       <main className="relative pt-16">{children}</main>
