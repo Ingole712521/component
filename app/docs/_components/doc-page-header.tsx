@@ -8,14 +8,14 @@ type DocPageHeaderProps = {
 
 export function DocPageHeader({ section, title, description }: DocPageHeaderProps) {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-2 text-accent text-sm font-medium">
+    <header className="space-y-3 pb-2 border-b border-white/8">
+      <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
         <span>{section}</span>
-        <ChevronRight className="w-4 h-4" />
+        <ChevronRight className="w-3 h-3" />
         <span className="text-white">{title}</span>
       </div>
-      <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">{title}</h1>
-      {description ? <p className="text-zinc-400 max-w-xl">{description}</p> : null}
-    </div>
+      <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-white">{title}</h1>
+      {description ? <p className="text-[var(--muted)] text-base max-w-2xl">{description}</p> : null}
+    </header>
   );
 }

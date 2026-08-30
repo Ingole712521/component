@@ -1,35 +1,14 @@
 "use client";
 
+import { CopyButton } from "../../_components/copy-button";
+
+
 import { useState } from "react";
 import { ChevronRight, Copy, Check } from "lucide-react";
-import DocsSidebar from "../../_components/docs-sidebar";
 import {
   SvgPathPageTransition,
   SVG_PATH_PAGE_TRANSITION_INSPIRATION,
 } from "@/components/ui/svg-path-page-transition";
-
-function CopyButton({ code }: { code: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const copy = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <button
-      onClick={copy}
-      className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all z-20"
-    >
-      {copied ? (
-        <Check className="w-4 h-4 text-emerald-400" />
-      ) : (
-        <Copy className="w-4 h-4 text-zinc-400" />
-      )}
-    </button>
-  );
-}
 
 const usageCode = `import { SvgPathPageTransition } from "@/components/ui/svg-path-page-transition";
 
@@ -45,13 +24,7 @@ export default function Page() {
 
 export default function SvgPathPageTransitionPage() {
   return (
-    <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex gap-12 h-full pt-24">
-          <DocsSidebar />
-
-          <main className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2">
-            <div className="pb-24 space-y-12">
+    <div className="doc-stack">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-accent-secondary text-sm font-medium">
                   <span>Animations</span>
@@ -162,10 +135,6 @@ export default function SvgPathPageTransitionPage() {
                   </pre>
                 </div>
               </div>
-            </div>
-          </main>
-        </div>
-      </div>
-    </div>
+                </div>
   );
 }

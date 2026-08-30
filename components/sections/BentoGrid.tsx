@@ -1,94 +1,59 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Sparkles, Zap, Code2, MousePointer2, Layers, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 
-const bentoItems = [
+const items = [
   {
-    title: "Animated components",
-    description: "Framer Motion and GSAP baked in — hover states, scroll reveals, and micro-interactions out of the box.",
-    icon: Sparkles,
-    className: "col-span-12 lg:col-span-8",
+    title: "Animated UI",
+    description: "Framer Motion and GSAP patterns, ready to paste.",
     href: "/docs/components/animated-button",
   },
   {
-    title: "Performance first",
-    description: "Server components, dynamic imports, and lean bundles by default.",
-    icon: Zap,
-    className: "col-span-12 md:col-span-6 lg:col-span-4",
-    href: "/docs",
-  },
-  {
-    title: "TypeScript native",
-    description: "Strict types on every prop and variant.",
-    icon: Code2,
-    className: "col-span-12 md:col-span-6 lg:col-span-4",
+    title: "TypeScript",
+    description: "Strict props and variants on every component.",
     href: "/docs/components/button",
   },
   {
-    title: "Scroll effects",
-    description: "ScrollTrigger-powered sections that feel alive.",
-    icon: MousePointer2,
-    className: "col-span-12 md:col-span-6 lg:col-span-4",
-    href: "/docs/components/scroll-reveal",
+    title: "Performance",
+    description: "Server components and lean client bundles.",
+    href: "/docs",
   },
   {
-    title: "Tailwind-first",
-    description: "Utility classes you can reshape without ejecting.",
-    icon: Layers,
-    className: "col-span-12 md:col-span-6 lg:col-span-4",
-    href: "/docs/components/card",
+    title: "CLI workflow",
+    description: "Add components with a single command.",
+    href: "/docs#installation",
   },
 ];
 
 export default function BentoGrid() {
   return (
-    <section id="features" className="relative py-28 md:py-36 scroll-mt-32">
-      <div className="page-container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+    <section id="features" className="border-b border-white/8 scroll-mt-24">
+      <div className="page-container py-20 md:py-28">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <div>
-            <p className="section-eyebrow mb-4">What you get</p>
-            <h2 className="section-heading mb-4">Everything to ship faster</h2>
-            <p className="section-subtitle max-w-xl">
-              From buttons to navbars — pick a component, paste the code, make it yours.
-            </p>
+            <p className="section-label mb-3">Features</p>
+            <h2 className="section-heading">What you get</h2>
           </div>
           <Link
             href="/docs"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-accent-secondary hover:text-white transition-colors shrink-0"
+            className="inline-flex items-center gap-1 text-sm text-[var(--muted)] hover:text-white transition-colors"
           >
-            View all components
+            All components
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-12 gap-5">
-          {bentoItems.map((item, i) => (
-            <motion.div
+        <div className="grid sm:grid-cols-2 gap-px bg-white/10 rounded-lg overflow-hidden border border-white/10">
+          {items.map((item) => (
+            <Link
               key={item.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: i * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className={cn("group", item.className)}
+              href={item.href}
+              className="bg-[var(--background)] p-8 hover:bg-white/[0.02] transition-colors group"
             >
-              <Link
-                href={item.href}
-                className="glow-card glass-panel flex flex-col justify-between h-full min-h-[240px] p-8 rounded-3xl border-white/6 hover:border-accent/30 transition-colors"
-              >
-                <div className="w-11 h-11 rounded-xl bg-accent/15 flex items-center justify-center text-accent-secondary group-hover:scale-105 transition-transform">
-                  <item.icon className="w-5 h-5" />
-                </div>
-                <div className="mt-auto pt-8">
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-accent-secondary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[var(--muted)] text-sm leading-relaxed">{item.description}</p>
-                </div>
-              </Link>
-            </motion.div>
+              <h3 className="text-base font-medium text-white mb-2 group-hover:underline underline-offset-4">
+                {item.title}
+              </h3>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">{item.description}</p>
+            </Link>
           ))}
         </div>
       </div>

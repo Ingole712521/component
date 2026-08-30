@@ -10,15 +10,13 @@ export default function ClientShell({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isDocsPage = pathname?.startsWith("/docs");
+  const isDocs = pathname?.startsWith("/docs");
 
   return (
     <>
       <Navbar />
-      <main className={`min-h-screen ${isDocsPage ? "pt-0" : "pt-28"}`}>
-        {children}
-      </main>
-      {!isDocsPage && <Footer />}
+      <main className="min-h-screen pt-16">{children}</main>
+      {!isDocs && <Footer />}
     </>
   );
 }

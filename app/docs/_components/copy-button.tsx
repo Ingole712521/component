@@ -3,12 +3,7 @@
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
 
-type CopyButtonProps = {
-  code: string;
-  className?: string;
-};
-
-export function CopyButton({ code, className }: CopyButtonProps) {
+export function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -21,16 +16,10 @@ export function CopyButton({ code, className }: CopyButtonProps) {
     <button
       type="button"
       onClick={copy}
-      className={
-        className ??
-        "absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
-      }
+      className="absolute top-3 right-3 p-1.5 rounded-md border border-white/10 text-[var(--muted)] hover:text-white hover:bg-white/5 transition-colors"
+      aria-label="Copy code"
     >
-      {copied ? (
-        <Check className="w-4 h-4 text-emerald-400" />
-      ) : (
-        <Copy className="w-4 h-4 text-zinc-400" />
-      )}
+      {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
     </button>
   );
 }

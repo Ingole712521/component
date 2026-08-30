@@ -1,9 +1,9 @@
 "use client";
 
-import DocsSidebar from "../../_components/docs-sidebar";
+import { CopyButton } from "../../_components/copy-button";
 
-import { useState, useEffect, useRef } from "react";
-import { ChevronRight, Copy, Check, Terminal, BookOpen, Layers, Zap, Code2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronRight, Terminal, BookOpen, Layers, Zap, Code2 } from "lucide-react";
 import Link from "next/link";
 import AnimatedButton from "@/components/ui/AnimatedButton";
 
@@ -115,23 +115,6 @@ const apiRows = [
     { prop: "type", type: `"button" | "submit" | "reset"`, default: `"button"`, desc: "Native button type attribute." },
 ];
 
-function CopyButton({ code }: { code: string }) {
-    const [copied, setCopied] = useState(false);
-    const copy = async () => {
-        await navigator.clipboard.writeText(code);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
-    return (
-        <button
-            onClick={copy}
-            className="absolute top-3 right-3 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
-        >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}
-        </button>
-    );
-}
-
 function CodeBlock({ code, language = "tsx" }: { code: string; language?: string }) {
     return (
         <div className="relative rounded-2xl border border-white/8 bg-zinc-950 overflow-hidden text-sm">
@@ -150,17 +133,12 @@ export default function AnimatedButtonDocs() {
     const [activeSection, setActiveSection] = useState("animated-button");
     const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
     const [installTab, setInstallTab] = useState<"cli" | "manual">("cli");
-    const mainRef = useRef<HTMLElement>(null);
-
     useEffect(() => {
-        const scrollContainer = mainRef.current;
-        if (!scrollContainer) return;
-
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); });
             },
-            { root: scrollContainer, rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+            { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
         );
 
         tocItems.forEach(({ href }) => {
@@ -172,16 +150,8 @@ export default function AnimatedButtonDocs() {
     }, []);
 
     return (
-        <div className="h-screen overflow-hidden bg-[var(--background)] text-[var(--muted)] font-sans">
-            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-                <div className="flex gap-12 h-full pt-24">
-
-                    
-                    <DocsSidebar />
-{/* ── LEFT SIDEBAR ── */}
-                                        {/* ── MAIN CONTENT ── */}
-                    <main ref={mainRef} className="flex-1 min-w-0 h-full overflow-y-auto py-4 pr-2 custom-scrollbar">
-                        <div className="pb-24 space-y-20">
+        <div className="flex gap-12">
+            <div className="flex-1 min-w-0 doc-stack pb-8">
 
                             {/* ── HEADER ── */}
                             <div id="animated-button" className="space-y-4">
@@ -500,49 +470,31 @@ export default function AnimatedButtonDocs() {
                                 </div>
                             </div>
 
-                        </div>
-                    </main>
-
-                    {/* ── RIGHT TOC ── */}
-                    <aside className="hidden xl:block w-56 shrink-0 h-[calc(100vh-7rem)] overflow-y-auto pl-2 custom-scrollbar">
-                        <div className="space-y-6 pb-16">
-                            <div>
-                                <h3 className="text-xs font-semibold text-white mb-3 uppercase tracking-wider opacity-50">
-                                    On This Page
-                                </h3>
-                                <ul className="space-y-2 border-l border-white/5">
-                                    {tocItems.map((item) => {
-                                        const isActive = activeSection === item.href.replace("#", "");
-                                        return (
-                                            <li
-                                                key={item.name}
-                                                className={`pl-4 border-l transition-colors duration-200 ${isActive ? "border-accent" : "border-transparent"}`}
-                                            >
-                                                <Link
-                                                    href={item.href}
-                                                    className={`text-xs transition-colors duration-200 ${isActive ? "text-accent-secondary font-semibold" : "text-zinc-500 hover:text-white"}`}
-                                                >
-                                                    {item.name}
-                                                </Link>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-
-                            <div className="p-5 rounded-2xl border border-white/5 bg-white/[0.02] relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-20 h-20 bg-accent/10 blur-2xl rounded-full" />
-                                <p className="text-xs font-medium text-white mb-1.5 relative z-10">Question? Give us feedback</p>
-                                <Link href="#" className="text-xs text-zinc-500 hover:text-accent-secondary transition-colors relative z-10 flex items-center gap-1 group">
-                                    Edit this page <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                            </div>
-                        </div>
-                    </aside>
-
-                </div>
             </div>
 
+            <aside className="hidden xl:block w-44 shrink-0 sticky top-24 self-start">
+                <p className="text-xs font-medium text-[var(--muted)] uppercase tracking-wider mb-3">
+                    On this page
+                </p>
+                <ul className="space-y-2 border-l border-white/8">
+                    {tocItems.map((item) => {
+                        const isActive = activeSection === item.href.replace("#", "");
+                        return (
+                            <li
+                                key={item.name}
+                                className={`pl-3 border-l -ml-px ${isActive ? "border-white" : "border-transparent"}`}
+                            >
+                                <Link
+                                    href={item.href}
+                                    className={`text-xs ${isActive ? "text-white" : "text-[var(--muted)] hover:text-white"}`}
+                                >
+                                    {item.name}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </aside>
         </div>
     );
 }
