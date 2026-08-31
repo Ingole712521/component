@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #4a72b8;
-  --color-accent-hover: #3b5f9c;
-  --color-accent-muted: #8eadd4;
-  --color-accent-secondary: #8eadd4;
-  --color-surface: #17181c;
-  --color-surface-elevated: #1d1e24;
-  --color-border: rgba(236, 237, 241, 0.1);
+  --color-accent: #111318;
+  --color-accent-hover: #1c1f27;
+  --color-accent-muted: #3d4654;
+  --color-accent-secondary: #3d8fd4;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-border: rgba(17, 19, 24, 0.1);
 
   --font-sans: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sans-face), ui-sans-serif, system-ui, sans-serif;
@@ -15,15 +15,38 @@
 }
 
 :root {
-  --background: #0f1013;
-  --foreground: #eceef2;
-  --muted: #9aa1ad;
+  color-scheme: light;
+  --background: #eef1f4;
+  --foreground: #111318;
+  --muted: #3d4654;
   --header-height: 4rem;
   --radius-shell: 1.75rem;
-  --radius-panel: 1rem;
+  --radius-panel: 1.15rem;
   --radius-control: 0.5rem;
   --radius-pill: 999px;
-  --ease-out: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --text-display: clamp(2.125rem, 4.8vw, 3.25rem);
+  --text-title: clamp(1.75rem, 2.8vw, 2.25rem);
+  --text-body: 1.0625rem;
+  --text-ui: 0.9375rem;
+  --text-meta: 0.8125rem;
+  --leading-display: 1.1;
+  --leading-title: 1.15;
+  --leading-body: 1.6;
+  --leading-ui: 1.25;
+  --leading-meta: 1.45;
+  --leading-sky: 1.65;
+  --track-display: -0.028em;
+  --track-title: -0.024em;
+  --track-body: -0.011em;
+  --track-ui: -0.016em;
+  --track-sky: 0.008em;
+  --weight-display: 700;
+  --weight-title: 600;
+  --weight-ui: 600;
+  --weight-body: 400;
+  --weight-meta: 500;
 }
 
 @layer base {
@@ -38,17 +61,13 @@
 
   body {
     background-color: var(--background);
-    background-image: radial-gradient(
-      90rem 36rem at 8% -12%,
-      color-mix(in srgb, var(--color-accent) 14%, transparent),
-      transparent 55%
-    );
-    background-attachment: fixed;
     color: var(--foreground);
+    caret-color: var(--foreground);
     font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.6;
-    letter-spacing: -0.014em;
+    font-size: var(--text-body);
+    font-weight: var(--weight-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--track-body);
     @apply antialiased;
   }
 
@@ -67,8 +86,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.032em;
-    font-weight: 600;
+    letter-spacing: var(--track-title);
+    font-weight: var(--weight-title);
+    line-height: var(--leading-title);
     text-wrap: balance;
   }
 }
@@ -76,7 +96,10 @@
 @layer utilities {
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70];
-    @apply px-4 py-2 text-sm font-medium;
+    padding: 0.5rem 1rem;
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--track-ui);
     border-radius: var(--radius-pill);
     background: var(--color-accent);
     color: #fff;
@@ -101,29 +124,54 @@
     border-radius: calc(var(--radius-shell) - 6px);
     background: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
   }
 
   .display-xl {
-    @apply text-[2.35rem] sm:text-5xl lg:text-[3.4rem] font-semibold tracking-tight leading-[1.06];
+    font-size: var(--text-display);
+    font-weight: var(--weight-display);
+    letter-spacing: var(--track-display);
+    line-height: var(--leading-display);
     color: var(--foreground);
     text-wrap: balance;
   }
 
   .display-lg {
-    @apply text-3xl sm:text-[2.5rem] font-semibold tracking-tight leading-[1.12];
+    font-size: var(--text-title);
+    font-weight: var(--weight-title);
+    letter-spacing: var(--track-title);
+    line-height: var(--leading-title);
     color: var(--foreground);
     text-wrap: balance;
   }
 
   .body-lg {
-    @apply text-base md:text-[1.05rem] leading-relaxed max-w-[62ch];
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    max-width: 62ch;
     color: var(--muted);
   }
 
   .body-sm {
-    @apply text-sm leading-relaxed;
+    font-size: var(--text-meta);
+    font-weight: var(--weight-meta);
+    line-height: var(--leading-meta);
+    letter-spacing: var(--track-body);
     color: var(--muted);
+  }
+
+  .type-ui {
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--track-ui);
+    line-height: var(--leading-ui);
+  }
+
+  .type-meta {
+    font-size: var(--text-meta);
+    font-weight: var(--weight-meta);
+    letter-spacing: var(--track-ui);
+    line-height: var(--leading-meta);
   }
 
   .accent-text {
@@ -131,7 +179,9 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 pl-5 pr-1.5 py-1.5 text-sm font-medium text-white;
+    @apply inline-flex items-center justify-center gap-2 pl-5 pr-1.5 py-1.5 font-semibold text-white;
+    font-size: var(--text-ui);
+    letter-spacing: var(--track-ui);
     border-radius: var(--radius-pill);
     background-color: var(--color-accent);
     transition: background-color 280ms var(--ease-out), transform 280ms var(--ease-out);
@@ -156,7 +206,9 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 font-semibold;
+    font-size: var(--text-ui);
+    letter-spacing: var(--track-ui);
     border-radius: var(--radius-pill);
     color: var(--foreground);
     border: 1px solid var(--color-border);
@@ -174,7 +226,9 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-3 py-2 text-sm font-medium;
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 font-semibold;
+    font-size: var(--text-ui);
+    letter-spacing: var(--track-ui);
     border-radius: var(--radius-pill);
     color: var(--muted);
     transition: color 220ms var(--ease-out), background-color 220ms var(--ease-out);
@@ -204,8 +258,10 @@
   }
 
   .nav-link {
-    @apply text-sm transition-colors duration-200;
+    font-size: var(--text-ui);
+    letter-spacing: var(--track-ui);
     color: var(--muted);
+    transition: color 180ms var(--ease-out);
   }
 
   .nav-link:hover,
@@ -218,7 +274,10 @@
   }
 
   .doc-h2 {
-    @apply text-base font-semibold mb-3;
+    margin-bottom: 0.75rem;
+    font-size: var(--text-ui);
+    font-weight: var(--weight-ui);
+    letter-spacing: var(--track-ui);
     color: var(--foreground);
   }
 
@@ -229,11 +288,13 @@
   }
 
   .doc-code {
-    @apply relative p-4 font-mono text-[13px] overflow-x-auto;
+    @apply relative p-4 font-mono overflow-x-auto;
+    font-size: var(--text-meta);
+    line-height: 1.55;
     border-radius: var(--radius-panel);
     border: 1px solid var(--color-border);
-    background: #0c0d10;
-    color: var(--muted);
+    background: #111318;
+    color: #d5dae2;
   }
 
   .custom-scrollbar {
@@ -251,17 +312,24 @@
   }
 
   .section-label {
-    @apply text-xs font-medium;
+    font-size: var(--text-meta);
+    font-weight: var(--weight-meta);
+    letter-spacing: var(--track-ui);
     color: var(--muted);
   }
 
   .section-heading {
-    @apply text-3xl sm:text-4xl md:text-[2.7rem] font-semibold tracking-tight leading-[1.1];
+    font-size: var(--text-title);
+    font-weight: var(--weight-title);
+    letter-spacing: var(--track-title);
+    line-height: var(--leading-title);
     color: var(--foreground);
   }
 
   .section-subtitle {
-    @apply text-base md:text-lg leading-relaxed max-w-xl;
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    max-width: 62ch;
     color: var(--muted);
   }
 
@@ -288,7 +356,13 @@
   }
 
   .tag-pill {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    font-size: var(--text-meta);
+    font-weight: var(--weight-meta);
+    letter-spacing: var(--track-ui);
     border-radius: var(--radius-control);
     border: 1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
     background: color-mix(in srgb, var(--color-accent) 12%, transparent);
@@ -301,8 +375,8 @@
     background: color-mix(in srgb, var(--background) 82%, transparent);
     backdrop-filter: blur(20px) saturate(1.2);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 10px 32px -18px rgba(0, 0, 0, 0.55);
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 18px 40px -24px rgba(46, 92, 140, 0.28);
   }
 
   .name-marquee {
@@ -322,12 +396,6 @@
   }
 }
 
-@media (max-width: 767px) {
-  body {
-    background-attachment: scroll;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -343,10 +411,6 @@
 
   .name-marquee {
     animation: none;
-  }
-
-  body {
-    background-attachment: scroll;
   }
 }
 

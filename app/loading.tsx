@@ -1,10 +1,13 @@
+import styles from "./_components/home-world.module.css";
+
 export default function Loading() {
   return (
-    <main
-      id="main-content"
-      className="min-h-dvh flex items-center justify-center px-6"
-    >
-      <div className="w-full max-w-xl h-[min(52vh,440px)]" aria-hidden />
-    </main>
+    <div className={styles.world}>
+      <main id="main-content">
+        <section className={styles.hero} aria-hidden>
+          <div className={styles.heroScrim} />
+        </section>
+      </main>
+    </div>
   );
 }

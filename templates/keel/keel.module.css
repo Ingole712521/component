@@ -1,0 +1,133 @@
+.root {
+  --keel-bg: #eef1ee;
+  --keel-ink: #17201c;
+  --keel-muted: #5c6b64;
+  --keel-line: #cfd8d2;
+  --keel-mark: #1f6b4a;
+  --keel-paper: #f7f8f6;
+  min-height: 100dvh;
+  background: var(--keel-bg);
+  color: var(--keel-ink);
+  font-family: var(--keel-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4.5rem;
+}
+
+.mast {
+  padding-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--keel-line);
+}
+
+.mast h1 {
+  font-size: clamp(2.1rem, 5vw, 3.1rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin: 0 0 0.55rem;
+}
+
+.degree {
+  font-size: 1rem;
+  color: var(--keel-muted);
+  margin: 0 0 1.1rem;
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 58ch;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.25rem 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.kicker {
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--keel-mark);
+  margin: 0 0 1rem;
+}
+
+.item {
+  margin-bottom: 1.15rem;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.item h3 {
+  font-size: 1.02rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.2rem;
+}
+
+.meta {
+  font-size: 0.82rem;
+  color: var(--keel-muted);
+  margin: 0 0 0.35rem;
+}
+
+.item p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--keel-ink);
+}
+
+.clubs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.club {
+  font-size: 0.85rem;
+  padding: 0.45rem 0.75rem;
+  background: var(--keel-paper);
+  border: 1px solid var(--keel-line);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--keel-line);
+  font-size: 0.92rem;
+}
+
+.foot a {
+  color: var(--keel-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--keel-mark);
+}
+
+.foot a:hover {
+  color: var(--keel-mark);
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding: 1.75rem 1.15rem 3.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}

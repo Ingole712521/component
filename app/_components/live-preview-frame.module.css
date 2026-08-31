@@ -1,0 +1,19 @@
+.frame {
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  background: #d8dbe2;
+}
+
+.inner {
+  pointer-events: none;
+  transform-origin: top left;
+  width: 1200px;
+  transform: scale(0.4);
+}
+
+@supports (width: 1cqw) {
+  .inner {
+    transform: scale(calc(100cqw / 1200px));
+  }
+}

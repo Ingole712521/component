@@ -7,7 +7,7 @@ export function UnderConstruction() {
         <ConstructionCanvas />
       </div>
       <div className="max-w-md text-center mt-2">
-        <p className="text-sm text-[var(--muted)] mb-3">Animioui</p>
+        <p className="type-meta text-(--muted) mb-3">Animioui</p>
         <h1 className="display-lg mb-4">Under construction</h1>
         <p className="body-lg mx-auto">
           The site is being rebuilt. Drag the model to look around.
