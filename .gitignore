@@ -7,6 +7,10 @@ node_modules/
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+. claude/
+.skills-lock.json
+.evals.json
+.skills.md
 
 # Next.js
 .next/

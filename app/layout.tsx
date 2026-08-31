@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+  children: _children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -34,7 +34,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <ClientShell>{children}</ClientShell>
+        <ClientShell />
       </body>
     </html>
   );

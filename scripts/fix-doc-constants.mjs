@@ -16,7 +16,6 @@ const fixes = [
   "app/docs/components/ripple-button/page.tsx",
   "app/docs/components/navbar-glass/page.tsx",
   "app/docs/components/navbar-floating/page.tsx",
-  "app/docs/components/navbar-mega/page.tsx",
   "app/docs/components/loading-screen/page.tsx",
   "app/docs/components/3d-image-ring/page.tsx",
 ];
