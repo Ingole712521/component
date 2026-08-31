@@ -66,10 +66,18 @@ export function TemplateStage() {
               {current.studentName} · {current.studentProgram}
             </p>
           </div>
-          <Link href={`/preview/${current.slug}`} className={styles.stageLink}>
-            Open full preview
-            <ArrowRight size={14} weight="bold" />
-          </Link>
+          <div className={styles.stageActions}>
+            <Link href={`/preview/${current.slug}`} className={styles.stageLink}>
+              Open full preview
+              <ArrowRight size={14} weight="bold" />
+            </Link>
+            <a
+              href={`/api/download/${current.slug}`}
+              className={styles.stageLink}
+            >
+              Download source
+            </a>
+          </div>
         </div>
       </div>
     </section>

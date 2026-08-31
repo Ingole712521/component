@@ -1,4 +1,5 @@
 import { Source_Sans_3 } from "next/font/google";
+import { clubs, education, experience, student } from "./constants";
 import styles from "./keel.module.css";
 
 const keelSans = Source_Sans_3({
@@ -6,51 +7,14 @@ const keelSans = Source_Sans_3({
   display: "swap",
 });
 
-const education = [
-  {
-    title: "Ashoka University",
-    meta: "B.Sc. Life Sciences · 2023 to 2027",
-    body: "Coursework in ecology, biostatistics, and science writing. Thesis on urban wetland birds in the NCR.",
-  },
-  {
-    title: "Delhi Public School, R.K. Puram",
-    meta: "Class XII · 2023",
-    body: "Biology, chemistry, mathematics. School nature club lead.",
-  },
-];
-
-const experience = [
-  {
-    title: "Field intern, Wetland Watch",
-    meta: "Jun to Aug 2025 · Delhi",
-    body: "Surveyed 11 water bodies, wrote weekly notes for the public site, and trained two junior volunteers.",
-  },
-  {
-    title: "Teaching assistant, Biostats I",
-    meta: "Spring 2026 · Ashoka",
-    body: "Ran the Friday problem set hour. Built a one-page cheat sheet the class still uses.",
-  },
-];
-
-const clubs = [
-  "Birding circle",
-  "Science writing desk",
-  "Campus farm shift",
-  "Debate union",
-];
-
 export function KeelPortfolio() {
   return (
     <div className={`${styles.root} ${keelSans.className}`}>
       <div className={styles.page}>
         <header className={styles.mast}>
-          <h1>Aisha Rahman</h1>
-          <p className={styles.degree}>Life Sciences, Ashoka University</p>
-          <p className={styles.intro}>
-            I study living systems and write about them so non-scientists can
-            follow. Open to research internships and science communication
-            roles for summer 2027.
-          </p>
+          <h1>{student.name}</h1>
+          <p className={styles.degree}>{student.degree}</p>
+          <p className={styles.intro}>{student.intro}</p>
         </header>
 
         <div className={styles.grid}>
@@ -89,8 +53,8 @@ export function KeelPortfolio() {
         </section>
 
         <footer className={styles.foot}>
-          <a href="mailto:aisha.rahman@example.edu">aisha.rahman@example.edu</a>
-          <a href="https://orcid.org" rel="noreferrer">
+          <a href={`mailto:${student.email}`}>{student.email}</a>
+          <a href={student.orcid} rel="noreferrer">
             ORCID
           </a>
         </footer>

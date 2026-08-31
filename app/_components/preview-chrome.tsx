@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { DownloadSource } from "./download-source";
 import type { TemplateMeta } from "@/templates";
 
 export function PreviewChrome({ template }: { template: TemplateMeta }) {
@@ -16,9 +17,7 @@ export function PreviewChrome({ template }: { template: TemplateMeta }) {
           {template.studentName}
         </span>
       </p>
-      <span className="type-meta text-(--muted) hidden sm:inline">
-        Live preview
-      </span>
+      <DownloadSource slug={template.slug} className="nav-link hidden sm:inline-flex items-center gap-2" />
     </div>
   );
 }

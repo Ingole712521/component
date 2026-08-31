@@ -26,9 +26,9 @@ Students browse on laptop and phone, compare templates side by side, then open a
 
 ## Capabilities and Constraints
 
-Confirmed: home gallery, templates catalog, slug pages, live in-page preview frame, full-page preview route, ten templates with named student examples.
+Confirmed: home gallery, templates catalog, slug pages, live preview, full-page preview, free source download as React TypeScript, ten templates with named student examples. Each template keeps copy in `constants.ts` so students can edit one file.
 
-Do not invent: pricing, paid plans, customer logos, testimonials, download counts, or a working "make your own" editor. Personalization is promised as the next step, not shipped.
+Do not invent: pricing, paid plans, customer logos, testimonials, or download counts. Source download is free. A working in-browser editor is not shipped.
 
 Undecided: how students export or fork a template after they pick one.
 

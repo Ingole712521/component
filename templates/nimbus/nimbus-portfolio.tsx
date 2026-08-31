@@ -1,4 +1,5 @@
 import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import { student, studies } from "./constants";
 import styles from "./nimbus.module.css";
 
 const nimbusDisplay = Fraunces({
@@ -13,37 +14,14 @@ const nimbusSans = IBM_Plex_Sans({
   display: "swap",
 });
 
-const studies = [
-  {
-    title: "Monsoon delay model",
-    meta: "2026 · R · campus buses",
-    body: "Predicted late arrivals on four ISI shuttle routes from rainfall and gate congestion. The ops team used the Friday forecast to shift two morning trips.",
-  },
-  {
-    title: "Lab occupancy heat",
-    meta: "2025 · Python · computer lab",
-    body: "A week of badge swipes turned into a heatmap so students could see which rooms were actually free after 9pm.",
-  },
-  {
-    title: "Survey bias note",
-    meta: "2025 · Stata · methods",
-    body: "Wrote the missing-data section for a hostel food survey. Dropped the rows we could not defend instead of filling them in.",
-  },
-];
-
 export function NimbusPortfolio() {
   return (
     <div className={`${styles.root} ${nimbusSans.className}`}>
       <header className={styles.sky}>
-        <p className={styles.mark}>KS · 2026</p>
-        <h1 className={nimbusDisplay.className}>Kabir Sen</h1>
-        <p className={styles.program}>
-          M.Stat, Indian Statistical Institute, Kolkata
-        </p>
-        <p className={styles.lede}>
-          I turn campus data into notes other students can use. Looking for a
-          summer role in applied statistics or research engineering.
-        </p>
+        <p className={styles.mark}>{student.mark}</p>
+        <h1 className={nimbusDisplay.className}>{student.name}</h1>
+        <p className={styles.program}>{student.program}</p>
+        <p className={styles.lede}>{student.lede}</p>
       </header>
 
       <main className={styles.sheet}>
@@ -57,8 +35,8 @@ export function NimbusPortfolio() {
             </article>
           ))}
         </section>
-        <a className={styles.mail} href="mailto:kabir.sen@example.edu">
-          kabir.sen@example.edu
+        <a className={styles.mail} href={`mailto:${student.email}`}>
+          {student.email}
         </a>
       </main>
     </div>

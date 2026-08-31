@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { DownloadSource } from "../../_components/download-source";
 import { SiteShell } from "../../_components/site-shell";
 import { SkyBand } from "../../_components/sky-band";
 import { TemplateCardGrid } from "../../_components/template-card-grid";
@@ -70,9 +71,10 @@ export default async function TemplateSlugPage({
                   <ArrowRight size={14} weight="bold" />
                 </span>
               </Link>
-              <Link href="/templates" className={styles.btnSecondary}>
-                All templates
-              </Link>
+              <DownloadSource
+                slug={template.slug}
+                className={styles.btnSecondary}
+              />
             </>
           }
         />

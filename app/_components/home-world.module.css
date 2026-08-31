@@ -427,6 +427,13 @@
   text-decoration: none;
 }
 
+.stageActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+}
+
 /* Gallery */
 
 .gallery {
