@@ -1,12 +1,11 @@
 import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import type { CinematicContent } from "./types";
-import styles from "./cinematic.module.css";
 
 export function CinematicPortfolio({ content }: { content: CinematicContent }) {
   return (
-    <div className={styles.root}>
-      <div className={styles.scene}>
+    <div className="cine-root">
+      <div className="cine-scene">
         <Image
           src={content.scene.src}
           alt={content.scene.alt}
@@ -15,66 +14,66 @@ export function CinematicPortfolio({ content }: { content: CinematicContent }) {
           sizes="100vw"
         />
       </div>
-      <div className={styles.scrim} aria-hidden />
-      <div className={styles.stage}>
-        <header className={styles.nav}>
-          <a href="#top" className={styles.brand}>
-            <span className={styles.badge} aria-hidden>
+      <div className="cine-scrim" aria-hidden />
+      <div className="cine-stage">
+        <header className="cine-nav">
+          <a href="#top" className="cine-brand">
+            <span className="cine-badge" aria-hidden>
               {content.initials}
             </span>
             {content.mark}
           </a>
-          <nav className={styles.links} aria-label="On this page">
+          <nav className="cine-links" aria-label="On this page">
             {content.nav.map((item) => (
-              <a key={item.href} href={item.href} className={styles.link}>
+              <a key={item.href} href={item.href} className="cine-link">
                 {item.label}
               </a>
             ))}
           </nav>
-          <a href={`mailto:${content.email}`} className={styles.login}>
+          <a href={`mailto:${content.email}`} className="cine-login">
             Email
           </a>
         </header>
-        <div className={styles.hero} id="top">
-          <div className={styles.copy}>
-            <h1 className={styles.headline}>
-              <span className={styles.line}>{content.headline[0]}</span>
-              <span className={styles.line}>{content.headline[1]}</span>
+        <div className="cine-hero" id="top">
+          <div className="cine-copy">
+            <h1 className="cine-headline">
+              <span className="cine-line">{content.headline[0]}</span>
+              <span className="cine-line">{content.headline[1]}</span>
             </h1>
-            <p className={styles.standfirst}>{content.standfirst}</p>
+            <p className="cine-standfirst">{content.standfirst}</p>
           </div>
-          <div className={styles.aside}>
-            <p className={styles.lede}>{content.lede}</p>
-            <div className={styles.actions}>
-              <a href={content.primary.href} className={styles.primary}>
+          <div className="cine-aside">
+            <p className="cine-lede">{content.lede}</p>
+            <div className="cine-actions">
+              <a href={content.primary.href} className="cine-primary">
                 {content.primary.label}
               </a>
-              <a href={content.secondary.href} className={styles.secondary}>
+              <a href={content.secondary.href} className="cine-secondary">
                 {content.secondary.label}
                 <ArrowRight size={14} weight="bold" />
               </a>
             </div>
           </div>
         </div>
-        <dl className={styles.stats}>
+        <dl className="cine-stats">
           {content.stats.map((stat) => (
             <div key={stat.value}>
-              <dt className={styles.statValue}>{stat.value}</dt>
-              <dd className={styles.statLabel}>{stat.label}</dd>
+              <dt className="cine-stat-value">{stat.value}</dt>
+              <dd className="cine-stat-label">{stat.label}</dd>
             </div>
           ))}
         </dl>
       </div>
-      <section className={styles.work} id="work" aria-labelledby="work-heading">
-        <h2 className={styles.workTitle} id="work-heading">
+      <section className="cine-work" id="work" aria-labelledby="work-heading">
+        <h2 className="cine-work-title" id="work-heading">
           {content.workHeading}
         </h2>
-        <div className={styles.list}>
+        <div className="cine-list">
           {content.work.map((item) => (
-            <article key={item.title} className={styles.item}>
-              <h3 className={styles.itemTitle}>{item.title}</h3>
-              <p className={styles.itemMeta}>{item.meta}</p>
-              <p className={styles.itemBody}>{item.body}</p>
+            <article key={item.title} className="cine-item">
+              <h3 className="cine-item-title">{item.title}</h3>
+              <p className="cine-item-meta">{item.meta}</p>
+              <p className="cine-item-body">{item.body}</p>
             </article>
           ))}
         </div>

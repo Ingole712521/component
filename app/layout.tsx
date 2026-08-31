@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { SmoothScroll } from "./_components/smooth-scroll";
 import "./globals.css";
+import "./cinematic.css";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
