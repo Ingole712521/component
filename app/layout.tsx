@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import ClientShell from "@/components/layout/ClientShell";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -21,10 +20,15 @@ export const metadata: Metadata = {
     template: "%s | Animioui",
   },
   description: "Animioui is under construction.",
+  openGraph: {
+    title: "Animioui",
+    description: "Animioui is under construction.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
-  children: _children,
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -34,7 +38,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <ClientShell />
+        {children}
       </body>
     </html>
   );
