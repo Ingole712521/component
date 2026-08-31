@@ -1,0 +1,102 @@
+.root {
+  --quill-ink: #1c1712;
+  --quill-muted: #5c5348;
+  --quill-paper: #f7f1e6;
+  --quill-line: rgba(28, 23, 18, 0.12);
+  min-height: 100dvh;
+  color: var(--quill-ink);
+  background:
+    radial-gradient(80% 60% at 88% -10%, #f0b89a 0%, transparent 46%),
+    radial-gradient(70% 50% at 8% 0%, #d7e4f0 0%, transparent 42%),
+    linear-gradient(180deg, #6a9cc4 0%, #c9b39a 34%, var(--quill-paper) 62%);
+}
+
+.sky {
+  padding: 2.5rem 1.5rem 1.8rem;
+  color: #fff;
+}
+
+.mark {
+  margin: 0 0 1.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.sky h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 8vw, 4.6rem);
+  font-weight: 600;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
+  text-shadow: 0 12px 36px rgb(40 30 20 / 0.28);
+}
+
+.lede {
+  margin: 1rem 0 0;
+  max-width: 40ch;
+  font-size: 1.05rem;
+  line-height: 1.62;
+  letter-spacing: 0.008em;
+  color: #fff;
+  text-shadow: 0 8px 22px rgb(40 30 20 / 0.4);
+}
+
+.folio {
+  margin: 0 0.9rem 0;
+  padding: 1.5rem 1.3rem 3.2rem;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: var(--quill-paper);
+  box-shadow: 0 -16px 36px -24px rgb(80 50 30 / 0.28);
+}
+
+.piece {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--quill-line);
+}
+
+.kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--quill-muted);
+}
+
+.piece h2 {
+  margin: 0 0 0.55rem;
+  max-width: 22ch;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.piece p:last-child {
+  margin: 0;
+  max-width: 58ch;
+  line-height: 1.6;
+  color: var(--quill-muted);
+}
+
+.mail {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--quill-ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .sky {
+    padding: 3.1rem 3rem 2.2rem;
+  }
+
+  .folio {
+    margin: 0 1.6rem 0;
+    padding: 2rem 2.4rem 4rem;
+  }
+}

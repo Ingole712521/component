@@ -3,11 +3,12 @@
 import { useId, useState, type KeyboardEvent } from "react";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react";
-import { templates, type TemplateEntry } from "@/templates";
+import { getFeaturedTemplates, type TemplateEntry } from "@/templates";
 import { LivePreviewFrame } from "./live-preview-frame";
 import styles from "./home-world.module.css";
 
 export function TemplateStage() {
+  const templates = getFeaturedTemplates();
   const [active, setActive] = useState(0);
   const tablistId = useId();
   const current = templates[active] ?? templates[0];

@@ -101,7 +101,7 @@ White copy on the painting uses the same body size one step heavier (500), leadi
 
 ## Layout
 
-The homepage is a column: sticky centered pill nav, full-bleed sky hero, live template stage inside the first viewport, then an asymmetric gallery. Do not return to a left-copy / right-preview split on this surface. Mobile stacks to one column with a hamburger that morphs to an X.
+The homepage is a column: sticky centered pill nav, full-bleed sky hero, live template stage inside the first viewport, then an asymmetric gallery. Inner marketing pages (`/templates`, `/templates/[slug]`, `/how-it-works`) reuse the painted sky as a shorter band, then paper catalog or steps. Do not return to a left-copy / right-preview split on these surfaces. Mobile stacks to one column with a hamburger that morphs to an X.
 
 ## Elevation & Depth
 
@@ -113,15 +113,16 @@ Pills for navigation, tabs, and buttons. Large squircles for the stage (`1.75rem
 
 ## Components
 
-- **Nav pill:** Floating, not edge-glued. Logo with paper-plane mark, four links on desktop, morphing menu on small screens.
+- **Nav pill:** Floating, not edge-glued. Logo with paper-plane mark, Templates, How it works, and Atlas on desktop, morphing menu on small screens.
 - **Primary button:** Ink fill, nested circular arrow. Scale to `0.97` on press.
 - **Secondary button:** Paper fill on the sky.
-- **Template stage:** Category tabs (Engineering, Design, Campus) switch a live scaled page. Footer names the student and offers "Open full preview".
-- **Gallery cards:** Live preview crop, name, tagline, whole-card link to preview.
+- **Template stage:** Featured category tabs (Engineering, Design, Campus) switch a live scaled page. Footer names the student and offers "Open full preview".
+- **Gallery cards:** Live preview crop, name, tagline, whole-card link to `/templates/[slug]`.
+- **Catalog filters:** Pill links for All plus each field. They change the query, not a fake tab animation.
 
 ## Do's and Don'ts
 
-- Do show Atlas, Lumen, or Keel as a live page.
+- Do show Atlas, Lumen, Keel, Nimbus, Harbor, Quill, Ridge, Willow, Meridian, or Flint as a live page.
 - Do keep conversion to preview and pick. Do not invent pricing, logos, or testimonials.
 - Don't clone Voicelet copy, discounts, or survey widgets.
 - Don't gray-on-white body text; tint muted copy from the sky.

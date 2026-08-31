@@ -5,6 +5,7 @@ import { getTemplate, getTemplateSlugs } from "@/templates";
 
 type PreviewPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ embed?: string }>;
 };
 
 export function generateStaticParams() {
@@ -29,8 +30,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function PreviewPage({ params }: PreviewPageProps) {
+export default async function PreviewPage({
+  params,
+  searchParams,
+}: PreviewPageProps) {
   const { slug } = await params;
+  const { embed } = await searchParams;
   const template = getTemplate(slug);
 
   if (!template) {
@@ -38,13 +43,14 @@ export default async function PreviewPage({ params }: PreviewPageProps) {
   }
 
   const { Component } = template;
+  const isEmbed = embed === "1";
 
   return (
-    <>
-      <PreviewChrome template={template} />
+    <div data-embed={isEmbed ? "1" : undefined}>
+      {isEmbed ? null : <PreviewChrome template={template} />}
       <main id="main-content">
         <Component />
       </main>
-    </>
+    </div>
   );
 }

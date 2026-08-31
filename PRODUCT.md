@@ -22,11 +22,11 @@ Templates are live, full-page sites you can open and inspect, not static mock th
 
 ## Operating Context
 
-Students browse on laptop and phone, compare templates side by side, then open a full preview. Existing templates: Atlas (engineering), Lumen (design), Keel (campus). Full previews live at `/preview/[slug]`. The homepage is the marketing and selection surface.
+Students browse on laptop and phone, compare templates side by side, then open a full preview. Templates: Atlas (engineering), Lumen (design), Keel (campus), Nimbus (data), Harbor (architecture), Quill (writing), Ridge (product), Willow (health), Meridian (policy), Flint (finance). Catalog at `/templates` and `/templates/[slug]`. Full previews live at `/preview/[slug]`. The homepage is the marketing and selection surface.
 
 ## Capabilities and Constraints
 
-Confirmed: home gallery, live in-page preview frame, full-page preview route, three templates with named student examples.
+Confirmed: home gallery, templates catalog, slug pages, live in-page preview frame, full-page preview route, ten templates with named student examples.
 
 Do not invent: pricing, paid plans, customer logos, testimonials, download counts, or a working "make your own" editor. Personalization is promised as the next step, not shipped.
 
@@ -40,7 +40,7 @@ Binding visual constraint from this request: restage the homepage in the cinemat
 
 ## Evidence on Hand
 
-Real: Atlas, Lumen, and Keel templates with student names, programs, and taglines in `templates/`. Live preview and full preview already work.
+Real: Atlas, Lumen, Keel, Nimbus, Harbor, Quill, Ridge, Willow, Meridian, and Flint templates with student names, programs, and taglines in `templates/`. Live preview and full preview already work.
 
 Absent: customer quotes, company logos, usage metrics, pricing. Future work must not fabricate them.
 

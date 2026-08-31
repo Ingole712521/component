@@ -5,7 +5,7 @@ import type { TemplateMeta } from "@/templates";
 export function PreviewChrome({ template }: { template: TemplateMeta }) {
   return (
     <div className="sticky top-0 z-20 flex h-14 items-center justify-between gap-4 border-b border-(--color-border) bg-(--background) px-4 sm:px-6">
-      <Link href="/#templates" className="nav-link inline-flex items-center gap-2">
+      <Link href="/templates" className="nav-link inline-flex items-center gap-2">
         <ArrowLeft size={16} weight="bold" />
         Templates
       </Link>

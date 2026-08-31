@@ -7,4 +7,5 @@ export const lumenMeta: TemplateMeta = {
   tagline: "Image-led site for design and studio students.",
   studentName: "Rhea Kapoor",
   studentProgram: "Communication Design, NID Ahmedabad",
+  featured: true,
 };

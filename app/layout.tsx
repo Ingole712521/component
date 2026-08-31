@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" translate="no">
-      <body className={`${bricolage.variable} ${jetbrains.variable}`}>
+      <body className={`${bricolage.variable} ${jetbrains.variable} ${bricolage.className}`}>
         <span
           hidden
           aria-hidden="true"

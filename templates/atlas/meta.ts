@@ -7,4 +7,5 @@ export const atlasMeta: TemplateMeta = {
   tagline: "Project-first layout for CS and engineering students.",
   studentName: "Kavya Reddy",
   studentProgram: "B.Tech CSE, BITS Pilani",
+  featured: true,
 };

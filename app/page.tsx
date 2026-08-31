@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { HomeFooter } from "./_components/home-footer";
 import { HomeGallery } from "./_components/home-gallery";
-import { HomeNav } from "./_components/home-nav";
+import { SiteShell } from "./_components/site-shell";
 import { TemplateStage } from "./_components/template-stage";
 import styles from "./_components/home-world.module.css";
 
@@ -15,8 +14,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className={styles.world}>
-      <HomeNav />
+    <SiteShell>
       <main id="main-content">
         <section className={styles.hero} aria-labelledby="home-heading">
           <div className={styles.heroMedia}>
@@ -41,7 +39,7 @@ export default function HomePage() {
               first jobs.
             </p>
             <div className={styles.actions}>
-              <a href="#templates" className={styles.btnPrimary}>
+              <a href="/templates" className={styles.btnPrimary}>
                 Browse templates
                 <span className={styles.btnIcon} aria-hidden>
                   <ArrowRight size={14} weight="bold" />
@@ -56,7 +54,6 @@ export default function HomePage() {
         </section>
         <HomeGallery />
       </main>
-      <HomeFooter />
-    </div>
+    </SiteShell>
   );
 }

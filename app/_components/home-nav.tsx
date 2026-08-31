@@ -6,10 +6,9 @@ import { PaperPlaneTilt } from "@phosphor-icons/react";
 import styles from "./home-world.module.css";
 
 const links = [
-  { href: "#templates", label: "Templates" },
+  { href: "/templates", label: "Templates" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/preview/atlas", label: "Atlas" },
-  { href: "/preview/lumen", label: "Lumen" },
-  { href: "/preview/keel", label: "Keel" },
 ];
 
 export function HomeNav() {

@@ -2,18 +2,19 @@
   container-type: inline-size;
   position: relative;
   overflow: hidden;
-  background: #d8dbe2;
+  background: #eef1f4;
 }
 
 .inner {
   pointer-events: none;
   transform-origin: top left;
   width: 1200px;
-  transform: scale(0.4);
+  min-height: 100%;
+  transform: scale(0.35);
 }
 
 @supports (width: 1cqw) {
   .inner {
-    transform: scale(calc(100cqw / 1200px));
+    transform: scale(calc(100cqi / 1200px));
   }
 }
