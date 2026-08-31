@@ -9,9 +9,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  transpilePackages: ["three", "@react-three/fiber", "@react-three/drei"],
   experimental: {
-    // lucide-react and react-icons are optimized by default in Next.js 16
-    optimizePackageImports: ["framer-motion"],
+    optimizePackageImports: ["framer-motion", "@react-three/drei"],
   },
 };
 
