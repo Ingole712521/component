@@ -1,89 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Box, Code2, Layers, Terminal, Zap } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-const features = [
+const points = [
   {
-    title: "Copy-paste ownership",
-    description: "Components land in your repo. No hidden npm dependency to fight at upgrade time.",
-    icon: Code2,
+    title: "The file is yours",
+    body: "Components land in your repo. Change the spring, the copy, the radius.",
     href: "/docs",
-    className: "lg:col-span-2 lg:row-span-2",
-    tint: "from-blue-500/10 to-transparent",
   },
   {
-    title: "GSAP primitives",
-    description: "Buttons, modals, and inputs with production-grade motion curves.",
-    icon: Zap,
+    title: "GSAP where it counts",
+    body: "Buttons, modals, and inputs with curves you can read in the source.",
     href: "/docs/components/gsap-button",
-    className: "lg:col-span-1",
-    tint: "from-zinc-500/10 to-transparent",
   },
   {
-    title: "Framer Motion",
-    description: "Scroll reveals, page transitions, and layout animations included.",
-    icon: Layers,
+    title: "Framer Motion included",
+    body: "Scroll reveals, layout animations, and page transitions already wired.",
     href: "/docs/components/scroll-reveal",
-    className: "lg:col-span-1",
-    tint: "from-sky-500/10 to-transparent",
   },
   {
-    title: "CLI workflow",
-    description: "Init once, add components on demand with a single command.",
-    icon: Terminal,
-    href: "/docs",
-    className: "lg:col-span-1",
-    tint: "from-emerald-500/10 to-transparent",
-  },
-  {
-    title: "Typed & accessible",
-    description: "TypeScript-first components with keyboard and reduced-motion support.",
-    icon: Box,
-    href: "/docs/components/button",
-    className: "lg:col-span-2",
-    tint: "from-indigo-500/10 to-transparent",
+    title: "One CLI command",
+    body: "Init once. Add what you need. Skip the rest.",
+    href: "/docs#installation",
   },
 ];
 
 export default function HomeFeatures() {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="features" className="border-b border-white/8 scroll-mt-24">
-      <div className="page-container-wide py-20 md:py-28">
-        <div className="max-w-2xl mb-12">
-          <h2 className="display-lg mb-4">
-            Everything you need to ship polished interfaces
-          </h2>
+    <section id="features" className="scroll-mt-28">
+      <div className="page-container-wide py-24 md:py-32">
+        <div className="max-w-2xl mb-14">
+          <h2 className="display-lg mb-4">A kit, not a wrapper</h2>
           <p className="body-lg">
-            Forty-plus components across buttons, navigation, cards, and page transitions. Pick what you need, skip what you do not.
+            Forty-plus components. You pick the ones that earn a place in the product.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-          {features.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              className={feature.className}
-              initial={{ opacity: 0, y: 20 }}
+        <ol className="grid md:grid-cols-2 gap-x-12">
+          {points.map((point, i) => (
+            <motion.li
+              key={point.title}
+              initial={reduce ? false : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.55, delay: reduce ? 0 : i * 0.05, ease: [0.32, 0.72, 0, 1] }}
+              className="border-t border-[var(--color-border)] py-8"
             >
-              <Link
-                href={feature.href}
-                className={`group block h-full surface-panel-hover p-6 md:p-8 relative overflow-hidden ${feature.className.includes("row-span-2") ? "md:min-h-[280px]" : ""}`}
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.tint} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                />
-                <feature.icon className="w-5 h-5 text-blue-400 mb-4 relative" strokeWidth={1.75} />
-                <h3 className="text-lg font-semibold text-white mb-2 relative">{feature.title}</h3>
-                <p className="body-sm relative">{feature.description}</p>
+              <Link href={point.href} className="group block">
+                <h3 className="text-lg font-semibold mb-2 group-hover:text-[var(--color-accent-muted)] transition-colors">
+                  {point.title}
+                </h3>
+                <p className="body-sm max-w-[42ch]">{point.body}</p>
               </Link>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

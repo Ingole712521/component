@@ -1,57 +1,53 @@
-"use client";
-
 import Link from "next/link";
-import { Reveal } from "@/components/motion/Reveal";
-
-const stats = [
-  { label: "Founded", value: "2024" },
-  { label: "Components", value: "40+" },
-  { label: "Open source", value: "Yes" },
-  { label: "Built with", value: "Next.js" },
-];
+import { ArrowRight } from "lucide-react";
 
 export default function About() {
   return (
     <div className="page-container py-20 md:py-28">
-      <Reveal className="max-w-2xl mb-16">
-        <p className="section-label mb-4">About</p>
-        <h1 className="section-heading mb-4">
-          Animioui <span className="gradient-text">UI</span>
-        </h1>
-        <p className="section-subtitle">
-          A copy-paste component library for developers who want beautiful motion and full
-          control over their codebase.
+      <header className="max-w-3xl mb-16">
+        <h1 className="display-xl mb-5">About Animioui</h1>
+        <p className="body-lg">
+          A copy-paste component library for developers who want motion they can edit, not a black-box dependency.
         </p>
-      </Reveal>
+      </header>
 
-      <Reveal delay={0.1}>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mb-16">
-          {stats.map((stat) => (
-            <div key={stat.label} className="card-glass p-6 text-center">
-              <p className="text-2xl font-semibold text-white mb-1">{stat.value}</p>
-              <p className="text-xs text-[var(--muted)] uppercase tracking-wider">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
+      <div className="shell max-w-3xl mb-14">
+        <dl className="shell-inner grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[var(--color-border)]">
+          <div className="p-6">
+            <dt className="text-xs text-[var(--muted)] mb-1">Founded</dt>
+            <dd className="text-lg font-semibold tabular-nums">2024</dd>
+          </div>
+          <div className="p-6">
+            <dt className="text-xs text-[var(--muted)] mb-1">Components</dt>
+            <dd className="text-lg font-semibold tabular-nums">40+</dd>
+          </div>
+          <div className="p-6">
+            <dt className="text-xs text-[var(--muted)] mb-1">License</dt>
+            <dd className="text-lg font-semibold">MIT</dd>
+          </div>
+        </dl>
+      </div>
 
-      <Reveal delay={0.18} className="max-w-2xl space-y-4">
-        <p className="text-sm text-[var(--muted)]">
+      <div className="max-w-2xl space-y-6">
+        <p className="text-[var(--muted)] leading-relaxed">
           Created by{" "}
           <Link
             href="https://nehalingole.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-violet-300 hover:text-white transition-colors"
+            className="text-[var(--foreground)] underline underline-offset-4 decoration-[var(--color-border)] hover:decoration-[var(--foreground)]"
           >
             Nehal Ingole
           </Link>
-          . The goal is simple: ship polished UI without fighting opaque dependencies.
+          . Install a component, change the motion, commit it with the rest of your app.
         </p>
         <Link href="/docs" className="btn-primary inline-flex">
-          Read the docs
+          Get started
+          <span className="btn-primary-icon">
+            <ArrowRight className="w-4 h-4" />
+          </span>
         </Link>
-      </Reveal>
+      </div>
     </div>
   );
 }

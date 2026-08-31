@@ -36,6 +36,9 @@ coverage/
 .DS_Store
 *.pem
 
+# Local agent skills and design tooling
+.agents/
+
 # Typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -4,7 +4,6 @@ import HomeFeatures from "@/components/sections/HomeFeatures";
 import HomeWorkflow from "@/components/sections/HomeWorkflow";
 import HomeShowcase from "@/components/sections/HomeShowcase";
 import Pricing from "@/components/sections/Pricing";
-import HomeCta from "@/components/sections/HomeCta";
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
       <HomeWorkflow />
       <HomeShowcase />
       <Pricing />
-      <HomeCta />
     </>
   );
 }

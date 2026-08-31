@@ -1,8 +1,6 @@
 export interface SidebarItem {
   name: string;
   href: string;
-  active?: boolean;
-  version?: string;
   badge?: string;
 }
 
@@ -13,7 +11,7 @@ export interface SidebarSection {
 
 export const sidebarSections: SidebarSection[] = [
   {
-    title: "Getting Started",
+    title: "Getting started",
     items: [
       { name: "Introduction", href: "/docs" },
       { name: "Installation", href: "/docs#installation" },
@@ -24,41 +22,39 @@ export const sidebarSections: SidebarSection[] = [
     items: [
       { name: "Button", href: "/docs/components/button" },
       { name: "Ripple Button", href: "/docs/components/ripple-button" },
-      { name: "Pricing", href: "/docs/components/pricing", badge: "NEW" },
-      { name: "Water Fill Button", href: "/docs/components/water-fill-button", badge: "NEW" },
-      { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button", badge: "NEW" },
+      { name: "Water Fill Button", href: "/docs/components/water-fill-button" },
+      { name: "Orbit Logo Button", href: "/docs/components/orbit-logo-button" },
+      { name: "Animated Button", href: "/docs/components/animated-button" },
+      { name: "3D Buttons", href: "/docs/components/3d-buttons" },
+      { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift" },
+      { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube" },
+      { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring" },
+      { name: "3D Buttons Showcase", href: "/docs/components/3d-buttons/showcase" },
       { name: "Card", href: "/docs/components/card" },
-      { name: "Loader", href: "/docs/components/loader", badge: "NEW" },
-      { name: "Loading Screen", href: "/docs/components/loading-screen", badge: "NEW" },
-      { name: "Smart Wrap Text", href: "/docs/components/smart-wrap-text", badge: "NEW" },
       { name: "Input", href: "/docs/components/input" },
       { name: "Badge", href: "/docs/components/badge" },
+      { name: "Loader", href: "/docs/components/loader" },
+      { name: "Loading Screen", href: "/docs/components/loading-screen" },
+      { name: "Pricing", href: "/docs/components/pricing" },
       { name: "Timeline", href: "/docs/components/timeline" },
-      { name: "Payment Status", href: "/docs/components/payment-status-pill", badge: "NEW" },
-      { name: "Tech Marquee", href: "/docs/components/tech-marquee", badge: "NEW" },
-      { name: "3D Buttons", href: "/docs/components/3d-buttons", badge: "NEW" },
-      { name: "Lift 3D Button", href: "/docs/components/3d-buttons/lift", badge: "NEW" },
-      { name: "Cube 3D Button", href: "/docs/components/3d-buttons/cube", badge: "NEW" },
-      { name: "Spring 3D Button", href: "/docs/components/3d-buttons/spring", badge: "NEW" },
-      { name: "3D Buttons Showcase", href: "/docs/components/3d-buttons/showcase", badge: "NEW" },
-      { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
-      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
+      { name: "Payment Status", href: "/docs/components/payment-status-pill" },
+      { name: "Smart Wrap Text", href: "/docs/components/smart-wrap-text" },
+      { name: "Tech Marquee", href: "/docs/components/tech-marquee" },
     ],
   },
   {
-    title: "Animations",
+    title: "Motion",
     items: [
       { name: "Floating Dock", href: "/docs/components/floating-dock" },
       { name: "Text Reveal", href: "/docs/components/text-reveal" },
-      { name: "Scroll Reveal", href: "/docs/components/scroll-reveal", badge: "NEW" },
+      { name: "Scroll Reveal", href: "/docs/components/scroll-reveal" },
       { name: "Flip Card", href: "/docs/components/flip-card" },
       { name: "Gradient Text", href: "/docs/components/gradient-text" },
       { name: "Spotlight Card", href: "/docs/components/spotlight-card" },
-      { name: "3D Image Ring", href: "/docs/components/3d-image-ring", badge: "NEW" },
-      { name: "Animated Button", href: "/docs/components/animated-button", badge: "NEW" },
-      { name: "Page Transition", href: "/docs/components/page-transition", badge: "NEW" },
-      { name: "SVG Path Page Transition", href: "/docs/components/svg-path-page-transition", badge: "NEW" },
-      { name: "Carousel", href: "/docs/components/carousel", badge: "NEW" },
+      { name: "3D Image Ring", href: "/docs/components/3d-image-ring" },
+      { name: "Carousel", href: "/docs/components/carousel" },
+      { name: "Page Transition", href: "/docs/components/page-transition" },
+      { name: "SVG Path Transition", href: "/docs/components/svg-path-page-transition" },
     ],
   },
   {
@@ -71,7 +67,7 @@ export const sidebarSections: SidebarSection[] = [
       { name: "GSAP Alert", href: "/docs/components/gsap-alert" },
       { name: "GSAP Modal", href: "/docs/components/gsap-modal" },
       { name: "Auth Card", href: "/docs/components/auth-card" },
-      { name: "Mouse Tracker", href: "/docs/components/mouse-tracker", badge: "NEW" },
+      { name: "Mouse Tracker", href: "/docs/components/mouse-tracker" },
     ],
   },
   {

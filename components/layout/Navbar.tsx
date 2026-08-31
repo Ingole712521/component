@@ -3,38 +3,31 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Github, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Docs", href: "/docs" },
-  { name: "Components", href: "/docs/components/button" },
-  { name: "Pricing", href: "/#pricing" },
-  { name: "Contact", href: "/contact" },
+  { name: "Docs", href: "/docs", match: "/docs" },
+  { name: "Components", href: "/docs/components/button", match: "/docs/components" },
+  { name: "Pricing", href: "/#pricing", match: null },
+  { name: "Contact", href: "/contact", match: "/contact" },
 ];
 
-function isLinkActive(pathname: string, href: string) {
-  if (href === "/docs") return pathname === "/docs";
-  if (href.startsWith("/docs/")) return pathname.startsWith(href);
-  if (href.startsWith("/#")) return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
+function isLinkActive(pathname: string, href: string, match: string | null) {
+  if (href.startsWith("/#")) return false;
+  if (match === "/docs") return pathname === "/docs";
+  if (match) return pathname === match || pathname.startsWith(`${match}/`);
+  return pathname === href;
 }
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isDocs = pathname?.startsWith("/docs") ?? false;
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -43,100 +36,116 @@ export default function Navbar() {
     };
   }, [open]);
 
-  return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 h-16 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-white/8 bg-[var(--background)]/85 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
-      }`}
-    >
-      <div className="page-container-wide h-full flex items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <span className="w-2 h-2 rounded-full bg-blue-500 group-hover:scale-125 transition-transform" />
-          <span className="text-sm font-semibold text-white tracking-tight">Animioui</span>
-        </Link>
-
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`nav-link relative ${isLinkActive(pathname, link.href) ? "nav-link-active" : ""}`}
-            >
-              {link.name}
-              {isLinkActive(pathname, link.href) && (
-                <motion.span
-                  layoutId="nav-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-px bg-blue-500"
-                />
-              )}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden md:flex items-center gap-2">
+  const links = (
+    <>
+      {navLinks.map((link) => {
+        const active = isLinkActive(pathname, link.href, link.match);
+        return (
           <Link
-            href="https://github.com/Ingole712521/component"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost"
-            aria-label="GitHub"
+            key={link.name}
+            href={link.href}
+            className={`nav-link ${active ? "nav-link-active" : ""}`}
+            aria-current={active ? "page" : undefined}
           >
-            <Github className="w-4 h-4" />
+            {link.name}
           </Link>
-          <Link href="/docs" className="btn-primary">
-            Get started
-          </Link>
-        </div>
+        );
+      })}
+    </>
+  );
 
-        <button
-          type="button"
-          className="md:hidden btn-ghost"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-      </div>
+  return (
+    <div
+      className={
+        isDocs
+          ? "fixed top-0 inset-x-0 z-50"
+          : "fixed top-4 inset-x-0 z-50 px-4 flex justify-center"
+      }
+    >
+      <header
+        className={
+          isDocs
+            ? "h-16 border-b border-[var(--color-border)] bg-[var(--background)]"
+            : "island-nav h-14 w-full max-w-5xl"
+        }
+      >
+        <div className={`${isDocs ? "page-container-wide" : "px-4 sm:px-5"} h-full flex items-center justify-between gap-6`}>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-accent)]" aria-hidden />
+            <span className="text-sm font-semibold tracking-tight">Animioui</span>
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-7" aria-label="Primary">
+            {links}
+          </nav>
+
+          <div className="hidden md:flex items-center">
+            <Link
+              href="https://github.com/Ingole712521/component"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              aria-label="GitHub repository"
+            >
+              <Github className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            className="md:hidden btn-ghost"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </header>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-16 inset-x-0 border-b border-white/8 bg-[var(--background)]/95 backdrop-blur-xl px-5 py-4"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
+            className={`${
+              isDocs
+                ? "absolute top-16 inset-x-0 border-b border-[var(--color-border)] bg-[var(--background)]"
+                : "absolute top-[4.25rem] inset-x-4 rounded-[1.25rem] border border-[var(--color-border)] bg-[var(--background)]"
+            } px-5 py-4 md:hidden`}
           >
-            <nav className="flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
+            <nav className="flex flex-col gap-1" aria-label="Mobile">
+              {navLinks.map((link) => {
+                const active = isLinkActive(pathname, link.href, link.match);
+                return (
                   <Link
+                    key={link.name}
                     href={link.href}
-                    className={`block px-2 py-3 rounded-lg text-sm transition-colors ${
-                      isLinkActive(pathname, link.href)
-                        ? "text-white bg-blue-500/10 border border-blue-500/20"
+                    className={`block px-2 py-3 rounded-xl text-sm ${
+                      active
+                        ? "text-[var(--foreground)] bg-[var(--color-surface-elevated)]"
                         : "text-[var(--muted)]"
                     }`}
                   >
                     {link.name}
                   </Link>
-                </motion.div>
-              ))}
-              <hr className="border-white/8 my-2" />
-              <Link href="/docs" className="btn-primary w-full mt-1">
-                Get started
-              </Link>
+                );
+              })}
+              <hr className="border-[var(--color-border)] my-2" />
+              <a
+                href="https://github.com/Ingole712521/component"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full mt-1"
+              >
+                GitHub
+              </a>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </div>
   );
 }

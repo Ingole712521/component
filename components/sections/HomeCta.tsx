@@ -6,30 +6,23 @@ import { ArrowRight } from "lucide-react";
 
 export default function HomeCta() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_100%,rgba(59,130,246,0.15),transparent)] pointer-events-none" />
-
-      <div className="page-container-wide py-24 md:py-32 relative">
+    <section>
+      <div className="page-container-wide py-24 md:py-32">
         <motion.div
-          className="max-w-2xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="max-w-2xl"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="display-lg mb-4">Ready to build something that moves?</h2>
-          <p className="body-lg mx-auto mb-8">
-            Open the docs, install your first component, and start shipping interfaces with real motion built in.
+          <h2 className="display-lg mb-4">Open the docs and add your first component</h2>
+          <p className="body-lg mb-8">
+            Install via CLI, copy the source into your project, and ship interfaces with real motion already in place.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/docs" className="btn-primary">
-              Open documentation
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/contact" className="btn-secondary">
-              Talk to us
-            </Link>
-          </div>
+          <Link href="/docs" className="btn-primary">
+            Get started
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </section>

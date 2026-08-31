@@ -5,28 +5,21 @@ import Footer from "@/components/layout/Footer";
 import LenisProvider from "@/components/providers/LenisProvider";
 import { usePathname } from "next/navigation";
 
-function AmbientBackground() {
-  return (
-    <div className="ambient-bg" aria-hidden>
-      <div className="ambient-glow w-[600px] h-[600px] -top-40 -right-32 opacity-50" />
-      <div className="ambient-glow w-[400px] h-[400px] bottom-0 left-1/4 opacity-30" />
-    </div>
-  );
-}
-
 function AppChrome({
   children,
   showFooter,
+  isDocs,
 }: Readonly<{
   children: React.ReactNode;
   showFooter: boolean;
+  isDocs: boolean;
 }>) {
   return (
     <>
-      <div className="grain-overlay" aria-hidden />
-      <AmbientBackground />
       <Navbar />
-      <main className="relative pt-16">{children}</main>
+      <main id="main-content" className={isDocs ? "relative pt-16" : "relative pt-24"}>
+        {children}
+      </main>
       {showFooter && <Footer />}
     </>
   );
@@ -38,15 +31,21 @@ export default function ClientShell({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isDocs = pathname?.startsWith("/docs");
+  const isDocs = pathname?.startsWith("/docs") ?? false;
 
   if (isDocs) {
-    return <AppChrome showFooter={false}>{children}</AppChrome>;
+    return (
+      <AppChrome showFooter isDocs>
+        {children}
+      </AppChrome>
+    );
   }
 
   return (
     <LenisProvider>
-      <AppChrome showFooter>{children}</AppChrome>
+      <AppChrome showFooter isDocs={false}>
+        {children}
+      </AppChrome>
     </LenisProvider>
   );
 }
