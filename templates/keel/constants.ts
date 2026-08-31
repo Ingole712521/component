@@ -2,44 +2,48 @@
  * Personalize this template here.
  * Change names, copy, links, and lists. The React file only reads these values.
  */
-export const student = {
-  name: "Aisha Rahman",
-  degree: "Life Sciences, Ashoka University",
-  intro:
-    "I study living systems and write about them so non-scientists can follow. Open to research internships and science communication roles for summer 2027.",
+import type { CinematicContent } from "../cinematic/types";
+
+export const content: CinematicContent = {
+  scene: {
+    src: "/templates/scenes/scene-keel.png",
+    alt: "Painted daylight meadow under tall white clouds",
+  },
+  initials: "AR",
+  mark: "Aisha",
   email: "aisha.rahman@example.edu",
-  orcid: "https://orcid.org",
+  nav: [
+    { href: "#work", label: "Field" },
+    { href: "#work", label: "Writing" },
+    { href: "mailto:aisha.rahman@example.edu", label: "Contact" },
+  ],
+  headline: ["Living systems,", "written so others can follow."],
+  standfirst: "I study what is alive, then make the notes readable.",
+  lede: "Life sciences at Ashoka University. Open to research internships and science communication roles for summer 2027, with wetland fieldwork already in the file.",
+  primary: { href: "#work", label: "See the work" },
+  secondary: { href: "mailto:aisha.rahman@example.edu", label: "Write to me" },
+  stats: [
+    { value: "11 water bodies", label: "Surveyed with Wetland Watch" },
+    { value: "Ashoka", label: "B.Sc. Life Sciences" },
+    { value: "Summer 2027", label: "Research and sci-comm search" },
+    { value: "Urban birds", label: "Thesis on wetland birds in the NCR" },
+  ],
+  workHeading: "Selected work",
+  work: [
+    {
+      title: "Field intern, Wetland Watch",
+      meta: "Jun to Aug 2025 · Delhi",
+      body: "Surveyed 11 water bodies, wrote weekly notes for the public site, and trained two junior volunteers.",
+    },
+    {
+      title: "Teaching assistant, Biostats I",
+      meta: "Spring 2026 · Ashoka",
+      body: "Ran the Friday problem set hour. Built a one-page cheat sheet the class still uses.",
+    },
+    {
+      title: "Thesis, urban wetland birds",
+      meta: "2026 to 2027 · NCR",
+      body: "Coursework in ecology, biostatistics, and science writing. The thesis follows birds on water bodies the city forgot.",
+    },
+  ],
 };
-
-export const education = [
-  {
-    title: "Ashoka University",
-    meta: "B.Sc. Life Sciences · 2023 to 2027",
-    body: "Coursework in ecology, biostatistics, and science writing. Thesis on urban wetland birds in the NCR.",
-  },
-  {
-    title: "Delhi Public School, R.K. Puram",
-    meta: "Class XII · 2023",
-    body: "Biology, chemistry, mathematics. School nature club lead.",
-  },
-];
-
-export const experience = [
-  {
-    title: "Field intern, Wetland Watch",
-    meta: "Jun to Aug 2025 · Delhi",
-    body: "Surveyed 11 water bodies, wrote weekly notes for the public site, and trained two junior volunteers.",
-  },
-  {
-    title: "Teaching assistant, Biostats I",
-    meta: "Spring 2026 · Ashoka",
-    body: "Ran the Friday problem set hour. Built a one-page cheat sheet the class still uses.",
-  },
-];
-
-export const clubs = [
-  "Birding circle",
-  "Science writing desk",
-  "Campus farm shift",
-  "Debate union",
-];

@@ -7,7 +7,7 @@
   --color-accent-secondary: #3d8fd4;
   --color-surface: #ffffff;
   --color-surface-elevated: #ffffff;
-  --color-border: rgba(17, 19, 24, 0.1);
+  --color-border: rgb(17 19 24 / 0.1);
 
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-display: ui-sans-serif, system-ui, sans-serif;
@@ -56,7 +56,6 @@
 
   html {
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
   }
 
   body {

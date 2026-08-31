@@ -3,6 +3,7 @@
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
 import { PaperPlaneTilt } from "@phosphor-icons/react";
+import { useLenisLock } from "./smooth-scroll";
 import styles from "./home-world.module.css";
 
 const links = [
@@ -14,6 +15,7 @@ const links = [
 export function HomeNav() {
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  useLenisLock(open);
 
   useEffect(() => {
     if (!open) return;

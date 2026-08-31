@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { SmoothScroll } from "./_components/smooth-scroll";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -59,10 +60,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 -->`,
           }}
         />
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-        {children}
+        <SmoothScroll>
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
