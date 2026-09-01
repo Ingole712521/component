@@ -18,7 +18,7 @@ const steps = [
   },
   {
     title: "Open the full preview",
-    body: "The template becomes a full site at /preview/its-name. Scroll it the way a recruiter would. Nothing here is a static mock.",
+    body: "The template becomes a full site at /preview/its-name. Scroll from the painted homepage through projects, writing, and contact, the way a recruiter would. Nothing here is a static mock.",
   },
   {
     title: "Pick one to make your own",

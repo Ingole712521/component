@@ -10,10 +10,22 @@ export type CinematicStat = {
   label: string;
 };
 
-export type CinematicWork = {
+export type CinematicFact = {
+  label: string;
+  value: string;
+};
+
+export type CinematicProject = {
+  year: string;
   title: string;
-  meta: string;
   body: string;
+  stack: string[];
+};
+
+export type CinematicNote = {
+  title: string;
+  date: string;
+  lede: string;
 };
 
 export type CinematicContent = {
@@ -24,6 +36,7 @@ export type CinematicContent = {
   initials: string;
   mark: string;
   email: string;
+  github: CinematicLink;
   nav: CinematicLink[];
   headline: [string, string];
   standfirst: string;
@@ -31,6 +44,21 @@ export type CinematicContent = {
   primary: CinematicLink;
   secondary: CinematicLink;
   stats: CinematicStat[];
-  workHeading: string;
-  work: CinematicWork[];
+  about: {
+    heading: string;
+    name: string;
+    program: string;
+    bio: string;
+    facts: CinematicFact[];
+  };
+  projectsHeading: string;
+  projects: CinematicProject[];
+  writingHeading: string;
+  writing: CinematicNote[];
+  linksHeading: string;
+  links: CinematicLink[];
+  contact: {
+    heading: string;
+    note: string;
+  };
 };

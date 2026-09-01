@@ -18,7 +18,7 @@ Animioui is a gallery of ready-made student portfolio templates. Success is a st
 
 ## Positioning
 
-Templates are live, full-page sites you can open and inspect, not static mock thumbnails. Each one is a cinematic student landing: the same layout, a different painted scene, copy that belongs to a named student. They are not older multi-section CV pages.
+Templates are live, full-page sites you can open and inspect, not static mock thumbnails. Each one opens on a painted homepage, then continues into about, projects with a named stack, writing, GitHub and other links, and contact. Copy belongs to a named student. The sections do not share one card grid.
 
 ## Operating Context
 
